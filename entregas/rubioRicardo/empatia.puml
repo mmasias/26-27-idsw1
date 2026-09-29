@@ -1,0 +1,16 @@
+## Modelo de Dominio
+
+```plantuml
+@startuml 
+hide circle
+hide empty members
+
+class Persona
+class Comportamiento
+class Percepcion
+class Simpatia
+
+Persona -- Comportamiento
+Comportamiento -- Percepcion
+Percepcion -- Simpatia
+@enduml

@@ -1,0 +1,18 @@
+```plantuml
+@startuml
+hide circle
+hide empty members
+
+class FuenteDeLuz
+class Objeto
+class Superficie
+class Sombra
+class Umbra
+class Penumbra
+
+FuenteDeLuz -- Objeto
+Objeto -- Sombra
+Sombra -- Superficie
+Sombra -- Umbra
+Sombra -- Penumbra
+@enduml
