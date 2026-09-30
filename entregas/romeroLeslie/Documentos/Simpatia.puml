@@ -1,0 +1,14 @@
+@startuml
+
+rectangle Persona
+rectangle Comportamiento
+rectangle Contexto
+rectangle Percepcion
+rectangle Simpatia
+
+Persona --> Comportamiento
+Comportamiento --> Contexto
+Comportamiento --> Percepcion
+Percepcion --> Simpatia
+
+@enduml
