@@ -1,4 +1,4 @@
-@startuml
+@startuml sombra
 !theme plain
 skinparam classAttributeIconSize 0
 hide methods
