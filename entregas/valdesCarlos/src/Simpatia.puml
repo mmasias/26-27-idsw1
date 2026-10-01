@@ -1,0 +1,17 @@
+@startuml
+
+class Persona
+
+class Comportamiento
+
+class Observador
+
+class Simpatia
+
+Persona --> Comportamiento : actúa mediante
+Observador --> Comportamiento : observa e interpreta
+Comportamiento --> Simpatia : genera percepción de
+Observador --> Simpatia : percibe
+Simpatia --> Persona : se atribuye a
+
+@enduml
