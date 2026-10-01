@@ -1,0 +1,28 @@
+@startuml farmearAura
+!theme plain
+skinparam classAttributeIconSize 0
+hide methods
+
+class Persona
+class Accion
+class Contexto
+class EpisodioDeFarmeo
+class ValoracionDeAura
+
+Persona "1" -- "0..*" Accion : realiza
+Accion "0..*" -- "1" Contexto : ocurre en
+
+EpisodioDeFarmeo "1" o-- "1..*" Accion : comprende
+Persona "1" -- "0..*" EpisodioDeFarmeo : protagoniza
+
+Persona "1" -- "0..*" ValoracionDeAura : observador
+ValoracionDeAura "0..*" -- "1" Persona : persona valorada
+ValoracionDeAura "0..*" -- "1" Accion : valora
+ValoracionDeAura "0..*" -- "1" Contexto : se emite en
+
+note right of ValoracionDeAura
+El aura se considera percibida:
+una misma acción puede recibir
+valoraciones distintas.
+end note
+@enduml
