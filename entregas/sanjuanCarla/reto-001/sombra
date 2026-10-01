@@ -1,0 +1,32 @@
+@startuml
+title Modelo de dominio - Una sombra
+
+class Sombra {
+    posicion
+    tamaño
+    intensidad
+}
+
+class Objeto {
+    nombre
+    posición
+    tamaño
+}
+
+class FuenteLuz {
+    tipo
+    posición
+    intensidad
+}
+
+class Superficie {
+    tipo
+    posición
+}
+
+FuenteLuz "1" --> "0..*" Objeto : ilumina
+Objeto "1" --> "0..*" Sombra : proyecta
+Superficie "1" --> "0..*" Sombra : recibe
+FuenteLuz "1" --> "0..*" Sombra : genera
+
+@enduml

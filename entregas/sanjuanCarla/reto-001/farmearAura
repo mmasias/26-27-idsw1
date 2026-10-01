@@ -1,0 +1,31 @@
+@startuml
+title Modelo de dominio - Farmear aura
+
+class Persona {
+    nombre
+    aura
+}
+
+class Accion {
+    nombre
+    dificultad
+    auraGenerada
+}
+
+class Evento {
+    nombre
+    lugar
+    fecha
+}
+
+class Recompensa {
+    cantidadAura
+}
+
+Persona "1" --> "0..*" Accion : realiza
+Accion "1" --> "0..*" Recompensa : produce
+Persona "1" --> "0..*" Evento : participa
+Evento "1" --> "0..*" Recompensa : proporciona
+Recompensa "0..*" --> "1" Persona : asignada a
+
+@enduml
