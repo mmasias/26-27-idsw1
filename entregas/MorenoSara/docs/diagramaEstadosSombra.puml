@@ -1,0 +1,14 @@
+@startuml
+[*] --> Inexistente
+
+Inexistente --> SombraExistente : Se alinean Luz + Objeto + Superficie
+SombraExistente --> Inexistente : Se retira Luz, Objeto o Superficie
+
+state SombraExistente {
+  [*] --> Sombr
+  Sombr : Sombra Única Proyectada
+}
+
+SombraExistente --> Inexistente : Se modifica posicion/propiedad de Luz, Objeto o Superficie\n(Destruye la sombra actual y crea una nueva)
+
+@enduml

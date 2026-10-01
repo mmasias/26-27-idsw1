@@ -1,0 +1,37 @@
+@startuml
+skinparam classAttributeIconSize 0
+hide methods
+
+class Luz {
+  + intensidad : Real
+  + posicion : Punto3D
+}
+
+class Objeto {
+  + opaco : Boolean = true
+  + forma : Silueta
+  + posicion : Punto3D
+}
+
+class Superficie {
+  + orientacion : Vector3D
+  + posicion : Punto3D
+}
+
+class Sombra {
+  + area : Real
+  + formaProyectada : Silueta
+  + esUnica : Boolean = true
+}
+
+' Asociaciones conceptuales
+Luz "1" -- "1..*" Objeto : ilumina >
+Objeto "1" -- "1" Superficie : seAlineaCon >
+(Luz, Objeto, Superficie) .. Sombra
+
+' Dependencia estricta de la terna
+Luz "1" -- "1" Sombra : origina >
+Objeto "1" -- "1" Sombra : proyecta >
+Sombra "*" -- "1" Superficie : seHallaEn >
+
+@enduml

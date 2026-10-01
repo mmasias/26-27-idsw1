@@ -1,0 +1,23 @@
+@startuml
+[*] --> NoEvaluado : Alta de la Persona
+
+state NoEvaluado {
+  NoEvaluado : Sin percepciones suficientes
+}
+
+state NoSimpatico {
+  NoSimpatico : Puntuación media < Umbral
+}
+
+state Simpatico {
+  Simpatico : Puntuación media >= Umbral
+  Simpatico : Definido como "Alguien Simpático"
+}
+
+NoEvaluado --> NoSimpatico : Recibe Percepciones iniciales < Umbral
+NoEvaluado --> Simpatico : Recibe Percepciones iniciales >= Umbral
+
+Simpatico --> NoSimpatico : Comportamientos negativos acumulados\n(Puntuación desciende del Umbral)
+NoSimpatico --> Simpatico : Comportamientos positivos acumulados\n(Puntuación supera el Umbral)
+
+@enduml

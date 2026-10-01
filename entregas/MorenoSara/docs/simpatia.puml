@@ -1,0 +1,45 @@
+@startuml
+skinparam classAttributeIconSize 0
+hide methods
+
+class Persona {
+  + idPersona : String
+  + nombre : String
+  + esSimpatico() : Boolean
+}
+
+class Comportamiento {
+  + tipo : TipoComportamiento
+  + descripcion : String
+}
+
+enum TipoComportamiento {
+  AMABILIDAD
+  ESCUCHA_ACTIVA
+  HUMOR_ADECUADO
+  EMPATIA
+  DESCORTESIA
+}
+
+class PercepcionSimpatia {
+  + nivelAfecto : Integer
+  + gradoAfinidad : Real
+  + fechaEvaluacion : Date
+}
+
+class PerfilSimpatia {
+  + puntuacionMedia : Real
+  + umbralRequerido : Real = 7.0
+  + estatusSimpatico : Boolean
+}
+
+' Asociaciones conceptuales
+Persona "1" -- "*" Comportamiento : realiza (como Sujeto) >
+Comportamiento "1" -- "*" PercepcionSimpatia : motiva >
+
+Persona "1" -- "*" PercepcionSimpatia : emite (como Observador) >
+PercepcionSimpatia "*" -- "1" PerfilSimpatia : consolidaEn >
+
+Persona "1" -- "1" PerfilSimpatia : posee >
+
+@enduml
