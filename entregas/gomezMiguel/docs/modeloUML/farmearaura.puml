@@ -1,0 +1,14 @@
+@startuml
+title Farmear Aura
+
+rectangle Persona
+rectangle Acción
+rectangle Aura
+rectangle Situación
+
+Persona -right-> Acción : realiza
+Acción -down-> Aura : modifica
+Aura -left-> Persona : define la imagen de
+Situación -left-> Acción : enmarca
+Acción ..> Persona : es percibida por
+@enduml

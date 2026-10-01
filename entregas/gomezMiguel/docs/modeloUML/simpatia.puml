@@ -1,0 +1,16 @@
+@startuml
+title Simpatía
+
+rectangle Persona
+rectangle Animal
+rectangle Interacción
+rectangle Comportamiento
+rectangle Simpatía
+rectangle Contexto
+
+Persona -down-> Interacción : interviene en
+Animal -up-> Interacción : interviene en
+Contexto -right-> Interacción : rodea
+Interacción -right-> Comportamiento : incluye
+Comportamiento -down-> Simpatía : provoca
+@enduml
