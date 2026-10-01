@@ -1,0 +1,15 @@
+@startuml
+
+hide circle
+hide empty members
+
+class FuenteDeLuz
+class Objeto
+class Sombra
+class Superficie
+
+FuenteDeLuz --> Sombra : origina
+Objeto --> Sombra : produce
+Sombra --> Superficie : proyecta 
+
+@enduml

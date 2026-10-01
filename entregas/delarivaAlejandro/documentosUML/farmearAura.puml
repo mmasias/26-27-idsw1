@@ -1,0 +1,17 @@
+@startuml
+
+hide circle
+hide empty members
+
+class Persona
+class Accion
+class Aura
+class Validacion
+Class Contexto
+
+Persona --> Aura : farmea
+Aura --> Accion : realiza
+Accion --> Validacion
+Accion --> Contexto 
+
+@enduml

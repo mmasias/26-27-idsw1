@@ -1,0 +1,16 @@
+@startuml
+
+hide circle
+hide empty members
+
+class Persona
+Class Percepcion
+class Interaccion
+class Simpatia
+
+Persona --> Interaccion 
+Persona --> Percepcion
+Interaccion --> Simpatia
+Percepcion --> Simpatia 
+
+@enduml
