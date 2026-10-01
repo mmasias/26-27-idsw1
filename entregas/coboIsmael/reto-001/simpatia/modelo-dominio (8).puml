@@ -1,0 +1,26 @@
+@startuml
+!theme plain
+skinparam classAttributeIconSize 0
+hide methods
+
+class Persona
+class Interaccion
+class Contexto
+class CriterioDeSimpatia
+class ValoracionDeSimpatia
+
+Persona "2..*" -- "0..*" Interaccion : participa
+Interaccion "0..*" -- "1" Contexto : ocurre en
+
+Persona "1" -- "0..*" ValoracionDeSimpatia : evaluador
+ValoracionDeSimpatia "0..*" -- "1" Persona : evaluado
+ValoracionDeSimpatia "0..*" -- "1..*" Interaccion : se apoya en
+ValoracionDeSimpatia "0..*" -- "1" Contexto : se formula en
+ValoracionDeSimpatia "0..*" -- "1..*" CriterioDeSimpatia : considera
+
+note right of ValoracionDeSimpatia
+"Simpático" se deriva de
+valoraciones; no es una propiedad
+absoluta de Persona.
+end note
+@enduml

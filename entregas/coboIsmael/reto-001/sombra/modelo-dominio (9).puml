@@ -1,0 +1,26 @@
+@startuml
+!theme plain
+skinparam classAttributeIconSize 0
+hide methods
+
+class Escena
+class FuenteDeLuz
+class Objeto
+class Superficie
+class Sombra
+
+Escena "1" o-- "1..*" FuenteDeLuz : contiene
+Escena "1" o-- "1..*" Objeto : contiene
+Escena "1" o-- "0..*" Superficie : contiene
+Escena "1" o-- "0..*" Sombra : presenta
+
+FuenteDeLuz "1" -- "0..*" Sombra : origina luz para
+Objeto "1" -- "0..*" Sombra : bloquea luz y produce
+Superficie "1" -- "0..*" Sombra : recibe
+
+note right of Sombra
+La sombra no es una propiedad fija
+del objeto: depende también de la
+fuente de luz y de la superficie.
+end note
+@enduml
