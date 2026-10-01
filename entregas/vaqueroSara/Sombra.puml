@@ -1,0 +1,67 @@
+@startuml Sombra_Dominio
+title Modelo del dominio: Sombra
+hide empty methods
+skinparam classAttributeIconSize 0
+
+enum TipoFuente {
+  PUNTUAL
+  EXTENSA
+}
+
+enum TipoZona {
+  UMBRA
+  PENUMBRA
+}
+
+class Escena
+
+class FuenteDeLuz {
+  posicion
+  intensidad
+  tipo : TipoFuente
+}
+
+class Cuerpo {
+  forma
+  opacidad : Real
+}
+
+class Superficie {
+  geometria
+}
+
+class "/Sombra" as Sombra {
+  /region
+  /intensidadRelativa
+}
+
+class ZonaDeSombra {
+  tipo : TipoZona
+  /region
+}
+
+Escena "1" *-- "1..*" FuenteDeLuz
+Escena "1" *-- "1..*" Cuerpo
+Cuerpo "1" *-- "1..*" Superficie
+
+Sombra "0..*" --> "1" FuenteDeLuz : causadaPor
+Sombra "0..*" --> "1" Cuerpo : oclusor
+Sombra "0..*" --> "1" Superficie : receptora
+Sombra "1" *-- "1..2" ZonaDeSombra
+
+note right of Sombra
+  R1: oclusor.opacidad > 0
+  R2: el oclusor está, al menos en parte,
+      entre la fuente y la superficie receptora
+  R3: si causadaPor.tipo = PUNTUAL
+      entonces solo existe zona UMBRA
+  R4: la superficie receptora puede
+      pertenecer al propio oclusor
+      (sombra propia)
+end note
+
+note bottom of Escena
+  Escena estática: representa un instante
+end note
+
+@enduml
