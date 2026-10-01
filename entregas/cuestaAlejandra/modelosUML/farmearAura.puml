@@ -1,0 +1,11 @@
+@startuml
+
+class Persona
+class Gesto
+class Aura
+
+Persona --> Gesto : hace
+Gesto --> Aura : otorga
+Aura --> Persona : se le da
+
+@enduml
