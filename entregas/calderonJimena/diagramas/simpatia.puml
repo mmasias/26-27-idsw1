@@ -1,0 +1,17 @@
+@startuml
+
+class Persona
+class Interaccion
+class Comportamiento
+class Valoracion
+class Simpatia
+
+Persona "1" -- "0..*" Interaccion : participa en
+Interaccion "1" -- "1..*" Comportamiento : presenta
+
+Persona "1" -- "0..*" Valoracion : realiza
+Valoracion "1" -- "1" Persona : valora a
+
+Valoracion "1" -- "1" Simpatia : determina
+
+@enduml

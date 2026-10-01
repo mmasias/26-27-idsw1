@@ -1,0 +1,16 @@
+@startuml
+
+class Persona
+class Aura
+class SesionDeFarmeo
+class Actividad
+class Recompensa
+
+Persona "1" -- "1" Aura : posee
+Persona "1" -- "0..*" SesionDeFarmeo : realiza
+
+SesionDeFarmeo "1" -- "1..*" Actividad : incluye
+Actividad "1" -- "1" Recompensa : proporciona
+Recompensa -- Aura : aumenta
+
+@enduml
