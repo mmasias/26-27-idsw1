@@ -1,0 +1,15 @@
+@startum1
+
+luz -r-* espacio : se emite en el >
+espacio *-d- obstaculo : ha sido bloqueado por un >
+obstaculo <| -- persona
+obstaculo <| -- objeto 
+
+persona ... vivo : es un ser 
+objeto ... vivo : no es un ser vivo 
+
+sombra < -- sombra : crea una
+
+
+
+@endum1
