@@ -1,0 +1,12 @@
+@startuml
+
+class FuenteDeLuz
+class Objeto
+class Sombra
+class Superficie
+
+FuenteDeLuz -- Sombra : origina
+Objeto -- Sombra : produce
+Sombra -- Superficie : se proyecta sobre
+
+@enduml
