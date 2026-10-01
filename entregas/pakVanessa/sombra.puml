@@ -1,0 +1,15 @@
+@startuml
+
+hide circle
+hide empty members
+
+class Persona
+class Luz
+class Objeto
+class Sombra
+
+Persona -- Luz
+Luz -- Objeto
+Objeto -- Sombra
+
+@enduml
