@@ -1,0 +1,16 @@
+@startuml farmearAura
+left to right direction
+skinparam classAttributeIconSize 0
+skinparam classFontStyle bold
+
+class Persona
+class Aura
+class Acción
+class Situación
+
+Persona --> Aura      : posee
+Persona --> Acción    : realiza
+Acción  --> Situación : ocurre en
+Acción  --> Persona   : es percibida por
+
+@enduml

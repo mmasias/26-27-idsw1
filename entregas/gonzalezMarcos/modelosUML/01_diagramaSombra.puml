@@ -1,0 +1,15 @@
+@startuml sombra
+left to right direction
+skinparam classAttributeIconSize 0
+skinparam classFontStyle bold
+
+class "Fuente de luz" as FuenteLuz
+class Objeto
+class Sombra
+class Superficie
+
+FuenteLuz --> Objeto    : ilumina
+Objeto    --> Sombra    : proyecta
+Sombra    --> Superficie : aparece sobre
+
+@enduml
