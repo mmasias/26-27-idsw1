@@ -1,0 +1,9 @@
+@startuml
+left to right direction
+hide circle
+
+Persona --> Gesto : hace
+Gesto --> Aura : genera
+Aura --> Persona : otorga
+
+@enduml
