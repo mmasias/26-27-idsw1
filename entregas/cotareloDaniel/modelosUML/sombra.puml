@@ -1,0 +1,12 @@
+@startuml
+title Sombra
+
+rectangle Luz
+rectangle Cuerpo
+rectangle Sombra
+rectangle Superficie
+
+Luz -up-> Cuerpo : incide
+Cuerpo -right-> Sombra : proyecta
+Sombra -down-> Superficie : aparece
+@enduml
