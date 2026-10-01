@@ -1,0 +1,19 @@
+@startuml
+skinparam style strictuml
+hide empty members
+hide circle
+
+class Individuo
+class Aura
+class Accion
+class Audiencia
+class Veredicto
+
+Individuo *-- Aura : posee >
+Individuo --> Accion : realiza >
+Audiencia --> Accion : juzga >
+
+Accion --> Veredicto : genera >
+Veredicto --> Aura : modifica >
+
+@enduml

@@ -1,0 +1,18 @@
+@startuml
+skinparam style strictuml
+hide empty members
+hide circle
+
+class FuenteDeLuz
+class Luz
+class ObjetoOpaco
+class Superficie
+class Sombra
+
+FuenteDeLuz --> Luz : emite >
+ObjetoOpaco --> Luz : bloquea >
+Luz --> Superficie : ilumina >
+Luz --> Sombra : proyecta >
+Superficie *-- Sombra : contiene >
+
+@enduml
