@@ -1,0 +1,43 @@
+@startuml
+
+class Persona {
+    nombre
+    genero
+    edad
+    altura
+}
+
+class Participante {
+    puntosAura
+}
+
+class Espectador {
+    dispositivoCaptura
+}
+
+class BatallaDeAura {
+    tiempo
+    turno
+}
+
+class Gesto {
+    tipoGesto
+    nivelCringe
+}
+
+class Lugar {
+    ambiente
+    direccion
+}
+
+' Relaciones de Herencia (Roles que adopta una Persona)
+Persona <|-- Participante
+Persona <|-- Espectador
+
+' Relaciones Semánticas
+BatallaDeAura --> Participante : "Enfrenta a >"
+Participante --> Gesto : "Ejecuta >"
+Espectador --> BatallaDeAura : "Evalua >"
+BatallaDeAura --> Lugar : "Se realiza en >"
+
+@enduml

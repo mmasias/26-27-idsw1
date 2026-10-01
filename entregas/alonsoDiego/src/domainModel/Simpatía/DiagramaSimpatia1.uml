@@ -1,0 +1,33 @@
+@startuml
+
+class Persona {
+    nombre
+    edad
+}
+
+class Emisor {
+    gradoSimpatia
+}
+
+class Receptor {
+    gradoSatisfaccion
+}
+
+class Interaccion {
+    tipo
+    duracion
+}
+
+class Emocion {
+    tipoEmocion
+    intensidad
+}
+
+Persona <|-- Emisor
+Persona <|-- Receptor
+
+Emisor --> Interaccion : "Realiza >"
+Interaccion --> Receptor : "Dirigida a >"
+Interaccion --> Emocion : "Despierta >"
+
+@enduml

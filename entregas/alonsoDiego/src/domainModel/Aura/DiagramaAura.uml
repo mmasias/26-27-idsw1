@@ -1,0 +1,19 @@
+@startuml
+
+class BatallaDeAura {
+}
+
+class Participante {
+}
+
+class Gesto {
+}
+
+class Espectador {
+}
+
+BatallaDeAura --> Participante : "Enfrenta a >"
+Participante --> Gesto : "Ejecuta >"
+Espectador --> BatallaDeAura : "Evalua >"
+
+@enduml

@@ -1,0 +1,30 @@
+@startuml
+
+class FuenteDeLuz {
+}
+
+class CuerpoOpaco {
+}
+
+class Persona {
+}
+
+class Objeto {
+}
+
+class Sombra {
+}
+
+class Iluminacion {
+}
+
+CuerpoOpaco <|-- Persona
+CuerpoOpaco <|-- Objeto
+
+
+FuenteDeLuz --> CuerpoOpaco : "Ilumina >"
+CuerpoOpaco --> Sombra : "Proyecta >"
+
+(FuenteDeLuz, CuerpoOpaco) .. Iluminacion
+
+@enduml

@@ -1,0 +1,56 @@
+@startuml
+
+class FuenteDeLuz {
+    angulo
+    posicion
+    intensidad
+}
+
+class CuerpoOpaco {
+    posicion
+}
+
+class Persona {
+    altura
+    distanciaALuz
+}
+
+class Objeto {
+    tipo
+}
+
+class Sombra {
+    tamaño
+    posicion
+    silueta
+    nitidez
+}
+
+class Superficie {
+    tipo
+    inclinacion
+}
+
+class Entorno {
+    clima
+    visibilidad
+}
+
+class Observador {
+    distanciaAlObjetivo
+    lineaDeVision
+}
+
+CuerpoOpaco <|-- Persona
+CuerpoOpaco <|-- Objeto
+
+FuenteDeLuz --> CuerpoOpaco : "Ilumina >"
+FuenteDeLuz --> Entorno : "Atraviesa >"
+CuerpoOpaco --> Sombra : "Proyecta >"
+CuerpoOpaco --> Superficie : "Se apoya en >"
+Sombra --> Superficie : "Se plasma en >"
+Entorno --> Superficie : "Afecta el estado de >"
+Observador --> Sombra : "Detecta >"
+Observador --> CuerpoOpaco : "Enfoca >"
+
+@enduml
