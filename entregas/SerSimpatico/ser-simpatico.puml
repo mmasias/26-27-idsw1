@@ -1,0 +1,12 @@
+@startuml
+
+class Persona
+
+class Simpatia {
+    grado
+}
+
+Persona "1" -- "0..*" Simpatia : siente
+Simpatia "0..*" -- "1" Persona : hacia
+
+@enduml

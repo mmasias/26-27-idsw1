@@ -1,0 +1,13 @@
+@startuml farmear-aura
+
+class Persona
+class Accion
+class Observador
+class Aura
+
+Persona -- Accion : realiza
+Observador -- Accion : observa
+Observador -- Aura : percibe
+Persona -- Aura : tiene asociada
+
+@enduml farmear-aura
