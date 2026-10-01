@@ -1,0 +1,26 @@
+@startuml Sombra
+skinparam defaultFontName Arial
+skinparam roundCorner 25
+skinparam shadowing false
+skinparam rectangle {
+  BackgroundColor White
+  BorderColor Black
+  BorderThickness 2
+}
+skinparam arrow {
+  Color Black
+  Thickness 1.5
+}
+skinparam titleFontColor #D32F2F
+
+title Sombra
+
+rectangle "Cuerpo" as Cuerpo
+rectangle "Sombra" as Sombra
+rectangle "Luz" as Luz
+rectangle "Superficie" as Superficie
+
+Luz -up-> Cuerpo : incide
+Cuerpo -right-> Sombra : proyecta
+Sombra -down-> Superficie : aparece en
+@enduml
