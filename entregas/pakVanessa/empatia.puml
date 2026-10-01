@@ -1,0 +1,15 @@
+@startuml
+
+hide circle
+hide empty members
+
+class Persona
+class Comportamiento
+class Percepcion
+class Empatia
+
+Persona -- Comportamiento
+Comportamiento -- Percepcion
+Percepcion -- Empatia
+
+@enduml
