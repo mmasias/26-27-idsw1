@@ -1,0 +1,42 @@
+@startuml
+title Modelo de dominio: una sombra
+
+skinparam classAttributeIconSize 0
+
+class FuenteDeLuz {
+  intensidad
+  posicion
+}
+
+class Objeto {
+  forma
+  posicion
+  opacidad
+}
+
+class Superficie {
+  posicion
+  orientacion
+}
+
+class Sombra {
+  forma
+  posicion
+  tamano
+  intensidad
+}
+
+FuenteDeLuz "1" -- "0..*" Sombra : proyecta
+Objeto "1" -- "0..*" Sombra : produce
+Superficie "1" -- "0..*" Sombra : recibe
+
+FuenteDeLuz ..> Objeto : ilumina
+Objeto ..> Superficie : proyecta sobre
+
+note right of Sombra
+  Región de la superficie
+  que recibe poca o ninguna
+  luz debido al bloqueo
+end note
+
+@enduml

@@ -1,0 +1,65 @@
+@startuml
+skinparam classAttributeIconSize 0
+hide methods
+hide stereotypes
+
+class Persona {
+  nombre
+}
+
+class Contexto {
+  descripcion
+}
+
+class Interaccion {
+  fechaHora
+  descripcion
+}
+
+class Simpatia <<value object>> {
+  nivel : NivelSimpatia
+  /esSimpatico : Boolean
+}
+
+enum NivelSimpatia {
+  BAJA
+  MEDIA
+  ALTA
+}
+
+class EvaluacionSimpatia {
+  puntuacion : 1..5
+  comentario
+}
+
+class CriterioSimpatia {
+  nombre
+  peso
+}
+
+Persona "1" -- "0..*" Interaccion : participa >
+Contexto "1" -- "0..*" Interaccion : ocurre en >
+
+Persona "1" -- "0..*" EvaluacionSimpatia : recibe >
+Contexto "1" -- "0..*" EvaluacionSimpatia : se refiere a >
+EvaluacionSimpatia "1..*" -- "1..*" CriterioSimpatia : valora >
+
+Persona "1" -- "0..*" Simpatia : tiene en un contexto >
+Simpatia "1" -- "1" Contexto : para >
+Simpatia "1" -- "0..*" EvaluacionSimpatia : se obtiene de >
+
+note right of Simpatia
+  /esSimpatico = true cuando
+  el nivel de simpatía alcanza
+  el umbral acordado para el contexto.
+end note
+
+note bottom of CriterioSimpatia
+  Ejemplos: amabilidad, escucha,
+  respeto, humor y consideración.
+end note
+
+note "Supuesto: la simpatía no es una propiedad absoluta de la persona;\nes una valoración contextual y derivada de interacciones/evaluaciones." as N1
+N1 .. Persona
+
+@enduml

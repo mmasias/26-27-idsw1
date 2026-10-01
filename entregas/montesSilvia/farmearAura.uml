@@ -1,0 +1,37 @@
+@startuml
+title Modelo de dominio: farmear aura
+skinparam classAttributeIconSize 0
+
+class Jugador {
+  nombre
+  nivel
+}
+
+class Aura {
+  cantidad
+  nivel
+  tipo
+}
+
+class Actividad {
+  nombre
+  dificultad
+  recompensa
+}
+
+class Recompensa {
+  cantidadAura
+}
+
+class Sesion {
+  inicio
+  fin
+}
+
+Jugador "1" -- "1" Aura : posee
+Jugador "1" -- "0..*" Sesion : realiza
+Sesion "1" -- "1" Actividad : ejecuta
+Actividad "1" -- "1" Recompensa : genera
+Recompensa "1" --> "1" Aura : incrementa
+
+@enduml
