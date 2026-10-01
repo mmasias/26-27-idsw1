@@ -1,0 +1,19 @@
+@startuml
+skinparam monochrome true
+hide circle
+hide empty members
+
+class Persona
+class Aura
+class EventoSocial
+class ImpactoSocial
+class Lugar
+
+Persona --> EventoSocial : protagoniza 
+EventoSocial --> Lugar : ocurre en 
+Persona --> EventoSocial : observa 
+Persona --> ImpactoSocial : genera  
+Persona --> Aura : posee
+ImpactoSocial --> Aura : determina 
+
+@enduml
