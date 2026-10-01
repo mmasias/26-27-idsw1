@@ -1,0 +1,14 @@
+@startuml
+hide circle
+hide empty members
+
+class Persona
+class Simpatia
+class Encuentro
+class Rasgo
+
+Persona -- Simpatia
+Persona -- Encuentro
+Simpatia -- Encuentro
+Simpatia -- Rasgo
+@enduml
