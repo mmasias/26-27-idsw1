@@ -1,0 +1,8 @@
+classDiagram
+    class Persona
+    class Comportamiento
+    class Interaccion
+
+    Persona "1" --> "*" Comportamiento : muestra
+    Persona "1" --> "*" Interaccion : participa
+    Interaccion "*" --> "*" Persona : relaciona
