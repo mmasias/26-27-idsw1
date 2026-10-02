@@ -1,0 +1,20 @@
+@startuml Sombra
+title Modelo del dominio: Una sombra
+hide empty members
+
+class FuenteDeLuz
+class ObjetoOpaco
+class Superficie
+class Sombra
+class ZonaDeSombra
+class ProyeccionDeLuz
+
+(FuenteDeLuz, ObjetoOpaco) .. ProyeccionDeLuz
+ProyeccionDeLuz --> Superficie : sobre
+ProyeccionDeLuz --> Sombra : produce
+Sombra "1" *-- "1..2" ZonaDeSombra
+
+note right of ZonaDeSombra
+  umbra o penumbra
+end note
+@enduml

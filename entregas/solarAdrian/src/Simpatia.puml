@@ -1,0 +1,24 @@
+@startuml Simpatia
+title Modelo del dominio: Simpatía
+hide empty members
+
+class Persona
+class Interaccion
+class Rasgo
+class Impresion
+class CriterioDeSimpatia
+class PonderacionDeRasgo
+class Contexto
+
+Persona "1" -- "*" Interaccion : sujeto
+Persona "1" -- "*" Interaccion : observador
+Interaccion "*" -- "1" Contexto : ocurre en
+Interaccion "*" -- "*" Rasgo : muestra
+Interaccion "1" -- "*" Impresion : genera
+Impresion "*" -- "1" Persona : observador
+Impresion "*" -- "1" Persona : sujeto
+Persona "1" -- "*" CriterioDeSimpatia : tiene
+CriterioDeSimpatia "1" *-- "*" PonderacionDeRasgo
+PonderacionDeRasgo "*" -- "1" Rasgo
+CriterioDeSimpatia "*" -- "1" Contexto
+@enduml
