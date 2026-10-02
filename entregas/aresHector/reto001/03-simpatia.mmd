@@ -1,0 +1,16 @@
+---
+title: Alguien simpatico
+---
+classDiagram
+  direction TB
+  class Persona
+  class Interaccion
+  class Valoracion {
+    gradoDeSimpatia
+  }
+  class Contexto
+  Persona "2" -- "0..*" Interaccion : participa en
+  Contexto "1" -- "0..*" Interaccion : enmarca
+  Interaccion "1" -- "0..2" Valoracion : fundamenta
+  Persona "1" -- "0..*" Valoracion : emite
+  Persona "1" -- "0..*" Valoracion : recibe
