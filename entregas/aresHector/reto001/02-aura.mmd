@@ -1,0 +1,17 @@
+---
+title: Farmear aura
+---
+classDiagram
+  direction TB
+  class Persona
+  class Accion {
+    intencionDeGanarAura
+  }
+  class Reaccion {
+    variacionDeAura
+  }
+  class Contexto
+  Persona "1" -- "0..*" Accion : realiza
+  Accion "1" -- "0..*" Reaccion : provoca
+  Persona "1" -- "0..*" Reaccion : emite
+  Contexto "1" -- "0..*" Accion : enmarca
