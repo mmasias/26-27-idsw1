@@ -1,0 +1,28 @@
+@startuml
+
+class Sombra {
+
+}
+
+class FuenteDeLuz {
+
+}
+
+class ObjetoOpaco {
+
+}
+
+class SuperficieDeProyeccion {
+
+}
+
+class Silueta {
+
+}
+
+FuenteDeLuz  -- Sombra : proyecta >
+ObjetoOpaco  -- Sombra : genera >
+SuperficieDeProyeccion  -- Sombra : recibe >
+Sombra  -- Silueta : posee >
+
+@enduml

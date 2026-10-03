@@ -1,0 +1,29 @@
+@startuml
+
+class Sujeto {
+
+}
+
+class Aura {
+
+}
+
+class Hazana {
+
+}
+
+class Audiencia {
+
+}
+
+class EventoDeAura {
+
+}
+
+Sujeto -- Aura : posee >
+Sujeto  -- Hazana : ejecuta >
+Hazana  -- EventoDeAura : genera >
+Audiencia  -- EventoDeAura : juzga y emite >
+EventoDeAura --  Aura : modifica >
+
+@enduml
