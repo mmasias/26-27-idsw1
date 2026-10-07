@@ -1,0 +1,21 @@
+@startuml
+
+[*] --> EstaConSusAmigos
+
+EstaConSusAmigos --> HaceUnGesto : 2. hace un gesto
+HaceUnGesto --> GanaPuntos : 3. consigue puntos
+GanaPuntos --> ElAuraRecibePuntos : 4. los puntos llegan al aura
+
+ElAuraRecibePuntos --> LosAmigosGraban : 5. los amigos graban
+LosAmigosGraban --> SePublicaElClip : 6. se publica en redes
+
+SePublicaElClip --> RecibePuntuacion : 7. recibe una puntuación
+RecibePuntuacion --> RecibeAdmiracion : 8. genera admiración
+RecibeAdmiracion --> TieneMasAura : 9. aumenta el aura
+
+TieneMasAura --> SeHaceLeyenda : 10. se convierte en leyenda
+SeHaceLeyenda --> EsLeyenda : 11. la persona es leyenda
+
+EsLeyenda --> [*]
+
+@enduml

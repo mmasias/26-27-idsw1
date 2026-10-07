@@ -1,0 +1,45 @@
+@startuml
+
+class Persona {
+    - nombre : String
+    - puntosDePrestigio : int
+}
+
+class Prestigio {
+    - cantidadDeMeritos : int
+    - nivelDeReconocimiento : int
+}
+
+class Ademán {
+    - descripcion : String
+    - dificultad : int
+}
+
+class Admiracion {
+    - gradoDeEstima : int
+}
+
+class Grabacion {
+    - titulo : String
+    - duracion : int
+}
+
+class Apreciacion {
+    - puntuacion : int
+    - parecer : String
+}
+
+class CirculoDeAllegados {
+    - nombre : String
+    - numeroDeMiembros : int
+}
+
+Persona --> Ademán : realiza
+Ademán --> Grabacion : queda registrado en
+Grabacion --> CirculoDeAllegados : es contemplada por
+CirculoDeAllegados --> Apreciacion : emite
+Apreciacion --> Admiracion : genera
+Admiracion --> Prestigio : incrementa
+Prestigio --> Persona : pertenece a
+
+@enduml

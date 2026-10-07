@@ -1,0 +1,16 @@
+@startuml
+
+[*] --> Preparacion
+
+Preparacion --> RealizandoAdeman : ejecutar ademán
+RealizandoAdeman --> GrabacionRealizada : registrar grabación
+GrabacionRealizada --> Observacion : allegados contemplan
+Observacion --> ApreciacionRealizada : emitir apreciación
+ApreciacionRealizada --> AdmiracionGenerada : generar estima
+AdmiracionGenerada --> MeritosObtenidos : obtener méritos
+MeritosObtenidos --> AcumulandoPrestigio : incrementar prestigio
+
+AcumulandoPrestigio --> Preparacion : continuar acumulando
+AcumulandoPrestigio --> [*] : finalizar
+
+@enduml

@@ -1,0 +1,12 @@
+@startuml
+
+class Cuerpo
+class Sombra
+class Luz
+class Superficie
+
+Cuerpo --> Sombra : proyecta
+Luz --> Cuerpo : incide
+Sombra --> Superficie : se proyecta
+
+@enduml

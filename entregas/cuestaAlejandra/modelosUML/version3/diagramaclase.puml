@@ -1,0 +1,61 @@
+@startuml
+
+class Persona {
+    nombre
+    puntos de aura
+}
+
+class GrupoDeAmigos {
+    nombre
+    amigos
+}
+
+class Gesto {
+    nombre
+    dificultad
+}
+
+class PuntosDeAura {
+    cantidad
+}
+
+class Aura {
+    puntos
+    nivel
+}
+
+class Clip {
+    titulo
+    duracion
+}
+
+class RedesSociales {
+    nombre
+}
+
+class Puntuacion {
+    puntuacion
+    comentario
+}
+
+class Admiracion {
+    nivel
+}
+
+class Leyenda {
+    nivel
+}
+
+Persona --> GrupoDeAmigos : pertenece
+Persona --> Gesto : hace
+Gesto --> PuntosDeAura : da
+PuntosDeAura --> Aura : recibe
+GrupoDeAmigos --> Clip : graba
+Clip --> RedesSociales : se publica
+RedesSociales --> Puntuacion : recibe
+Puntuacion --> Admiracion : genera
+Admiracion --> Aura : aumenta
+Aura --> Leyenda : convierte
+Leyenda --> Persona : hace leyenda
+
+@enduml

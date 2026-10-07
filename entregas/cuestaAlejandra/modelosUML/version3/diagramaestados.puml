@@ -1,0 +1,21 @@
+@startuml
+
+[*] --> EnGrupo
+
+EnGrupo --> HaceGesto : 2. hacer gesto
+HaceGesto --> GanaPuntos : 3. dar puntos
+GanaPuntos --> AuraRecibe : 4. recibir puntos
+
+AuraRecibe --> GrupoGraba : 5. grabar clip
+GrupoGraba --> ClipPublicado : 6. publicar clip
+
+ClipPublicado --> RecibePuntuacion : 7. recibir puntuación
+RecibePuntuacion --> GeneraAdmiracion : 8. generar admiración
+GeneraAdmiracion --> AuraAumenta : 9. aumentar aura
+
+AuraAumenta --> SeHaceLeyenda : 10. convertirse en leyenda
+SeHaceLeyenda --> PersonaEsLeyenda : 11. hacer leyenda
+
+PersonaEsLeyenda --> [*]
+
+@enduml

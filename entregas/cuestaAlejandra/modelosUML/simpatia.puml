@@ -1,0 +1,14 @@
+@startuml
+
+class Persona
+class Animal
+class Interaccion
+class Comportamientos
+class Simpatia
+
+Persona --> Interaccion : participa
+Animal --> Interaccion : practicipa
+Interaccion --> Comportamientos : muestra
+Comportamientos --> Simpatia : genera
+
+@enduml

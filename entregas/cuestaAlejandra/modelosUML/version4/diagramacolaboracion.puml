@@ -1,0 +1,26 @@
+@startuml
+
+object "Persona" as p
+object "Grupo de amigos" as g
+object "Gesto" as ge
+object "Puntos de aura" as pa
+object "Aura" as a
+object "Clip" as cl
+object "Redes sociales" as r
+object "Puntuación" as v
+object "Admiración" as ad
+object "Leyenda" as l
+
+p --> g : 1. pertenece al grupo
+p --> ge : 2. hace un gesto guay
+ge --> pa : 3. da puntos de aura
+pa --> a : 4. los puntos llegan al aura
+g --> cl : 5. los amigos graban el clip
+cl --> r : 6. se publica en redes
+r --> v : 7. recibe una puntuación
+v --> ad : 8. genera admiración
+ad --> a : 9. aumenta el aura
+a --> l : 10. convierte en leyenda
+l --> p : 11. la persona se hace leyenda
+
+@enduml

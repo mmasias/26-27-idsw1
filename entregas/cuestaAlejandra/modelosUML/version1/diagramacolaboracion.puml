@@ -1,0 +1,19 @@
+@startuml
+
+object "p : Persona" as p
+object "a : Ademán" as a
+object "g : Grabación" as g
+object "c : Círculo de allegados" as c
+object "ap : Apreciación" as ap
+object "ad : Admiración" as ad
+object "pr : Prestigio" as pr
+
+p --> a : 1. realizarAdemán()
+a --> g : 2. registrarEnGrabación()
+c --> g : 3. contemplarGrabación()
+c --> ap : 4. emitirApreciación()
+ap --> ad : 5. generarEstima()
+ad --> pr : 6. incrementarMéritos()
+pr --> p : 7. actualizarPrestigio()
+
+@enduml
