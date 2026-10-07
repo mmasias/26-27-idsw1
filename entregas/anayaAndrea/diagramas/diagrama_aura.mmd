@@ -1,0 +1,8 @@
+classDiagram
+    class Persona
+    class Accion
+    class Evento
+
+    Persona "1" --> "*" Accion : realiza
+    Accion "*" --> "1" Evento : ocurre en
+    Persona "1" --> "*" Evento : participa
