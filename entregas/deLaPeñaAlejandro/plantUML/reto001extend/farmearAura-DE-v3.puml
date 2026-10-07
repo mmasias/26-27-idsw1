@@ -1,0 +1,15 @@
+@startuml farmearAura-DE-v3
+title Farmear aura - Estados v3 (farmeo repetido)
+hide empty description
+state valoracion <<choice>>
+state seguir <<choice>>
+[*] -down-> Neutral
+Neutral -down-> Gesticulando : hace gesto
+Gesticulando -down-> valoracion : se valora el gesto
+valoracion -down-> GanandoAura : [épico]
+valoracion -down-> PerdiendoAura : [cringe]
+GanandoAura -down-> seguir : aura le da a la persona
+PerdiendoAura -down-> seguir : aura le quita a la persona
+seguir -up-> Gesticulando : [sigue farmeando] / hace gesto
+seguir -down-> [*] : [deja de farmear]
+@enduml

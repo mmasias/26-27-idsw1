@@ -1,0 +1,26 @@
+@startuml farmearAura-DE-v4
+title Farmear aura - Estados v4 (completo)
+hide empty description
+state confianza <<choice>>
+state valoracion <<choice>>
+state balance <<choice>>
+[*] --> Neutral
+Neutral --> confianza : quiere farmear
+confianza --> GestoArriesgado : [tiene confianza] / hace gesto arriesgado
+confianza --> GestoNormal : [sin confianza] / hace gesto normal
+GestoArriesgado --> valoracion : se valora el gesto
+GestoNormal --> valoracion : se valora el gesto
+valoracion --> GanandoAura : [épico]
+valoracion --> SinCambio : [normal]
+valoracion --> PerdiendoAura : [cringe]
+GanandoAura --> Empoderada : aura le da confianza
+SinCambio --> Empoderada : aura le da confianza
+PerdiendoAura --> Empoderada : aura le da confianza
+Empoderada --> balance : revisa su aura
+balance --> Leyenda : [aura >= máximo]
+balance --> SinAura : [aura <= 0]
+balance --> confianza : [sigue farmeando]
+balance --> [*] : [decide parar]
+Leyenda --> [*]
+SinAura --> [*]
+@enduml

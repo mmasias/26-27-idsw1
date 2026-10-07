@@ -1,0 +1,29 @@
+@startuml farmearAura-DA-v4
+title Farmear aura - Actividad v4 (completo)
+start
+repeat
+  if (¿Persona tiene confianza?) then (sí)
+    :Persona hace un gesto arriesgado;
+  else (no)
+    :Persona hace un gesto normal;
+  endif
+  :Se valora el gesto;
+  if (¿Gesto épico?) then (sí)
+    :El gesto otorga aura (+);
+  elseif (¿Gesto cringe?) then (sí)
+    :El gesto resta aura (-);
+  else (normal)
+    :El gesto no otorga aura;
+  endif
+  :El aura le da confianza a la persona;
+repeat while (¿0 < aura < máximo y sigue farmeando?) is (sí)
+-> no;
+if (¿Aura máxima?) then (sí)
+  :Persona alcanza estatus de leyenda;
+elseif (¿Aura agotada?) then (sí)
+  :Persona se queda sin aura;
+else (decide parar)
+  :Persona deja de farmear;
+endif
+stop
+@enduml

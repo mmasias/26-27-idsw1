@@ -1,0 +1,10 @@
+@startuml farmearAura-DC-v2
+title Farmear aura - Colaboración v2 (valoración del gesto)
+object ":Persona" as Persona
+object ":Gesto" as Gesto
+object ":Aura" as Aura
+Persona -left--> Gesto : 1: hacer()
+Gesto --> Gesto : 2: valorar()
+Gesto -down--> Aura : 3a: [épico] otorgar(+n)\n3b: [cringe] restar(n)
+Aura -right---> Persona : 4: darAura(total)
+@enduml

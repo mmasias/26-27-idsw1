@@ -1,0 +1,9 @@
+@startuml farmearAura-DC-v1
+title Farmear aura - Colaboración v1 (núcleo)
+object ":Persona" as Persona
+object ":Gesto" as Gesto
+object ":Aura" as Aura
+Persona -left--> Gesto : 1: hacer()
+Gesto -down--> Aura : 2: otorgar()
+Aura -right---> Persona : 3: darAura()
+@enduml

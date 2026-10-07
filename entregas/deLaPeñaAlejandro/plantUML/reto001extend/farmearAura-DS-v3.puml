@@ -1,0 +1,18 @@
+@startuml farmearAura-DS-v3
+title Farmear aura - Secuencia v3 (farmeo repetido)
+participant ":Persona" as Persona
+participant ":Gesto" as Gesto
+participant ":Aura" as Aura
+loop mientras sigue farmeando
+  Persona -> Gesto : hacer()
+  activate Gesto
+  Gesto -> Gesto : valorar()
+  alt épico
+    Gesto -> Aura : otorgar(+n)
+  else cringe
+    Gesto -> Aura : restar(n)
+  end
+  Aura -> Persona : darAura(total)
+  deactivate Gesto
+end
+@enduml

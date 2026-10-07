@@ -1,0 +1,16 @@
+@startuml farmearAura-DA-v3
+title Farmear aura - Actividad v3 (farmeo repetido)
+start
+repeat
+  :Persona hace un gesto;
+  :Se valora el gesto;
+  if (¿Gesto épico?) then (sí)
+    :El gesto otorga aura (+);
+  else (cringe)
+    :El gesto resta aura (-);
+  endif
+  :El aura le da a la persona;
+repeat while (¿Sigue farmeando?) is (sí)
+-> no;
+stop
+@enduml

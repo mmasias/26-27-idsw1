@@ -1,0 +1,13 @@
+@startuml farmearAura-DA-v2
+title Farmear aura - Actividad v2 (valoración del gesto)
+start
+:Persona hace un gesto;
+:Se valora el gesto;
+if (¿Gesto épico?) then (sí)
+  :El gesto otorga aura (+);
+else (cringe)
+  :El gesto resta aura (-);
+endif
+:El aura le da a la persona;
+stop
+@enduml

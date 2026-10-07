@@ -1,0 +1,29 @@
+@startuml Simpatia
+skinparam defaultFontName Arial
+skinparam roundCorner 25
+skinparam shadowing false
+skinparam rectangle {
+  BackgroundColor White
+  BorderColor Black
+  BorderThickness 2
+}
+skinparam arrow {
+  Color Black
+  Thickness 1.5
+}
+skinparam titleFontColor #D32F2F
+
+title Simpatía
+
+rectangle "Persona" as Persona
+rectangle "Animal" as Animal
+rectangle "Interacción" as Interaccion
+rectangle "Comportamiento" as Comportamiento
+rectangle "Simpatía" as Simpatia
+
+Persona -right-> Interaccion : participa
+Animal -right-> Interaccion : participa
+Persona -[hidden]down- Animal
+Interaccion -right-> Comportamiento : muestra
+Comportamiento -down-> Simpatia : genera
+@enduml

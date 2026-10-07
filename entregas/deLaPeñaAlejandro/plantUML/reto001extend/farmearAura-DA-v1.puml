@@ -1,0 +1,8 @@
+@startuml farmearAura-DA-v1
+title Farmear aura - Actividad v1 (núcleo)
+start
+:Persona hace un gesto;
+:El gesto otorga aura;
+:El aura le da a la persona;
+stop
+@enduml

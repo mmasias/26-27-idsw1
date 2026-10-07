@@ -1,0 +1,13 @@
+@startuml farmearAura-DS-v1
+title Farmear aura - Secuencia v1 (núcleo)
+participant ":Persona" as Persona
+participant ":Gesto" as Gesto
+participant ":Aura" as Aura
+Persona -> Gesto : hacer()
+activate Gesto
+Gesto -> Aura : otorgar()
+activate Aura
+Aura -> Persona : darAura()
+deactivate Aura
+deactivate Gesto
+@enduml

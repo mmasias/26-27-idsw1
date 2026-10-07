@@ -1,0 +1,29 @@
+@startuml farmearAura-DS-v4
+title Farmear aura - Secuencia v4 (completo)
+participant ":Persona" as Persona
+participant ":Gesto" as Gesto
+participant ":Aura" as Aura
+loop mientras 0 < aura < máximo y sigue farmeando
+  alt tiene confianza
+    Persona -> Gesto : hacer(arriesgado)
+  else sin confianza
+    Persona -> Gesto : hacer(normal)
+  end
+  Gesto -> Gesto : valorar()
+  alt épico
+    Gesto -> Aura : otorgar(+n)
+  else cringe
+    Gesto -> Aura : restar(n)
+  else normal
+    Gesto -> Aura : otorgar(0)
+  end
+  Aura -> Persona : darConfianza(nivel)
+end
+alt aura >= máximo
+  Aura -> Persona : coronarLeyenda()
+else aura <= 0
+  Aura -> Persona : quitarAura()
+else decide parar
+  Persona -> Persona : dejarDeFarmear()
+end
+@enduml

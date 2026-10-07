@@ -1,0 +1,26 @@
+@startuml Aura
+' Fatrear: Aura
+skinparam defaultFontName Arial
+skinparam roundCorner 25
+skinparam shadowing false
+skinparam rectangle {
+  BackgroundColor White
+  BorderColor Black
+  BorderThickness 2
+}
+skinparam arrow {
+  Color Black
+  Thickness 1.5
+}
+skinparam titleFontColor #D32F2F
+
+title Aura
+
+rectangle "Persona" as Persona
+rectangle "Gesto" as Gesto
+rectangle "Aura" as Aura
+
+Persona -right-> Gesto : hace
+Gesto -down-> Aura : otorga
+Aura -left-> Persona : le da
+@enduml

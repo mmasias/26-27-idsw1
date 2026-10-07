@@ -1,0 +1,11 @@
+@startuml farmearAura-DC-v4
+title Farmear aura - Colaboración v4 (completo)
+object ":Persona" as Persona
+object ":Gesto" as Gesto
+object ":Aura" as Aura
+Persona -left--> Gesto : 1*: [0 < aura < máx y sigue farmeando]\n1.1a: [confianza] hacer(arriesgado)\n1.1b: [sin confianza] hacer(normal)
+Gesto --> Gesto : 1.2: valorar()
+Gesto -down--> Aura : 1.3a: [épico] otorgar(+n)\n1.3b: [cringe] restar(n)\n1.3c: [normal] otorgar(0)
+Aura -right---> Persona : 1.4: darConfianza(nivel)\n2a: [aura >= máx] coronarLeyenda()\n2b: [aura <= 0] quitarAura()
+Persona --> Persona : 2c: [decide parar]\ndejarDeFarmear()
+@enduml

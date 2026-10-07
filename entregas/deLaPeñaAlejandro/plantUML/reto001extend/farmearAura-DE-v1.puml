@@ -1,0 +1,8 @@
+@startuml farmearAura-DE-v1
+title Farmear aura - Estados v1 (núcleo)
+hide empty description
+[*] --> Neutral
+Neutral --> Gesticulando : hace gesto
+Gesticulando --> ConAura : gesto otorga aura
+ConAura --> [*] : aura le da a la persona
+@enduml

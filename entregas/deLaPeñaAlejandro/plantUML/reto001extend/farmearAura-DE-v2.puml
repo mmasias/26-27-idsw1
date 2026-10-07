@@ -1,0 +1,12 @@
+@startuml farmearAura-DE-v2
+title Farmear aura - Estados v2 (valoración del gesto)
+hide empty description
+state valoracion <<choice>>
+[*] --> Neutral
+Neutral --> Gesticulando : hace gesto
+Gesticulando --> valoracion : se valora el gesto
+valoracion --> GanandoAura : [épico]
+valoracion --> PerdiendoAura : [cringe]
+GanandoAura --> [*] : aura le da a la persona
+PerdiendoAura --> [*] : aura le quita a la persona
+@enduml
