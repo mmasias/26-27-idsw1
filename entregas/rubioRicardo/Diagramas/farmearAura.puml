@@ -1,0 +1,14 @@
+@startuml
+hide circle
+hide empty members
+
+class Persona
+class Aura
+class Accion
+class Contexto
+
+Persona -- Aura
+
+Accion -- Contexto
+Accion -- Aura
+@enduml

@@ -1,0 +1,1 @@
+se añadio el estado opuesto farmear aura y se uso el lenguaje del cliente en comparación a la version anterior

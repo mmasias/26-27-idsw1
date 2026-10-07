@@ -1,0 +1,9 @@
+@startuml
+[*] --> Observando
+
+Observando --> Interactuando : iniciar accion
+Interactuando --> EvaluandoContexto : accion finalizada
+
+EvaluandoContexto --> Aura : [validacionPositiva]
+EvaluandoContexto --> [*] : [validacionNegativa]
+@enduml
