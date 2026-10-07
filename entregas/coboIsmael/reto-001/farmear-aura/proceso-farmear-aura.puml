@@ -1,0 +1,29 @@
+@startuml
+!theme plain
+
+title Cómo ocurre el farmeo de aura
+
+start
+
+:Una persona realiza una acción;
+:La acción ocurre en una situación;
+
+if (¿Alguien observa la acción?) then (Sí)
+  :La persona observadora interpreta la acción;
+  :Forma o modifica su percepción del aura
+  de quien realizó la acción;
+
+  if (¿La percepción de aura mejora?) then (Sí)
+    :La acción contribuye al farmeo de aura;
+  else (No)
+    :La acción no aporta aura
+    para esa persona observadora;
+  endif
+
+else (No)
+  :No se genera una nueva percepción
+  a partir de esa acción;
+endif
+
+stop
+@enduml
