@@ -1,0 +1,19 @@
+@startuml
+' Día 5: Refinamiento UML con superestados y transiciones avanzadas
+[*] -> CicloDePersona
+
+state CicloDePersona {
+    [*] -> Inactiva
+    
+    Inactiva -> RealizandoAccion : ejecutar()
+    
+    RealizandoAccion -> AnalizandoContexto : finalizarAccion()
+    
+    state AnalizandoContexto <<choice>>
+    
+    AnalizandoContexto --> ActualizandoAura : [Contexto Favorable] / sumarAura()
+    AnalizandoContexto --> ActualizandoAura : [Contexto Desfavorable] / restarAura()
+    
+    ActualizandoAura -> Inactiva : refrescarEstado()
+}
+@enduml

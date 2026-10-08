@@ -1,0 +1,14 @@
+@startuml
+' Día 4: Decisiones dinámicas basadas en el Contexto
+[*] -> PersonaInactiva
+
+PersonaInactiva -> RealizandoAccion : Inicia Acción
+RealizandoAccion -> EvaluandoContexto : Acción terminada
+
+state EvaluandoContexto <<choice>>
+EvaluandoContexto --> AumentandoAura : Contexto favorable (Acierto)
+EvaluandoContexto --> DisminuyendoAura : Contexto desfavorable (Error)
+
+AumentandoAura -> PersonaInactiva
+DisminuyendoAura -> PersonaInactiva
+@enduml

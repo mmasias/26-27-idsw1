@@ -1,0 +1,9 @@
+@startuml
+' Día 3: Añadiendo la modificación del Aura
+[*] -> PersonaInactiva
+
+PersonaInactiva -> RealizandoAccion : Inicia Acción
+RealizandoAccion -> EvaluandoContexto : La acción impacta en el entorno
+EvaluandoContexto -> ActualizandoAura : El contexto define el resultado
+ActualizandoAura -> PersonaInactiva : Aura guardada
+@enduml

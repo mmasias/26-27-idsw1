@@ -1,0 +1,7 @@
+@startuml
+' Día 1: El ciclo básico de la Persona
+[*] -> PersonaInactiva
+
+PersonaInactiva -> RealizandoAccion : Inicia Acción
+RealizandoAccion -> PersonaInactiva : Finaliza Acción
+@enduml

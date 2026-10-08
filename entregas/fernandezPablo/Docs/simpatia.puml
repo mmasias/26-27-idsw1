@@ -1,0 +1,15 @@
+@startuml
+hide empty members
+hide circle
+
+class Persona
+class Interaccion
+class Comportamiento
+class EvaluacionSimpatia
+
+Persona -- Interaccion
+Persona -- EvaluacionSimpatia
+Interaccion -- Comportamiento
+Comportamiento -- EvaluacionSimpatia
+
+@enduml
