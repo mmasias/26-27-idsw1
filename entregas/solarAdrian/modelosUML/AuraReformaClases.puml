@@ -1,0 +1,21 @@
+@startuml AuraReforma
+title Modelo del Dominio: Farmear Aura
+hide empty members
+
+class Chaval
+class Farmeo
+class Publico
+class Aura
+class Momento
+
+' Flujo del proceso
+Chaval "1" --> "*" Farmeo : se marca
+Farmeo "*" --> "*" Publico : genera efecto en
+Publico "*" --> "*" Farmeo : observa
+Publico "*" --> "1" Aura : juzga / atribuye
+Aura "1" -up-> "1" Chaval : se atribuye a
+
+' Contexto / Escenario
+Farmeo "*" -right-> "1" Momento : ocurre en
+
+@enduml

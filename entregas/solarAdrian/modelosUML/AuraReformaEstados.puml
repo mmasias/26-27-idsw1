@@ -1,0 +1,25 @@
+@startuml AuraReformaEstados
+title Diagrama de Estados: Evolución del Aura de un Chaval
+
+state "Aura Neutra" as Neutra
+state "Aura Positiva" as Positiva
+state "Aura Negativa" as Negativa
+
+[*] --> Neutra
+
+' Transiciones cuando el farmeo mola (sube aura)
+Negativa --> Neutra : farmeo mola
+Neutra --> Positiva : farmeo mola
+Positiva --> Positiva : farmeo mola
+
+' Transiciones cuando el farmeo da cringe (baja aura)
+Positiva --> Neutra : farmeo da cringe
+Neutra --> Negativa : farmeo da cringe
+Negativa --> Negativa : farmeo da cringe
+
+' Transiciones cuando no produce efecto en el público
+Positiva --> Positiva : sin efecto
+Neutra --> Neutra : sin efecto
+Negativa --> Negativa : sin efecto
+
+@enduml

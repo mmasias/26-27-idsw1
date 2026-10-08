@@ -1,0 +1,39 @@
+@startuml AuraReformaObjetos
+title Diagrama de Objetos: Escenario de Farmeo de Aura
+
+object "juan : Chaval" as juan {
+  nombre = "Juan"
+}
+
+object "amigos : Chaval" as amigos {
+  grupo = "Compañeros de clase"
+}
+
+object "marcarseUnSixSeven : Farmeo" as farmeo {
+  descripcion = "Mover ambas manos alternadamente,\nuna hacia arriba y otra hacia abajo."
+  intencion = "Demostrar superioridad"
+}
+
+object "patio : Momento" as patio {
+  lugar = "Pista de baloncesto"
+  escenario = "Recreo"
+}
+
+object "auraDeJuan : Aura" as aura {
+  percepcion = "Respeto / admiración"
+  saldo = "+50 puntos"
+}
+
+' Relaciones imitando la estructura visual de la imagen
+juan --> farmeo : se marca
+amigos --> farmeo : ve
+
+' Usamos flechas de dirección para forzar la misma forma circular
+farmeo -up-> amigos : genera efecto en
+amigos --> aura : atribuye
+aura -up-> juan : se atribuye a
+
+' Ponemos el Momento a un lado para que no rompa el ciclo principal
+farmeo -right-> patio : ocurre en
+
+@enduml

@@ -1,0 +1,27 @@
+@startuml Aura
+title Modelo del dominio: Farmear aura
+hide empty members
+
+class Persona
+class Acto
+class Observador
+class Valoracion
+class MovimientoDeAura
+class Aura
+class Farmeo
+class Contexto
+
+Persona "1" -- "*" Acto : realiza
+Acto "*" -- "1" Contexto : ocurre en
+Observador "1" -- "*" Valoracion : emite
+Valoracion "*" -- "1" Acto : juzga
+Valoracion "1" -- "1" MovimientoDeAura : origina
+Persona "1" -- "1" Aura : tiene
+Aura "1" o-- "*" MovimientoDeAura
+Farmeo "1" o-- "2..*" Acto : repite
+Persona "1" -- "*" Farmeo : emprende
+
+note right of Aura
+  saldo = suma de movimientos
+end note
+@enduml
