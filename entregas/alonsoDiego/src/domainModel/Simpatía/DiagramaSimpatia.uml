@@ -1,0 +1,17 @@
+@startuml
+
+class Persona {
+}
+
+class Interaccion {
+}
+
+class Emocion {
+}
+
+Persona --> Interaccion : "Realiza >"
+Interaccion --> Persona : "Dirigida a >"
+Interaccion --> Emocion : "Despierta >"
+
+@enduml
+

@@ -1,0 +1,42 @@
+@startuml
+title Diagrama Objetos Aura
+
+object "__usuarioPrincipal : Usuario__" as diego
+
+object "__rangoActual : Rango__" as rango {
+    denominacion = "Leyenda de Clase"
+    umbralMinimo = 500
+}
+
+object "__auraDeUsuario : Aura__" as aura {
+    puntosTotales = 500
+}
+
+object "__historialUsuario : HistorialFarmeo__" as historial
+
+object "__MuchaAura : AportacionPositiva__" as muchaAura {
+    puntosGanados = 600
+}
+
+object "__PerdidaDeAura : FalloCritico__" as perdidaAura {
+    puntosPerdidos = 100
+}
+
+object "__grupoAprobador : Colectivo__" as grupoPositivo
+object "__grupoPenalizador : Colectivo__" as grupoNegativo
+
+diego *-- aura : tiene >
+diego *-- historial : posee >
+aura *-- rango : determina >
+
+historial o-- muchaAura : registra >
+historial o-- perdidaAura : registra >
+
+muchaAura --> diego : gana >
+muchaAura --> grupoPositivo : otorgada por (Público) >
+
+perdidaAura --> diego : pierde >
+perdidaAura --> grupoNegativo : quitada por (Público) >
+@endum
+
+

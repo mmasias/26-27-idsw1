@@ -1,0 +1,30 @@
+@startuml
+title Diagrama Objetos Aura - 2ª Iteración
+
+object "__diego : Usuario__" as diego
+object "__zaira : Usuario__" as zaira
+object "__manuel : Usuario__" as manuel
+object "__auraDeDiego : Aura__" as aura
+object "__historialDiego : HistorialFarmeo__" as historial
+
+
+object "__MuchaAura : AportacionPositiva__" as sumaAura
+object "__PerdidaDeAura : FalloCritico__" as restaAura
+
+
+diego *-- aura : tiene >
+diego *-- historial : posee >
+
+
+historial o-- sumaAura : registra >
+historial o-- restaAura : registra >
+
+
+sumaAura --> zaira : dada por >
+sumaAura --> diego : gana >
+
+
+restaAura --> diego : pierde >
+restaAura --> manuel : quitada por >
+
+@endum

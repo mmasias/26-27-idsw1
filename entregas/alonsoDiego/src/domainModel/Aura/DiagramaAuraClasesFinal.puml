@@ -1,0 +1,54 @@
+@startuml
+title Diagrama de Clases - Sistema de Aura Final
+
+class Usuario {
+    - id: String
+    - nombre: String
+    + registrarEnHistorial(AccionDeFarmeo): void
+    + actualizarAura(): void
+}
+
+class Aura {
+    - puntosTotales: int
+    + modificarPuntos(int): void
+    + determinarRango(): Rango
+}
+
+class Rango {
+    - denominacion: String
+    - umbralMinimo: int
+    + {static} obtenerRangoPorPuntos(int): Rango
+}
+
+class HistorialFarmeo {
+    - registros: List<AccionDeFarmeo>
+    + añadir(AccionDeFarmeo): void
+    + calcularNeto(): int
+}
+
+abstract class AccionDeFarmeo {
+    - id: String
+    - timestamp: LocalDateTime
+    + {abstract} obtenerImpacto(): int
+}
+
+class AportacionPositiva {
+    - puntosGanados: int
+    + obtenerImpacto(): int
+}
+
+class FalloCritico {
+    - puntosPerdidos: int
+    + obtenerImpacto(): int
+}
+
+Usuario *-- Aura
+Usuario *-- HistorialFarmeo
+Aura *-- Rango
+HistorialFarmeo o-- AccionDeFarmeo
+AccionDeFarmeo --> Usuario : involucraOtorga >
+AccionDeFarmeo --> Usuario : involucraRecibe >
+
+AccionDeFarmeo <|-- AportacionPositiva
+AccionDeFarmeo <|-- FalloCritico
+@endum

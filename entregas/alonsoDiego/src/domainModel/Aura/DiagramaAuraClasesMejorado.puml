@@ -1,0 +1,42 @@
+@startuml
+title Diagrama de Clases - Dominio Aura
+
+abstract class AccionDeFarmeo {
+    - id: String
+    - timestamp: LocalDateTime
+    + {abstract} calcularImpacto(): int
+}
+
+class AportacionPositiva {
+    - puntosGanados: int
+    + calcularImpacto(): int
+}
+
+class FalloCritico {
+    - puntosPerdidos: int
+    + calcularImpacto(): int
+}
+
+class Usuario {
+    - id: String
+    - nombre: String
+    + procesarAccion(AccionDeFarmeo): void
+}
+
+class Aura {
+    - puntosTotales: int
+    + modificarPuntos(int): Aura
+}
+
+class HistorialFarmeo {
+    + registrar(AccionDeFarmeo): void
+}
+
+AccionDeFarmeo <|-- AportacionPositiva
+AccionDeFarmeo <|-- FalloCritico
+
+Usuario *-- Aura
+Usuario *-- HistorialFarmeo
+HistorialFarmeo o-- AccionDeFarmeo
+AccionDeFarmeo --> Usuario : involucra >
+@endum

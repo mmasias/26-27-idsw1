@@ -1,0 +1,33 @@
+@startuml
+title Diagrama Objetos Aura - Iteracion Miércoles
+
+object "__diego : Usuario__" as diego
+object "__zaira : Usuario__" as zaira
+object "__manuel : Usuario__" as manuel
+
+object "__auraDeDiego : Aura__" as aura {
+    puntosTotales = 500
+}
+
+object "__historialDiego : HistorialFarmeo__" as historial
+
+object "__MuchaAura : AportacionPositiva__" as muchaAura {
+    puntosGanados = 600
+}
+
+object "__PerdidaDeAura : FalloCritico__" as perdidaAura {
+    puntosPerdidos = 100
+}
+
+diego *-- aura : tiene >
+diego *-- historial : lo guarda en >
+
+historial o-- muchaAura : registra >
+historial o-- perdidaAura : registra >
+
+muchaAura --> diego : gana >
+muchaAura --> zaira : dada por >
+
+perdidaAura --> diego : pierde >
+perdidaAura --> manuel : quitada por >
+@endum
