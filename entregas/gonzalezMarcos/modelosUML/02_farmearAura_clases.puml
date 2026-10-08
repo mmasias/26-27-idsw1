@@ -1,0 +1,18 @@
+@startuml farmearAura_clases
+
+hide circle
+hide empty members
+
+class Chaval
+class Aura
+class Movida
+class Momento
+class Gente
+
+Chaval -- Aura : tiene >
+Chaval -- Movida : se marca >
+Movida -- Momento : pasa en >
+Gente -- Movida : mira >
+Movida -- Aura : sube o baja >
+
+@enduml

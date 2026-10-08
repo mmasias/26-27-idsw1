@@ -1,0 +1,22 @@
+@startuml farmearAura_secuencia
+
+actor "Pepe : Chaval" as pepe
+participant "soltar un chiste : Movida" as movida
+participant "el recreo : Momento" as momento
+participant "los colegas : Gente" as gente
+participant "el aura de Pepe : Aura" as aura
+
+pepe -> movida : se marca
+movida -> momento : pasa en
+gente -> movida : mira
+gente -> gente : juzga si mola o es cringe
+
+alt la gente flipa
+  gente -> aura : sube
+  aura -> aura : pasa a "Subiendo"
+else la gente lo ve cringe
+  gente -> aura : baja
+  aura -> aura : pasa a "Bajando"
+end
+
+@enduml

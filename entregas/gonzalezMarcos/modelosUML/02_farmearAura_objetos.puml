@@ -1,0 +1,36 @@
+@startuml farmearAura_objetos
+
+hide circle
+
+object "Pepe : Chaval" as pepe {
+  nombre = "Pepe"
+  edad = 16
+}
+
+object "el aura de Pepe : Aura" as auraPepe {
+  nivel = "alto"
+  tendencia = "subiendo"
+}
+
+object "soltar un chiste : Movida" as chiste {
+  tipo = "chiste"
+  intención = "hacer reír"
+}
+
+object "el recreo : Momento" as recreo {
+  lugar = "patio del instituto"
+  cuándo = "recreo"
+}
+
+object "los colegas : Gente" as colegas {
+  quiénes = "amigos de clase"
+  reacción = "se parten"
+}
+
+pepe -- auraPepe : tiene >
+pepe -- chiste : se marca >
+chiste -- recreo : pasa en >
+colegas -- chiste : mira >
+chiste -- auraPepe : sube >
+
+@enduml

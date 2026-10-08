@@ -1,0 +1,19 @@
+@startuml simpatia
+left to right direction
+skinparam classAttributeIconSize 0
+skinparam classFontStyle bold
+
+class Persona
+class Simpatía
+class Interacción
+class Comportamiento
+class Contexto
+
+Persona     --> Simpatía       : experimenta
+Simpatía    --> Persona        : hacia
+Persona     --> Interacción    : participa en
+Interacción --> Comportamiento : incluye
+Interacción --> Contexto       : ocurre en
+Interacción ..> Simpatía       : puede influir en
+
+@enduml

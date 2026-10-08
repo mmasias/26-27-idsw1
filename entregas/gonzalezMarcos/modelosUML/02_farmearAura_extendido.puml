@@ -1,0 +1,51 @@
+@startuml farmearAura_extendido
+
+hide empty members
+hide circle
+
+class Chaval {
+  nombre
+  edad
+}
+
+class Aura {
+  nivel
+  tendencia : TendenciaAura
+}
+
+enum TendenciaAura {
+  PorLasNubes
+  Subiendo
+  Normal
+  Bajando
+  PorLosSuelos
+}
+
+class Movida {
+  tipo
+  intención
+}
+
+class Momento {
+  lugar
+  cuándo
+}
+
+class Gente {
+  reacción : ReaccionGente
+}
+
+enum ReaccionGente {
+  Flipa
+  NiFuNiFa
+  Cringe
+}
+
+Chaval "1" *-- "1" Aura : tiene >
+Gente "1" o-- "1..*" Chaval : son >
+Momento "1" o-- "0..*" Movida : engloba >
+Chaval "1" -- "0..*" Movida : se marca >
+Gente "0..*" --> "1" Movida : mira >
+Movida "0..*" --> "1" Aura : afecta >
+
+@enduml

@@ -1,0 +1,30 @@
+@startuml farmearAura_estados
+
+hide empty description
+
+[*] --> Normal : el chaval empieza sin hacer nada
+
+Normal --> Subiendo : se marca algo y la gente flipa
+Normal --> Bajando : se marca algo y la gente lo ve cringe
+
+Subiendo --> PorLasNubes : sigue con movidas que molan
+Subiendo --> Normal : deja de hacer cosas
+Subiendo --> Bajando : se marca algo cringe
+
+Bajando --> PorLosSuelos : sigue haciendo el ridículo
+Bajando --> Normal : la gente se olvida
+Bajando --> Subiendo : se marca algo que mola
+
+PorLasNubes --> Subiendo : la gente se acostumbra
+PorLasNubes --> Bajando : se marca algo muy cringe
+
+PorLosSuelos --> Bajando : sigue en plan cringe
+PorLosSuelos --> Subiendo : se redime con una buena movida
+
+state Normal : Aura estable
+state Subiendo : La gente flipa contigo
+state Bajando : La gente te ve cringe
+state PorLasNubes : Eres el amo
+state PorLosSuelos : Estas cancelado
+
+@enduml

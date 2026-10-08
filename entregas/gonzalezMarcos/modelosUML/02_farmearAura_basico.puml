@@ -1,0 +1,12 @@
+@startuml farmearAura_basico
+
+hide circle
+hide empty members
+
+class Chaval
+class Aura
+class Movida
+class Momento
+class Gente
+
+@enduml

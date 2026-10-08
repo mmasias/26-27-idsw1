@@ -1,0 +1,36 @@
+@startuml farmearAura_detallado
+
+hide circle
+
+class Chaval {
+  nombre
+  edad
+}
+
+class Aura {
+  nivel
+  tendencia
+}
+
+class Movida {
+  tipo
+  intención
+}
+
+class Momento {
+  lugar
+  cuándo
+}
+
+class Gente {
+  quiénes
+  reacción
+}
+
+Chaval "1" -- "1" Aura : tiene >
+Chaval "1" -- "0..*" Movida : se marca >
+Movida "1" -- "1" Momento : pasa en >
+Gente "0..*" -- "1" Movida : mira >
+Movida "0..*" -- "1" Aura : sube o baja >
+
+@enduml
