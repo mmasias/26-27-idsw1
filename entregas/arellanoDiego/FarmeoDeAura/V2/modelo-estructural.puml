@@ -1,0 +1,34 @@
+@startuml
+skinparam style strictuml
+hide empty members
+hide circle
+top to bottom direction
+
+skinparam defaultTextAlignment center
+skinparam roundCorner 8
+skinparam class {
+    BackgroundColor White
+    BorderColor #333333
+}
+
+class Individuo
+class Audiencia
+
+class Accion
+
+class Veredicto
+
+class Aura
+
+Individuo --> Accion : hace >
+Individuo --> Aura : farmea >
+
+Audiencia --> Accion : observa >
+Audiencia --> Veredicto : decide >
+
+Accion --> Veredicto : motiva >
+Veredicto --> Aura : modifica >
+
+Individuo *-down- Aura : posee >
+
+@enduml

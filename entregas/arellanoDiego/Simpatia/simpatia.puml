@@ -1,0 +1,18 @@
+@startuml
+skinparam style strictuml
+hide empty members
+hide circle
+
+class Persona
+class GestoSocial
+class Interlocutor
+class Afinidad
+class Simpatia
+
+Persona --> GestoSocial : emite >
+Interlocutor --> GestoSocial : percibe >
+GestoSocial --> Afinidad : genera >
+Interlocutor --> Simpatia : reconoce >
+Simpatia --> Persona : califica a >
+
+@enduml

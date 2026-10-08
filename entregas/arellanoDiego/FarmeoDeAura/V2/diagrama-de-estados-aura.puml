@@ -1,0 +1,36 @@
+@startuml
+skinparam style strictuml
+top to bottom direction
+
+skinparam state {
+    BackgroundColor White
+    BorderColor #333333
+    ArrowColor #333333
+}
+
+[*] --> NivelDeAuraNeutral : Entra al grupo
+
+state NivelDeAuraNeutral : Nivel normal / Pasa desapercibido
+state RachaDeAciertos : En racha positiva
+state GranCantidadDeAura : Muy respetado
+state PerdidaDeAura : Quedas mal
+state PerdidaTotalDeAura : Cancelado del todo
+
+' Subida
+NivelDeAuraNeutral --> RachaDeAciertos : Te sale una buena
+RachaDeAciertos --> RachaDeAciertos : Sigues sumando
+RachaDeAciertos --> GranCantidadDeAura : Todos te aplauden
+
+' Bajada
+NivelDeAuraNeutral --> PerdidaDeAura : Perdida de aura
+RachaDeAciertos --> PerdidaDeAura : Accion vergonzoza
+PerdidaDeAura --> PerdidaTotalDeAura : Te funan fuerte
+
+' Caída desde arriba
+GranCantidadDeAura --> PerdidaDeAura : Accion vergonzoza
+
+' Remontadas
+PerdidaTotalDeAura --> GranCantidadDeAura : Aura maxima
+PerdidaDeAura --> NivelDeAuraNeutral : Aura recuperada
+
+@enduml
