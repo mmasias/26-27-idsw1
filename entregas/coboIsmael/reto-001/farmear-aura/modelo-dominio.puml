@@ -1,0 +1,39 @@
+@startuml
+!theme plain
+skinparam classAttributeIconSize 0
+hide methods
+hide stereotypes
+
+title Modelo del dominio — Farmear aura
+
+class Persona
+class Accion as "Acción"
+class Situacion as "Situación"
+class PercepcionDeAura as "Percepción de aura"
+class FarmeoDeAura as "Farmeo de aura"
+
+Persona "1" -- "0..*" Accion : realiza >
+Accion "0..*" -- "1" Situacion : ocurre en >
+
+Persona "1" -- "0..*" PercepcionDeAura : percibe >
+PercepcionDeAura "0..*" -- "1" Persona : sobre >
+PercepcionDeAura "0..*" -- "1" Situacion : en >
+PercepcionDeAura "0..*" -- "1..*" Accion : a partir de >
+
+Persona "1" -- "0..*" FarmeoDeAura : protagoniza >
+FarmeoDeAura "1" o-- "1..*" Accion : reúne >
+FarmeoDeAura "0..*" -- "1" Situacion : sucede en >
+
+note right of PercepcionDeAura
+Una misma acción puede provocar
+percepciones distintas según
+quién la observe y la situación.
+end note
+
+note bottom of FarmeoDeAura
+Hay farmeo de aura cuando las acciones
+contribuyen a mejorar el aura percibida
+de la persona que las realiza.
+end note
+
+@enduml
