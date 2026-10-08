@@ -5,15 +5,15 @@ hide circle
 
 class Individuo
 class Aura
-class Accion
+class Acción
 class Audiencia
 class Veredicto
 
-Individuo *-- Aura : posee >
-Individuo --> Accion : realiza >
-Audiencia --> Accion : juzga >
+Individuo *-- Aura : tiene >
+Individuo --> Acción : hace >
+Audiencia --> Acción : juzga >
 
-Accion --> Veredicto : genera >
+Acción --> Veredicto : genera >
 Veredicto --> Aura : modifica >
 
 @enduml
