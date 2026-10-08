@@ -1,0 +1,24 @@
+@startuml
+skinparam handwritten false
+skinparam classAttributeIconSize 0
+skinparam NodePadding 20
+
+title DINÁMICA DE SIMPATÍA
+
+' Definición de entidades con sus iconos específicos
+class Persona << (P, #BDBDBD) >>
+class Interacción << (I, #BDBDBD) >>
+class Animal << (A, #BDBDBD) >>
+class Comportamiento << (C, #BDBDBD) >>
+class Simpatía << (S, #BDBDBD) >>
+
+' Relaciones con etiquetas de texto
+Persona --> Interacción : participa
+Animal --> Interacción : participa
+Interacción --> Comportamiento : muestra
+Comportamiento --> Comportamiento : (antes Beneavavior)
+Comportamiento --> Simpatía : genera
+
+' Ajuste de disposición para que se parezca al original
+left to right direction
+@enduml

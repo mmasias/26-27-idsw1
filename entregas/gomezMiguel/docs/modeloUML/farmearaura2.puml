@@ -1,0 +1,18 @@
+@startuml
+skinparam handwritten false
+skinparam classAttributeIconSize 0
+skinparam defaultTextAlignment center
+
+title GENERACIÓN DE AURA
+
+' Definición de entidades con iconos
+class Persona << (P, #BDBDBD) >>
+class Gesto << (G, #BDBDBD) >>
+class Aura << (A, #BDBDBD) >>
+
+' Relaciones directas
+Persona -> Gesto : hace
+Gesto --> Aura : otorga
+Aura -> Persona : le da
+
+@enduml

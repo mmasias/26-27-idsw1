@@ -1,0 +1,18 @@
+@startuml
+skinparam handwritten false
+skinparam classAttributeIconSize 0
+
+title PROYECCIÓN DE SOMBRA
+
+' Definición de entidades con iconos
+class "Cuerpo (Objeto 3D)" as Cuerpo << (C, #BDBDBD) >>
+class "Luz (Bombilla)" as Luz << (L, #BDBDBD) >>
+class "Sombra (Objeto 3D Sombra)" as Sombra << (S, #BDBDBD) >>
+class "Superficie (Plano)" as Superficie << (S, #BDBDBD) >>
+
+' Relaciones y texto de etiquetas
+Luz -> Cuerpo : incide
+Cuerpo -> Sombra : proyecta
+Sombra -> Superficie : aparece
+
+@enduml
