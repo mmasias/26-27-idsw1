@@ -1,0 +1,43 @@
+@startuml
+skinparam nodesep 50
+skinparam ranksep 70
+
+skinparam state {
+  BackgroundColor White
+  BorderColor Black
+  ArrowColor Black
+}
+
+state "Público" as Publico
+state "NPC" as NPC
+state "Laura" as Laura
+state "Aura Alta" as AuraAlta
+state "Tryhard" as Tryhard
+state "Funado" as Funado
+state "Prime / God Mode" as GodMode
+state "Cringe" as Cringe
+
+[*] -down-> Publico
+Publico -down-> NPC : juzga
+
+NPC -down-> Laura : farmea\nsin éxito
+NPC -down-> AuraAlta : farmea\ncon éxito
+NPC -down-> Tryhard : intenta\ndemasiado
+
+Tryhard -left-> Laura : farmea\nsin éxito
+
+Laura -down-> Funado : farmea\nsin éxito
+AuraAlta -down-> GodMode : farmea\ncon éxito
+Tryhard -down-> Cringe : sigue\nforzando
+
+Funado -down-> [*] : game over\n/ funado
+GodMode -down-> [*] : win\n/ aura infinita
+Cringe -down-> [*] : demasiado cringe\n/ game over
+
+NPC -up-> NPC : no hace\nnada
+AuraAlta -up-> NPC : farmea\nsin éxito
+
+Laura -up-> NPC : farmea\ncon éxito
+Tryhard -up-> NPC : farmea\ncon éxito
+
+@enduml

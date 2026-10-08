@@ -1,0 +1,28 @@
+@startuml
+hide empty description
+
+skinparam state {
+  BackgroundColor White
+  BorderColor Black
+  ArrowColor DimGray
+}
+
+[*] -down-> NPC
+
+state "NPC" as NPC
+state "Laura" as Laura
+state "Aura Alta" as AuraAlta
+state "Tryhard" as Tryhard
+
+NPC --> NPC : no hace nada
+NPC -left-> Laura : farmea sin éxito
+NPC -right-> Tryhard : intenta demasiado\nfarmear
+NPC -down-> AuraAlta : farmea con éxito
+
+Tryhard -left-> Laura : farmea sin éxito
+Tryhard -up-> NPC : farmea con éxito
+
+Laura -down-> AuraAlta : farmea con éxito
+AuraAlta -up-> Laura : farmea sin éxito
+
+@enduml

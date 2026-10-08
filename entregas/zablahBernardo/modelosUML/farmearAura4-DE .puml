@@ -1,0 +1,43 @@
+@startuml
+skinparam nodesep 50
+skinparam ranksep 70
+
+skinparam state {
+  BackgroundColor White
+  BorderColor Black
+  ArrowColor Black
+}
+
+state "Público" as Publico
+state "NPC" as NPC
+state "Laura" as Laura
+state "Aura Alta" as AuraAlta
+state "Tryhard" as Tryhard
+state "Funado" as Funado
+state "Prime / God Mode" as GodMode
+state "Cringe" as Cringe
+
+[*] -down-> Publico
+Publico -down-> NPC : vibean
+
+NPC -down-> Laura : "L"
+NPC -down-> AuraAlta : tira tremendo farmeo
+NPC -down-> Tryhard : intenta\ndemasiado
+
+Tryhard -left-> Laura : throweó
+
+Laura -down-> Funado : se regaló
+AuraAlta -down-> GodMode : nadie lo para
+Tryhard -down-> Cringe : pick me
+
+Funado -down-> [*] : funado
+GodMode -down-> [*] : win\n/ aura infinita
+Cringe -down-> [*] : demasiado cringe
+
+NPC -up-> NPC : no hace\nnada
+AuraAlta -up-> NPC : cagada
+
+Laura -up-> NPC : se recupera
+Tryhard -up-> NPC : se recupera
+
+@enduml

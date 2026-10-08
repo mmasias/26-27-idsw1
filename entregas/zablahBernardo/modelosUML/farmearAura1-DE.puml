@@ -1,0 +1,18 @@
+@startuml
+
+[*] --> NormieNPC
+
+state "NORMIE / NPC" as NormieNPC
+state "BASADO / AURA ALTA" as Basado
+state "TRYHARD" as Tryhard
+state "CRINGE / AURA BAJA" as Cringe
+
+NormieNPC --> Basado : Farmear con éxito
+NormieNPC --> Tryhard : Intentar demasiado
+
+Tryhard --> Cringe : Epic fail 
+Basado --> Cringe : Owned público
+
+Cringe --> NPC : Olvidar
+
+@enduml
