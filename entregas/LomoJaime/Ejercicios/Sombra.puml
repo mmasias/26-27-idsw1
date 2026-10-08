@@ -1,0 +1,15 @@
+@startuml
+hide circle
+hide empty members
+
+class Luz
+class Obstaculo
+class Superficie
+class Sombra
+class Zona
+
+Luz -- Sombra
+Obstaculo -- Sombra
+Superficie -- Sombra
+Sombra *-- Zona
+@enduml

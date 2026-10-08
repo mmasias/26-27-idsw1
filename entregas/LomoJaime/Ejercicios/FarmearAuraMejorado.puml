@@ -1,0 +1,90 @@
+@startuml
+hide circle
+hide empty members
+
+class Persona {
+  nombre
+}
+class Aura {
+  /total
+}
+class Accion {
+  descripcion
+  fecha
+  buscada
+}
+class Reaccion {
+  intensidad
+}
+class CambioDeAura {
+  cantidad
+  fecha
+}
+class Contexto {
+  nombre
+  ambiente
+}
+class TipoDeAccion {
+  nombre
+}
+class Valoracion {
+  puntos
+}
+class Farmeo {
+  inicio
+  fin
+  estado
+  /auraGanada
+}
+enum TipoReaccion {
+  ADMIRACION
+  RISA
+  INDIFERENCIA
+  CRINGE
+}
+enum EstadoFarmeo {
+  ACTIVO
+  TERMINADO
+}
+
+Persona "1" -- "1" Aura
+Persona "autor 1" -- "*" Accion
+Persona "observador 1" -- "*" Reaccion
+Accion "1" -- "*" Reaccion
+Reaccion ..> TipoReaccion
+Reaccion "1" -- "1" CambioDeAura
+Aura "1" *-- "*" CambioDeAura
+
+Accion "*" -- "1" Contexto
+Accion "*" -- "1" TipoDeAccion
+Valoracion "*" -- "1" Contexto
+Valoracion "*" -- "1" TipoDeAccion
+
+Persona "1" -- "*" Farmeo
+Farmeo "0..1" o-- "2..*" Accion
+Farmeo ..> EstadoFarmeo
+
+note right of Reaccion
+  Quien reacciona no puede
+  ser quien hizo la acción
+end note
+
+note bottom of Aura
+  El total es lo que resulta de sumar
+  todos los cambios de aura.
+end note
+
+note bottom of Valoracion
+  Dice cuánto vale un tipo de acción
+  en un contexto. Puede ser negativo:
+  lo mismo da aura en un sitio
+  y la quita en otro.
+end note
+
+note bottom of Farmeo
+  Agrupa acciones buscadas de una
+  misma persona. El aura ganada es
+  lo que sumaron las reacciones
+  a esas acciones.
+end note
+@enduml

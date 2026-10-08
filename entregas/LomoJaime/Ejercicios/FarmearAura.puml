@@ -1,0 +1,18 @@
+@startuml
+hide circle
+hide empty members
+
+class Persona
+class Aura
+class Suceso
+class Reaccion
+class Farmeo
+
+Persona -- Aura
+Persona -- Suceso
+Suceso -- Reaccion
+Reaccion -- Persona
+Reaccion -- Aura
+Farmeo -- Persona
+Farmeo -- Suceso
+@enduml
