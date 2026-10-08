@@ -1,0 +1,20 @@
+@startuml
+
+participant Persona
+participant Movimiento
+participant Publico
+participant Aura
+
+Persona -> Movimiento : se marca
+
+Publico -> Movimiento : ve e interpreta
+
+alt Buena impresion
+    Publico -> Aura : mejora su estado
+else Sin impresion relevante
+    Publico -> Aura : mantiene su estado
+else Mala impresion
+    Publico -> Aura : empeora su estado
+end
+
+@enduml

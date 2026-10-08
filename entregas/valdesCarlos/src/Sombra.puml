@@ -1,0 +1,27 @@
+@startuml
+
+class FuenteDeLuz {
+    direccion
+}
+
+class Objeto {
+    posicion
+}
+
+class Sombra {
+    forma
+    tamaño
+}
+
+class Superficie {
+    posicion
+}
+
+FuenteDeLuz --> Objeto : ilumina
+FuenteDeLuz --> Sombra : interviene en
+Objeto --> Sombra : obstaculiza la luz
+Sombra --> Superficie : se proyecta sobre
+
+
+@enduml
+

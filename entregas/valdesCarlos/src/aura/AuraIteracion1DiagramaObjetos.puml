@@ -1,0 +1,36 @@
+@startuml
+
+object "carlos : Persona" as carlos {
+    nombre = "Carlos"
+}
+
+object "amigos : Publico" as publico {
+    descripcion = "Amigos de Carlos"
+}
+
+
+object "irseSinMirar : Movimiento" as movimiento {
+    descripcion = "Irse sin mirar atrás"
+    intencion = "Farmear aura"
+}
+
+object "auraDeCarlos : Aura" as aura {
+    percepcion = "Respeto / admiración"
+}
+
+' Relaciones ocultas para mantener el posicionamiento
+carlos -[hidden]right-> publico
+movimiento -[hidden]down-> aura
+
+' Relaciones del dominio
+carlos --> movimiento : se marca
+
+publico --> movimiento : ve
+
+movimiento --> publico : genera efecto en
+
+publico --> aura : atribuye
+
+aura --> carlos : se atribuye a
+
+@enduml

@@ -1,0 +1,19 @@
+@startuml
+
+class Persona
+class Publico
+class Movimiento
+class Aura
+
+
+Persona -[hidden]right-> Publico
+Movimiento -[hidden]down-> Aura
+
+
+Persona --> Movimiento : se marca
+Publico --> Movimiento : ve
+Movimiento --> Publico : genera efecto en
+Publico --> Aura : atribuye
+Aura --> Persona : se atribuye a
+
+@enduml

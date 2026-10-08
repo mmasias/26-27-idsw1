@@ -1,0 +1,36 @@
+@startuml
+
+object "carlos : Persona" as carlos {
+    nombre = "Carlos"
+}
+
+object "amigos : Publico" as publico {
+    descripcion = "Amigos de Carlos"
+}
+
+object "irseSinMirar : Movimiento" as movimiento {
+    descripcion = "Irse sin mirar atrás"
+    intencion = "Farmear aura"
+}
+
+object "auraDeCarlos : Aura" as aura {
+    percepcion = "Respeto / admiración"
+    estado = "Positiva"
+}
+
+
+carlos -[hidden]right-> publico
+movimiento -[hidden]down-> aura
+
+
+carlos --> movimiento : se marca
+
+publico --> movimiento : ve
+
+movimiento --> publico : genera efecto en
+
+publico --> aura : da
+
+aura --> carlos : tiene
+
+@enduml

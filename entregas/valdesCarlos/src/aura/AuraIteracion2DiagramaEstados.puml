@@ -1,0 +1,21 @@
+@startuml
+
+state "Aura negativa" as Negativa
+state "Aura neutra" as Neutra
+state "Aura positiva" as Positiva
+
+[*] --> Neutra
+
+Negativa --> Neutra : buena impresión
+Neutra --> Positiva : buena impresión
+Positiva --> Positiva : buena impresión
+
+Positiva --> Neutra : mala impresión
+Neutra --> Negativa : mala impresión
+Negativa --> Negativa : mala impresión
+
+Negativa --> Negativa : sin impresión
+Neutra --> Neutra : sin impresión
+Positiva --> Positiva : sin impresión
+
+@enduml

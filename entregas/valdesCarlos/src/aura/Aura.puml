@@ -1,0 +1,14 @@
+@startuml
+
+class Persona
+class Actitud
+class Publico
+class Aura
+
+Persona --> Actitud : reacciona ante situaciones con
+Publico --> Actitud : observa e interpreta
+Actitud --> Aura : genera percepción de
+Publico --> Aura : atribuye
+Aura --> Persona : se asocia a
+
+@enduml
