@@ -1,0 +1,13 @@
+@startuml
+
+class FuenteDeLuz
+class Cuerpo
+class Silueta
+class Superficie
+
+FuenteDeLuz -- Cuerpo : ilumina a >
+FuenteDeLuz -- Silueta : proyecta >
+Cuerpo -- Silueta : determina >
+Silueta -- Superficie : se muestra en >
+
+@enduml

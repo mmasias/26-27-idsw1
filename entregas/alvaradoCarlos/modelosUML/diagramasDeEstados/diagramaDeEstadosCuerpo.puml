@@ -1,0 +1,12 @@
+@startuml
+[*] --> FormaEstable
+
+state "Forma / Contorno Estable" as FormaEstable
+state "Modificando Contorno" as ModificandoForma
+
+FormaEstable --> ModificandoForma : cambiar o rotar posicion
+ModificandoForma --> FormaEstable : estabilizar
+
+FormaEstable --> [*] : retirar
+ModificandoForma --> [*] : retirar
+@enduml

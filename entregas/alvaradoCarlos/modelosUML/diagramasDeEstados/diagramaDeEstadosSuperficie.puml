@@ -1,0 +1,12 @@
+@startuml
+[*] --> ProyeccionPlana
+
+state "Proyección Plana" as ProyeccionPlana
+state "Proyección Deformada" as ProyeccionDeformada : Adaptada al relieve
+
+ProyeccionPlana --> ProyeccionDeformada : cambiar superficie
+ProyeccionDeformada --> ProyeccionPlana : restaurar superficie
+
+ProyeccionPlana --> [*] : retirar
+ProyeccionDeformada --> [*] : retirar
+@enduml

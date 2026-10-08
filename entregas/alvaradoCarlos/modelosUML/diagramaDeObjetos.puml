@@ -1,0 +1,32 @@
+@startuml
+
+object "focoPrincipal : FuenteDeLuz" as foco {
+  tipo = "Spotlight LED"
+  intensidad = "1000 lm"
+  posicion = (x: 0.0, y: 5.0, z: 2.0)
+}
+
+object "estatuaBronce : Cuerpo" as estatua {
+  nombre = "Estatua del Pensador"
+  opacidad = 1.0
+  posicion = (x: 0.0, y: 2.0, z: 0.0)
+}
+
+object "sombraProyectada : Silueta" as sombra {
+  area = "1.8 m²"
+  nitidez = "Alta"
+  penumbra = false
+}
+
+object "sueloMarmol : Superficie" as suelo {
+  material = "Mármol Pulido"
+  orientacion = "Horizontal"
+  posicion = (x: 0.0, y: 0.0, z: 0.0)
+}
+
+foco -- estatua : ilumina a >
+foco -- sombra : proyecta >
+estatua -- sombra : determina >
+sombra -- suelo : se muestra en >
+
+@enduml

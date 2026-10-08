@@ -1,0 +1,12 @@
+@startuml
+[*] --> EscalaEstable
+
+state "Ángulo Estable" as EscalaEstable
+state "Modificando Escala / Ángulo" as ModificandoEscala
+
+EscalaEstable --> ModificandoEscala : cambiar posición
+ModificandoEscala --> EscalaEstable : estabilizar fuente
+
+EscalaEstable --> [*] : apagar fuente de luz
+ModificandoEscala --> [*] : apagar fuente de luz
+@enduml
