@@ -1,0 +1,21 @@
+@startuml
+
+hide circle
+hide empty members
+
+[*] --> SinLuz
+
+SinLuz --> Iluminado : aparece fuente de luz
+Iluminado --> SinLuz : desaparece la luz
+
+Iluminado --> Bloqueado : objeto bloquea la luz
+Bloqueado --> SombraProyectada : se forma la sombra
+
+SombraProyectada --> SombraCambiante : cambia posición del objeto
+SombraCambiante --> SombraProyectada : objeto se estabiliza
+
+SombraProyectada --> Iluminado : objeto deja de bloquear
+SombraProyectada --> SinLuz : desaparece la luz
+SombraCambiante --> SinLuz : desaparece la luz
+
+@enduml

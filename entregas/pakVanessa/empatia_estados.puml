@@ -1,0 +1,20 @@
+@startuml
+
+hide circle
+hide empty members
+
+[*] --> SinEmpatia
+
+SinEmpatia --> Percibiendo : observa comportamiento
+Percibiendo --> SinEmpatia : ignora situación
+Percibiendo --> Comprendiendo : interpreta situación
+
+Comprendiendo --> SinEmpatia : no comprende
+Comprendiendo --> Empatizando : comprende emociones
+
+Empatizando --> Ayudando : decide ayudar
+Empatizando --> [*] : no interviene
+
+Ayudando --> Percibiendo : continúa interactuando
+
+@enduml

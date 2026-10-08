@@ -1,0 +1,22 @@
+@startuml
+
+hide circle
+hide empty members
+
+[*] --> SinAura
+
+SinAura --> Preparando : decide farmear
+Preparando --> Farmeando : comienza una acción
+
+Farmeando --> GanandoAura : acción genera aura
+Farmeando --> SinGanancia : acción no genera aura
+
+GanandoAura --> AuraAcumulada : aumenta el aura
+
+AuraAcumulada --> Preparando : continúa farmeando
+AuraAcumulada --> [*] : decide parar
+
+SinGanancia --> Preparando : cambia de acción
+SinGanancia --> [*] : abandona
+
+@enduml
