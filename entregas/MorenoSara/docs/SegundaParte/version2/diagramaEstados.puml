@@ -1,0 +1,16 @@
+@startuml
+[*] --> AuraNeutra
+
+state AuraNeutra
+state AuraAlta
+state AuraNegativa
+
+AuraNeutra --> AuraAlta : ValoracionAura Positiva
+AuraNeutra --> AuraNegativa : ValoracionAura Negativa
+
+AuraAlta --> AuraAlta : Farmeo Positivo Contínuo
+AuraAlta --> AuraNegativa : Loss of Aura (Valoraciones Negativas)
+
+AuraNegativa --> AuraNeutra : Acciones Positivas de Recuperación
+AuraNegativa --> AuraNegativa : Reincidencia en Errores
+@enduml

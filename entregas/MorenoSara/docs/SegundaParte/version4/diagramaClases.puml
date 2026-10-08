@@ -1,0 +1,62 @@
+@startuml
+skinparam classAttributeIconSize 0
+hide methods
+
+class Sujeto {
+  + idSujeto : String
+  + apodo : String
+}
+
+class ContextoSocial {
+  + entorno : String
+  + esVirtual : Boolean
+}
+
+class Accion {
+  + descripcion : String
+  + tipo : TipoAccion
+  + esDeliberada : Boolean = true
+  + nivelRiesgo : Integer
+}
+
+enum TipoAccion {
+  ACTITUD_FRIA_O_DESINTERES
+  EXITO_INESPERADO
+  GESTO_MADURO
+  ACCION_FORZADA
+  ERROR_RIDICULO
+}
+
+class Espectador {
+  + idEspectador : String
+  + nivelExigencia : Real
+}
+
+class ValoracionAura {
+  + puntosOtorgados : Integer
+  + esFarmeoPositivo : Boolean
+  + fechaHora : DateTime
+}
+
+class Aura {
+  + nivelPuntos : Integer = 0
+  + rangoEstatus : String
+  + estaEnRacha : Boolean
+}
+
+Sujeto "1" -- "*" Accion : ejecuta >
+Accion "*" -- "1" ContextoSocial : ocurreEn >
+Accion "*" -- "1..*" Espectador : esObservadaPor >
+(Accion, Espectador) .. ValoracionAura
+
+Espectador "1" -- "*" ValoracionAura : emite >
+ValoracionAura "*" -- "1" Aura : consolidaEn >
+Sujeto "1" -- "1" Aura : posee >
+
+note right of ValoracionAura
+  Regla de Negocio:
+  El número de puntos otorgados/restados depende
+  de la percepción individual del Espectador
+  y el ContextoSocial donde ocurre la Acción.
+end note
+@enduml

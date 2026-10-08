@@ -1,0 +1,13 @@
+@startuml
+agent "1: Sujeto" as S
+agent "2: Accion" as A
+agent "3: Espectador" as E
+agent "4: ValoracionAura" as V
+agent "5: Aura" as Au
+
+S -> A : 1: ejecuta
+A -> E : 2: es vista por
+E -> V : 3: calcula puntos
+V -> Au : 4: consolida
+S -> Au : 5: ostenta
+@enduml

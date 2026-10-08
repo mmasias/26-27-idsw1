@@ -1,0 +1,13 @@
+@startuml
+object "mateo:Sujeto" as mateo
+object "miradaFria:Accion" as accion
+object "lucas:Espectador" as lucas
+object "v1:ValoracionAura" as v1
+object "auraMateo:Aura" as aura
+
+mateo -- accion
+accion -- lucas
+(accion, lucas) .. v1
+v1 -- aura
+mateo -- aura
+@enduml

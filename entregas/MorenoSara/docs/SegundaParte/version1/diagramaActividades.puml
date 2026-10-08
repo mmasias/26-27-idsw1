@@ -1,0 +1,11 @@
+@startuml
+start
+:Sujeto realiza Acción;
+:Espectador evalúa la Acción;
+if (¿Evaluación positiva?) then (sí)
+  :Sumar Aura;
+else (no)
+  :Restar Aura;
+endif
+stop
+@enduml

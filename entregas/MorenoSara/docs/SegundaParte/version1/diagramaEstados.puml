@@ -1,0 +1,26 @@
+@startuml
+[*] --> AuraNeutra : Inicio de evaluación
+
+state AuraNeutra {
+  AuraNeutra : Nivel = 0
+}
+
+state AuraAlta {
+  AuraAlta : Nivel > 0
+  AuraAlta : "Farmear Aura exitoso"
+}
+
+state AuraNegativa {
+  AuraNegativa : Nivel < 0
+  AuraNegativa : "Perder Aura / Cringe"
+}
+
+AuraNeutra --> AuraAlta : ValoracionAura Positiva
+AuraNeutra --> AuraNegativa : ValoracionAura Negativa
+
+AuraAlta --> AuraAlta : Nueva ValoracionAura Positiva
+AuraAlta --> AuraNegativa : Acumulación de Valoraciones Negativas
+
+AuraNegativa --> AuraNeutra : Recuperación de Aura por Acciones Positivas
+AuraNegativa --> AuraNegativa : Nueva ValoracionAura Negativa
+@enduml

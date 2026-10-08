@@ -1,0 +1,46 @@
+@startuml
+skinparam classAttributeIconSize 0
+hide methods
+
+class Sujeto {
+  + idSujeto : String
+  + apodo : String
+}
+
+class Accion {
+  + descripcion : String
+  + tipo : TipoAccion
+  + esDeliberada : Boolean = true
+}
+
+enum TipoAccion {
+  ACTITUD_FRIA
+  EXITO_INESPERADO
+  GESTO_MADURO
+  ACCION_FORZADA
+  ERROR_RIDICULO
+}
+
+class Espectador {
+  + idEspectador : String
+}
+
+class ValoracionAura {
+  + puntosOtorgados : Integer
+  + esFarmeoPositivo : Boolean
+  + fechaHora : DateTime
+}
+
+class Aura {
+  + nivelPuntos : Integer = 0
+  + rangoEstatus : String
+}
+
+Sujeto "1" -- "*" Accion : ejecuta >
+Accion "*" -- "1..*" Espectador : esObservadaPor >
+(Accion, Espectador) .. ValoracionAura
+
+Espectador "1" -- "*" ValoracionAura : emite >
+ValoracionAura "*" -- "1" Aura : consolidaEn >
+Sujeto "1" -- "1" Aura : posee >
+@enduml

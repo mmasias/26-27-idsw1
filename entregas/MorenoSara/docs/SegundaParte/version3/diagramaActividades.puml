@@ -1,0 +1,15 @@
+@startuml
+start
+:Sujeto ejecuta Acción de un TipoAccion específico;
+:Espectadores observan la Acción;
+:Cada Espectador genera su ValoracionAura;
+if (¿TipoAccion es percibido como Natural / Épico?) then (sí)
+  :puntosOtorgados > 0;
+  :Farmeo Positivo;
+else (no / Percibido como ACCION_FORZADA)
+  :puntosOtorgados < 0;
+  :Loss of Aura / Farmeo Negativo;
+endif
+:Sumar o restar a nivelPuntos de Aura;
+stop
+@enduml

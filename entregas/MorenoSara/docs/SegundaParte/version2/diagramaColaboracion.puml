@@ -1,0 +1,13 @@
+@startuml
+agent Sujeto
+agent Accion
+agent Espectador
+agent ValoracionAura
+agent Aura
+
+Sujeto -> Accion : 1: ejecuta
+Accion -> Espectador : 2: es observada por
+Espectador -> ValoracionAura : 3: genera
+ValoracionAura -> Aura : 4: modifica
+Sujeto -> Aura : 5: posee
+@enduml

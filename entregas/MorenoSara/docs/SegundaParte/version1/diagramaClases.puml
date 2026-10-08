@@ -1,0 +1,12 @@
+@startuml
+hide methods
+class Sujeto
+class Accion
+class Espectador
+class Aura
+
+Sujeto -- Accion : ejecuta >
+Accion -- Espectador : observa >
+Espectador -- Aura : modifica >
+Sujeto -- Aura : posee >
+@enduml

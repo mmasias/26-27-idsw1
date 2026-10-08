@@ -1,0 +1,42 @@
+@startuml
+object "mateo:Sujeto" as mateo {
+  idSujeto = "S-101"
+  apodo = "MateoTheCold"
+}
+
+object "cancha:ContextoSocial" as contexto {
+  entorno = "Partido de Baloncesto"
+  esVirtual = false
+}
+
+object "tripleSinMirar:Accion" as accion {
+  descripcion = "Encesta triple y camina de espaldas"
+  tipo = EXITO_INESPERADO
+  esDeliberada = true
+  nivelRiesgo = 9
+}
+
+object "lucas:Espectador" as esp1 {
+  idEspectador = "E-01"
+  nivelExigencia = 8.5
+}
+
+object "v1:ValoracionAura" as v1 {
+  puntosOtorgados = +500
+  esFarmeoPositivo = true
+  fechaHora = "2026-10-08 17:30"
+}
+
+object "auraMateo:Aura" as aura {
+  nivelPuntos = +800
+  rangoEstatus = "Aura Legendaria"
+  estaEnRacha = true
+}
+
+mateo -- accion
+accion -- contexto
+accion -- esp1
+(accion, esp1) .. v1
+v1 -- aura
+mateo -- aura
+@enduml

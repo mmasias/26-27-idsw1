@@ -1,0 +1,23 @@
+@startuml
+start
+:Sujeto decide intentar "Farmear Aura";
+:Seleccionar Acción en un ContextoSocial;
+:Ejecutar Acción ante Espectadores;
+
+fork
+  :Espectador 1 evalúa la Acción;
+fork again
+  :Espectador N evalúa la Acción;
+end fork
+
+if (¿La percepción general fue natural?) then (sí)
+  :Generar ValoracionAura Positiva;
+  :Sumar Puntos al Aura;
+else (no / Percibida como Tryhard o Cringe)
+  :Generar ValoracionAura Negativa;
+  :Restar Puntos al Aura (Loss of Aura);
+endif
+
+:Actualizar nivelPuntos y rangoEstatus del Aura;
+stop
+@enduml

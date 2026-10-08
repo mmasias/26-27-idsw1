@@ -1,0 +1,33 @@
+@startuml
+object "mateo:Sujeto" as mateo {
+  idSujeto = "S-01"
+  apodo = "Mateo"
+}
+
+object "enceste:Accion" as accion {
+  descripcion = "Triple sin mirar"
+  tipo = EXITO_INESPERADO
+  esDeliberada = true
+}
+
+object "sofia:Espectador" as sofia {
+  idEspectador = "E-10"
+}
+
+object "v1:ValoracionAura" as v1 {
+  puntosOtorgados = +150
+  esFarmeoPositivo = true
+  fechaHora = "2026-10-08"
+}
+
+object "auraMateo:Aura" as aura {
+  nivelPuntos = 150
+  rangoEstatus = "Aura Alta"
+}
+
+mateo -- accion
+accion -- sofia
+(accion, sofia) .. v1
+v1 -- aura
+mateo -- aura
+@enduml

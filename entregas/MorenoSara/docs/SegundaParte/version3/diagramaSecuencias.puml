@@ -1,0 +1,14 @@
+@startuml
+autonumber
+actor Sujeto
+participant "Accion" as A
+actor Espectador
+participant "ValoracionAura" as V
+participant "Aura" as Au
+
+Sujeto -> A: realizar(tipo)
+A -> Espectador: exponer()
+Espectador -> V: evaluar(esDeliberada)
+V -> Au: actualizarPuntos(puntosOtorgados)
+Au --> Sujeto: notificarNuevoRango()
+@enduml

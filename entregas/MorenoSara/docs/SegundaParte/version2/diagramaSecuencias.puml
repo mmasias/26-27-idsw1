@@ -1,0 +1,12 @@
+@startuml
+actor Sujeto
+participant Accion
+actor Espectador
+participant ValoracionAura
+participant Aura
+
+Sujeto -> Accion: ejecutar()
+Accion -> Espectador: presenciar()
+Espectador -> ValoracionAura: emitirJuicio()
+ValoracionAura -> Aura: aplicarModificacion()
+@enduml

@@ -1,0 +1,26 @@
+@startuml
+[*] --> AuraNeutra
+
+state AuraNeutra {
+  AuraNeutra : nivelPuntos = 0
+}
+
+state AuraAlta {
+  AuraAlta : nivelPuntos > 0
+  AuraAlta : Estatus de Admiración
+}
+
+state AuraNegativa {
+  AuraNegativa : nivelPuntos < 0
+  AuraNegativa : Estatus Cringe
+}
+
+AuraNeutra --> AuraAlta : ValoracionAura(puntos > 0)
+AuraNeutra --> AuraNegativa : ValoracionAura(puntos < 0)
+
+AuraAlta --> AuraAlta : Farmeo Positivo
+AuraAlta --> AuraNegativa : AccionForzada (Loss of Aura)
+
+AuraNegativa --> AuraNeutra : Recuperación paulatina
+AuraNegativa --> AuraNegativa : Reincidencia en ErrorRidiculo
+@enduml

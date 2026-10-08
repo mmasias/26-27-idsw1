@@ -1,0 +1,17 @@
+@startuml
+autonumber
+actor "Sujeto" as S
+participant "Accion" as A
+participant "ContextoSocial" as C
+actor "Espectador" as E
+participant "ValoracionAura" as V
+participant "Aura" as Au
+
+S -> A: realizar(tipo, riesgo)
+A -> C: enmarcarEn(entorno)
+C -> E: presentarAccion()
+E -> V: emitir(puntosOtorgados)
+V -> Au: consolidar()
+Au -> Au: recalcularRango()
+Au --> S: notificarEstatus()
+@enduml

@@ -1,0 +1,34 @@
+@startuml
+[*] --> AuraNeutra : Inicio de evaluación
+
+state AuraNeutra {
+  AuraNeutra : Nivel = 0
+}
+
+state AuraAlta {
+  AuraAlta : Nivel > 0
+  AuraAlta : "Farmear Aura exitoso"
+}
+
+state AuraInfinita {
+  AuraInfinita : Nivel > 1000
+  AuraInfinita : Estatus Legendario
+}
+
+state AuraNegativa {
+  AuraNegativa : Nivel < 0
+  AuraNegativa : "Perder Aura / Cringe"
+}
+
+AuraNeutra --> AuraAlta : ValoracionAura Positiva
+AuraNeutra --> AuraNegativa : ValoracionAura Negativa
+
+AuraAlta --> AuraAlta : Nueva ValoracionAura Positiva
+AuraAlta --> AuraInfinita : Racha Sostenida de Farmeo
+AuraAlta --> AuraNegativa : Acumulación de Valoraciones Negativas
+
+AuraInfinita --> AuraAlta : Error Menor Observado
+
+AuraNegativa --> AuraNeutra : Recuperación de Aura por Acciones Positivas
+AuraNegativa --> AuraNegativa : Nueva ValoracionAura Negativa
+@enduml

@@ -1,0 +1,11 @@
+@startuml
+agent Sujeto
+agent Accion
+agent Espectador
+agent Aura
+
+Sujeto -> Accion : 1: ejecuta
+Accion -> Espectador : 2: es observada por
+Espectador -> Aura : 3: modifica
+Sujeto -> Aura : 4: posee
+@enduml

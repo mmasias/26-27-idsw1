@@ -1,0 +1,15 @@
+@startuml
+agent "1: Sujeto" as S
+agent "2: Accion" as A
+agent "3: ContextoSocial" as C
+agent "4: Espectador" as E
+agent "5: ValoracionAura" as V
+agent "6: Aura" as Au
+
+S -> A : 1: ejecutaAccion()
+A -> C : 2: ocurreEn()
+A -> E : 3: impactaVisualmente()
+E -> V : 4: genera()
+V -> Au : 5: actualizaPuntos()
+S -> Au : 6: posee()
+@enduml

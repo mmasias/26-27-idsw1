@@ -1,0 +1,12 @@
+@startuml
+start
+:Sujeto ejecuta Acción;
+:Espectador observa la Acción;
+:Espectador genera ValoraciónAura;
+if (¿Valoración es positiva?) then (sí)
+  :Transición a AuraAlta / Incrementar Puntos;
+else (no / percibido ridículo)
+  :Transición a AuraNegativa / Decrementar Puntos;
+endif
+stop
+@enduml

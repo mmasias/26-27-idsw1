@@ -1,0 +1,11 @@
+@startuml
+object "s1:Sujeto" as s1
+object "a1:Accion" as a1
+object "e1:Espectador" as e1
+object "au1:Aura" as au1
+
+s1 -- a1
+a1 -- e1
+e1 -- au1
+s1 -- au1
+@enduml
