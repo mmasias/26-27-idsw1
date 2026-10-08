@@ -1,0 +1,25 @@
+
+@startuml
+title Estados del aura - Iteracion 4
+
+state "Aura neutra" as Neutra
+state "Aura elevada" as Elevada
+state "Aura reducida" as Reducida
+
+[*] --> Neutra
+
+Neutra --> Elevada : Valoracion positiva
+Neutra --> Reducida : Valoracion negativa
+
+Elevada --> Neutra : Disminuye la admiracion
+Reducida --> Neutra : Mejora la percepcion
+
+Elevada --> Reducida : Deterioro importante de imagen
+Reducida --> Elevada : Mejora importante de imagen
+
+Neutra --> Neutra : Sin cambio relevante
+Elevada --> Elevada : Se mantiene la admiracion
+Reducida --> Reducida : Se mantiene la mala imagen
+
+@enduml
+

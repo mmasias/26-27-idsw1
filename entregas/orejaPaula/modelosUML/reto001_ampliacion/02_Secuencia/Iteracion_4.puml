@@ -1,0 +1,27 @@
+
+@startuml
+title Secuencia - Iteracion 4 (Final)
+
+participant Persona
+participant Accion
+participant Contexto
+participant Observador
+participant Valoracion
+participant Aura
+
+Persona -> Accion : Realiza una accion
+Accion -> Contexto : Ocurre en una situacion
+Accion -> Observador : Es observada
+
+Observador -> Valoracion : Interpreta y valora la accion
+Valoracion -> Persona : Se refiere a su comportamiento
+
+alt Valoracion positiva
+    Valoracion -> Aura : Puede aumentar el aura
+else Valoracion negativa
+    Valoracion -> Aura : Puede disminuir el aura
+else Valoracion neutra
+    Valoracion -> Aura : Puede mantener el aura
+end
+
+@enduml

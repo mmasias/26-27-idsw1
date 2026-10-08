@@ -1,0 +1,19 @@
+
+@startuml
+title Colaboracion - Iteracion 3
+left to right direction
+
+object "persona:Persona" as P
+object "accion:Accion" as A
+object "contexto:Contexto" as C
+object "observador:Observador" as O
+object "valoracion:Valoracion" as V
+object "aura:Aura" as U
+
+P --> A : 1: realizar accion
+A --> C : 2: ocurrir en un contexto
+A --> O : 3: ser observada
+O --> V : 4: expresar valoracion
+V --> U : 5: influir en el aura
+
+@enduml

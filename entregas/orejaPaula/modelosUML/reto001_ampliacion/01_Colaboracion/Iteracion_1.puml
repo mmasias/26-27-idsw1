@@ -1,0 +1,13 @@
+
+@startuml
+title Colaboracion - Iteracion 1
+left to right direction
+
+object "persona:Persona" as P
+object "accion:Accion" as A
+object "aura:Aura" as U
+
+P --> A : 1: realizar accion
+A --> U : 2: influir en el aura
+
+@enduml

@@ -1,0 +1,30 @@
+
+@startuml
+title Modelo del dominio - Simpatia
+
+skinparam classAttributeIconSize 0
+top to bottom direction
+hide empty members
+
+class Persona
+class Interaccion
+class Comportamiento
+class Observador
+class Contexto
+class ValoracionSimpatia
+
+Persona "1..*" -- "0..*" Interaccion : participa en
+
+Persona "1" -- "0..*" Comportamiento : manifiesta
+
+Interaccion "1" -- "1..*" Comportamiento : incluye
+
+Interaccion "0..*" --> "1" Contexto : se desarrolla en
+
+Observador "1" -- "0..*" ValoracionSimpatia : expresa
+
+Persona "1" -- "0..*" ValoracionSimpatia : recibe
+
+ValoracionSimpatia "0..*" --> "1" Interaccion : se fundamenta en
+
+@enduml

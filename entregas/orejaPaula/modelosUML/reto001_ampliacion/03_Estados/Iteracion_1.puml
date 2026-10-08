@@ -1,0 +1,13 @@
+
+@startuml
+title Estados - Iteracion 1
+
+state "Aura neutra" as Neutra
+state "Aura elevada" as Elevada
+
+[*] --> Neutra
+
+Neutra --> Elevada : Valoracion positiva
+
+@enduml
+
