@@ -1,0 +1,10 @@
+@startuml
+title Colaboracion - Iteracion 1: modelo inicial
+left to right direction
+object Persona
+object Gesto
+object Aura
+Persona --> Gesto : 1. hace
+Gesto --> Aura : 2. otorga
+Aura --> Persona : 3. le da
+@enduml

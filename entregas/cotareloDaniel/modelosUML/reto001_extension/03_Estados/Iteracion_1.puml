@@ -1,0 +1,7 @@
+@startuml
+title Estados - Iteracion 1: conseguir aura
+[*] --> SinAura
+SinAura --> HaciendoGesto : hace gesto
+HaciendoGesto --> ConAura : gesto otorga aura
+ConAura --> [*]
+@enduml

@@ -1,0 +1,16 @@
+@startuml
+title Actividad - Iteracion 4: repetir hasta la meta
+start
+while (Meta de aura alcanzada?) is (No)
+  :Persona hace gesto;
+  :Observador ve el gesto;
+  if (Gesto reconocido?) then (Si)
+    :Otorgar aura;
+    :Sumar aura a la persona;
+  else (No)
+    :No sumar aura;
+  endif
+endwhile (Si)
+:Finalizar farmeo;
+stop
+@enduml

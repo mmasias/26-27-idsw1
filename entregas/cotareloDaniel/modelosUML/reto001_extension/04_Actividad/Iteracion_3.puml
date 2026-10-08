@@ -1,0 +1,13 @@
+@startuml
+title Actividad - Iteracion 3: gesto reconocido o no
+start
+:Persona hace gesto;
+:Observador ve el gesto;
+if (Gesto reconocido?) then (Si)
+  :Otorgar aura;
+  :Persona recibe aura;
+else (No)
+  :Persona no recibe aura;
+endif
+stop
+@enduml

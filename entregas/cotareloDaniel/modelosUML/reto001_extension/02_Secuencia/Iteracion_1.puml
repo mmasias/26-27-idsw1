@@ -1,0 +1,9 @@
+@startuml
+title Secuencia - Iteracion 1: modelo inicial
+participant Persona
+participant Gesto
+participant Aura
+Persona -> Gesto : hace
+Gesto -> Aura : otorga
+Aura -> Persona : le da
+@enduml

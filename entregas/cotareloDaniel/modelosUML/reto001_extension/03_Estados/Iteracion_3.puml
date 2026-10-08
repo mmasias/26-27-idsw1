@@ -1,0 +1,9 @@
+@startuml
+title Estados - Iteracion 3: gesto no reconocido
+[*] --> SinAura
+SinAura --> HaciendoGesto : hace gesto
+HaciendoGesto --> EsperandoReconocimiento : observador ve gesto
+EsperandoReconocimiento --> ConAura : reconocido / recibe aura
+EsperandoReconocimiento --> SinAura : no reconocido / no recibe aura
+ConAura --> [*]
+@enduml

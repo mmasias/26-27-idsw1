@@ -1,0 +1,11 @@
+@startuml
+title Secuencia - Iteracion 2: observador
+participant Persona
+participant Gesto
+participant Observador
+participant Aura
+Persona -> Gesto : hace
+Gesto -> Observador : es visto por
+Observador -> Aura : reconoce y otorga
+Aura -> Persona : le da
+@enduml

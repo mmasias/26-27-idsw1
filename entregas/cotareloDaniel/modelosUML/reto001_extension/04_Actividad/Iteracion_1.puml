@@ -1,0 +1,8 @@
+@startuml
+title Actividad - Iteracion 1: modelo inicial
+start
+:Persona hace gesto;
+:Gesto otorga aura;
+:Persona recibe aura;
+stop
+@enduml

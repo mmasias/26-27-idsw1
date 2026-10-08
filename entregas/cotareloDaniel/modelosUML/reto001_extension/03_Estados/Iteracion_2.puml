@@ -1,0 +1,8 @@
+@startuml
+title Estados - Iteracion 2: observacion
+[*] --> SinAura
+SinAura --> HaciendoGesto : hace gesto
+HaciendoGesto --> EsperandoReconocimiento : observador ve gesto
+EsperandoReconocimiento --> ConAura : gesto reconocido / recibe aura
+ConAura --> [*]
+@enduml

@@ -1,0 +1,12 @@
+@startuml
+title Colaboracion - Iteracion 2: observador
+left to right direction
+object Persona
+object Gesto
+object Observador
+object Aura
+Persona --> Gesto : 1. hace
+Gesto --> Observador : 2. es visto por
+Observador --> Aura : 3. reconoce y otorga
+Aura --> Persona : 4. le da
+@enduml

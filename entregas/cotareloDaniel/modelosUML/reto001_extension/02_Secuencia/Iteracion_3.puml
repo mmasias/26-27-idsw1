@@ -1,0 +1,15 @@
+@startuml
+title Secuencia - Iteracion 3: reconocimiento condicional
+participant Persona
+participant Gesto
+participant Observador
+participant Aura
+Persona -> Gesto : hace
+Gesto -> Observador : es visto por
+alt Gesto reconocido
+    Observador -> Aura : otorga
+    Aura -> Persona : le da
+else Gesto no reconocido
+    Observador -> Persona : no gana aura
+end
+@enduml

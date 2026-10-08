@@ -1,0 +1,10 @@
+@startuml
+title Actividad - Iteracion 2: observador
+start
+:Persona hace gesto;
+:Observador ve el gesto;
+:Observador reconoce el gesto;
+:Gesto otorga aura;
+:Persona recibe aura;
+stop
+@enduml

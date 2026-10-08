@@ -1,0 +1,18 @@
+@startuml
+title Secuencia - Iteracion 4: repetir hasta la meta
+participant Persona
+participant Gesto
+participant Observador
+participant Aura
+loop Mientras no alcance la meta de aura
+    Persona -> Gesto : hace
+    Gesto -> Observador : es visto por
+    alt Gesto reconocido
+        Observador -> Aura : otorga
+        Aura -> Persona : suma aura
+    else Gesto no reconocido
+        Observador -> Persona : no suma aura
+    end
+end
+Persona -> Persona : termina al alcanzar la meta
+@enduml

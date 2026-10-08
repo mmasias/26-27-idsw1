@@ -1,0 +1,14 @@
+@startuml
+title Simpatía
+
+rectangle Persona
+rectangle Animal
+rectangle Interacción
+rectangle Comportamiento
+rectangle Simpatía
+
+Persona -down-> Interacción : participa
+Animal -up-> Interacción : participa
+Interacción -right-> Comportamiento : muestra
+Comportamiento -down-> Simpatía : genera
+@enduml

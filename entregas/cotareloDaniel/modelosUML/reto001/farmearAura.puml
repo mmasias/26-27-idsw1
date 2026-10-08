@@ -1,0 +1,11 @@
+@startuml
+title Farmear Aura
+
+rectangle Persona
+rectangle Gesto
+rectangle Aura
+
+Persona -right-> Gesto : hace
+Gesto -down-> Aura : otorga
+Aura -left-> Persona : le da
+@enduml

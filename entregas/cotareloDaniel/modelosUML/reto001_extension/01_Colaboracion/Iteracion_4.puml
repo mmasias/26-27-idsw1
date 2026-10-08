@@ -1,0 +1,14 @@
+@startuml
+title Colaboracion - Iteracion 4: acumular aura
+left to right direction
+object Persona
+object Gesto
+object Observador
+object Aura
+Persona --> Gesto : 1 / 5 [meta no alcanzada]. hace otro gesto
+Gesto --> Observador : 2. es visto por
+Observador --> Aura : 3 [reconocido]. otorga
+Aura --> Persona : 4 [reconocido]. suma aura
+Observador --> Persona : 3a [no reconocido]. no suma aura
+Persona --> Persona : 6 [meta alcanzada]. termina
+@enduml

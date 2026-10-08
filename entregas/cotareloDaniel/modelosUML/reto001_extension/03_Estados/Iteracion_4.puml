@@ -1,0 +1,11 @@
+@startuml
+title Estados - Iteracion 4: acumular hasta la meta
+[*] --> Preparado
+Preparado --> HaciendoGesto : hace gesto
+HaciendoGesto --> EsperandoReconocimiento : observador ve gesto
+EsperandoReconocimiento --> EvaluandoMeta : reconocido / suma aura
+EsperandoReconocimiento --> Preparado : no reconocido / no suma aura
+EvaluandoMeta --> Preparado : meta no alcanzada
+EvaluandoMeta --> MetaAlcanzada : meta alcanzada
+MetaAlcanzada --> [*]
+@enduml
