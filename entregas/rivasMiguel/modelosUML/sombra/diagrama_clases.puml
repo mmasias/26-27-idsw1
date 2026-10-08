@@ -1,0 +1,23 @@
+@startuml diagrama_clases
+skinparam style strictuml
+skinparam classAttributeIconSize 0
+skinparam monochrome false
+skinparam shadowing false
+hide circle
+hide empty methods
+
+class Emisor {
+    potencia
+}
+
+class "Haz de luz" as HazDeLuz {
+    longitudDeOnda
+}
+
+class Receptor {
+    capacidadDeAbsorcion
+}
+
+Emisor --> HazDeLuz : emite
+Receptor --> HazDeLuz : absorbe
+@enduml

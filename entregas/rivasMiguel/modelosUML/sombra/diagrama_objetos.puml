@@ -1,0 +1,21 @@
+@startuml diagrama_objetos
+skinparam style strictuml
+skinparam objectAttributeIconSize 0
+skinparam monochrome false
+skinparam shadowing false
+
+object "lampara : Emisor" as lampara {
+    potencia = 60 W
+}
+
+object "hazVisible : Haz de luz" as haz {
+    longitudDeOnda = 550 nm
+}
+
+object "cuerpoOpaco : Receptor" as receptor {
+    capacidadDeAbsorcion = Alta
+}
+
+lampara --> haz : emite
+receptor --> haz : absorbe
+@enduml

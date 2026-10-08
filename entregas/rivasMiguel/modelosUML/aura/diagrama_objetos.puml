@@ -1,0 +1,29 @@
+@startuml diagrama_objetos
+skinparam style strictuml
+skinparam objectAttributeIconSize 0
+skinparam monochrome false
+skinparam shadowing false
+
+object "joven : Persona" as persona {
+    aura = Mucha
+}
+
+object "gestoImpecable : Accion" as accion {
+}
+
+object "grupoAmigos : Espectador" as espectador {
+}
+
+object "asombro : Reaccion" as reaccion {
+}
+
+object "impulsoPositivo : Momentum" as momentum {
+}
+
+persona --> accion : hace
+espectador --> accion : observa
+espectador --> reaccion : tiene
+accion --> reaccion : genera
+reaccion --> momentum : aumenta
+momentum --> persona : da aura
+@enduml

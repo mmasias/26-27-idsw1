@@ -1,0 +1,31 @@
+@startuml diagrama_clases
+skinparam style strictuml
+skinparam classAttributeIconSize 0
+skinparam monochrome false
+skinparam shadowing false
+hide circle
+hide empty methods
+
+class Persona {
+    aura
+}
+
+class Accion {
+}
+
+class Espectador {
+}
+
+class Reaccion {
+}
+
+class Momentum {
+}
+
+Persona --> Accion : hace
+Espectador --> Accion : observa
+Espectador --> Reaccion : tiene
+Accion --> Reaccion : genera
+Reaccion --> Momentum : aumenta / disminuye
+Momentum --> Persona : da / quita aura
+@enduml

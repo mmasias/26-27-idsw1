@@ -1,0 +1,19 @@
+@startuml modelo_estados
+skinparam style strictuml
+skinparam monochrome false
+skinparam shadowing false
+hide empty description
+
+state "Sombra" as Sombra
+state "Haz de luz emitido" as Emitido
+state "Luz reflejada" as Reflejada
+
+[*] --> Sombra : Emisor no emite
+
+Sombra --> Emitido : Emisor emite haz de luz
+Emitido --> Sombra : Receptor absorbe haz de luz
+Emitido --> Reflejada : Receptor no absorbe haz de luz
+
+Reflejada --> Sombra : Emisor deja de emitir
+Sombra --> [*]
+@enduml

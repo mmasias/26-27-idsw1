@@ -1,0 +1,26 @@
+@startuml diagrama_estados
+skinparam style strictuml
+skinparam monochrome false
+skinparam shadowing false
+hide empty description
+
+state "Acción realizada" as Accion
+state "Reacción generada" as Reaccion
+state "Momentum" as Momentum
+state "Aura ganada" as AuraGanada
+state "Aura perdida" as AuraPerdida
+
+[*] --> Accion : Persona hace acción
+
+Accion --> [*] : Sin espectadores
+Accion --> Reaccion : Espectador observa acción
+
+Reaccion --> Momentum : Aumenta momentum
+Reaccion --> Momentum : Disminuye momentum
+
+Momentum --> AuraGanada : Da aura
+Momentum --> AuraPerdida : Quita aura
+
+AuraGanada --> [*]
+AuraPerdida --> [*]
+@enduml
