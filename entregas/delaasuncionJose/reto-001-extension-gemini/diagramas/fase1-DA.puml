@@ -1,0 +1,12 @@
+@startuml fase1-DA
+title Fase 1 - Diagrama de Actividad: Farmear Aura (Flujo Base)
+
+start
+:Persona ejecuta gesto en entorno social;
+:Audiencia observa el gesto;
+:Audiencia percibe naturalidad y presencia;
+:Registrar impacto positivo de aura;
+:Incrementar balance de aura del sujeto;
+stop
+
+@enduml

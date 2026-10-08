@@ -1,0 +1,29 @@
+@startuml fase4-DS
+title Fase 4 - Diagrama de Secuencia: Farmear Aura (Amplificación Viral y Asimetría)
+
+actor Persona
+participant "Gesto" as G
+participant "AudienciaPresencial" as AP
+participant "RedSocial" as RS
+participant "AudienciaVirtual" as AV
+participant "GestorReputacion" as GR
+participant "HistorialAura" as HA
+
+Persona -> G : ejecutarGestoPublico()
+G -> AP : percibirEnVivo()
+AP -> RS : publicarClip(video)
+RS -> AV : difundirMasivamente()
+par Evaluación Simultánea
+    AP -> GR : reportarReaccionLocal()
+    AV -> GR : reportarMetricas(likes, mofas, shares)
+end
+GR -> GR : procesarAsimetriaYMultiplicador()
+alt Aclamación Viral (+aura x factor)
+    GR -> HA : registrarImpacto(+2000, "Viral Legendario")
+    HA -> Persona : coronarAuraLegendaria()
+else Ridículo Viralizado (-aura x penalizacionAsimetrica)
+    GR -> HA : registrarImpacto(-5000, "Cringe Viral Masivo")
+    HA -> Persona : degradarACanceladoSocial()
+end
+
+@enduml

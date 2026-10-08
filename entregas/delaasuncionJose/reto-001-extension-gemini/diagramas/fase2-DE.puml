@@ -1,0 +1,12 @@
+@startuml fase2-DE
+title Fase 2 - Diagrama de Estados: Ciclo de Aura (Éxito vs Fracaso)
+
+[*] --> ReposoSocial
+ReposoSocial --> GestoEnEvaluacion : ejecutar gesto
+GestoEnEvaluacion --> AuraGanada : juicio favorable [admiración]
+GestoEnEvaluacion --> AuraPerdida : juicio desfavorable [cringe / ridículo]
+AuraGanada --> ReposoSocial : asimilar prestigio
+AuraPerdida --> ReposoSocial : asumir penalización
+ReposoSocial --> [*] : finalizar interacción
+
+@enduml

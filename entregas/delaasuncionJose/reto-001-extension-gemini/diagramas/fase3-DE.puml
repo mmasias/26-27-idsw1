@@ -1,0 +1,17 @@
+@startuml fase3-DE
+title Fase 3 - Diagrama de Estados: Ciclo de Aura (Recuperación y Tryhard)
+
+[*] --> Estable
+Estable --> EvaluandoGesto : emitir gesto
+EvaluandoGesto --> AuraElevada : respuesta positiva / aplauso
+EvaluandoGesto --> EnRiesgo : respuesta incómoda / intentos = 1
+EnRiesgo --> EvaluandoGesto : contra-gesto ingenioso [intentos < 2] / intentos++
+EnRiesgo --> DegradadoTryhard : insistencia forzada [intentos >= 2]
+EnRiesgo --> AuraDisminuida : retirada discreta
+AuraElevada --> Estable : normalizar
+DegradadoTryhard --> CrisisSocial : humillación consolidada
+AuraDisminuida --> Estable : recuperación paulatina
+CrisisSocial --> [*]
+Estable --> [*]
+
+@enduml

@@ -1,0 +1,14 @@
+@startuml fase1-DC
+title Fase 1 - Diagrama de Colaboración: Farmear Aura (Flujo Base)
+
+object Persona
+object Gesto
+object Audiencia
+object Aura
+
+Persona --> Gesto : 1: realizar()
+Gesto --> Audiencia : 2: proyectarEnEscena()
+Audiencia --> Aura : 3: reconocerPrestigio()
+Aura --> Persona : 4: notificarIncrementoAura()
+
+@enduml

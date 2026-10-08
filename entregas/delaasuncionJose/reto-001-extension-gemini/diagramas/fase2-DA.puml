@@ -1,0 +1,18 @@
+@startuml fase2-DA
+title Fase 2 - Diagrama de Actividad: Farmear Aura (Éxito vs Fracaso)
+
+start
+:Persona ejecuta gesto en entorno social;
+:Audiencia evalúa el gesto;
+if (¿Gesto percibido como genuino y admirable?) then (sí)
+  :Generar impacto positivo (+aura);
+  :Incrementar balance de aura;
+  :Audiencia muestra respeto y admiración;
+else (no)
+  :Generar impacto negativo (-aura);
+  :Restar balance de aura;
+  :Audiencia experimenta incomodidad ("cringe");
+endif
+stop
+
+@enduml

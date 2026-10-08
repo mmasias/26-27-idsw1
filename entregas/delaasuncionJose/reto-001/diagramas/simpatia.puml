@@ -1,0 +1,10 @@
+@startuml
+left to right direction
+hide circle
+
+Persona --> Interaccion: participa
+Animal --> Interaccion: participa
+Interaccion --> Comportamiento: muestra
+Comportamiento --> Simpatia: genera
+
+@enduml

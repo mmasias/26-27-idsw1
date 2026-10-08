@@ -1,0 +1,27 @@
+@startuml fase4-DE
+title Fase 4 - Diagrama de Estados: Ciclo de Vida del Aura y Reputación
+
+[*] --> Anonimo : persona sin exposición
+
+state Expuesto {
+  [*] --> Neutral
+  Neutral --> EnAlza : gesto presencial admirado
+  Neutral --> CringeLeve : gesto torpe en vivo
+  
+  EnAlza --> AuraLegendaria : clip viralizado con aclamación
+  EnAlza --> CringeLeve : error en directo
+  
+  CringeLeve --> EnAlza : réplica brillante / redención
+  CringeLeve --> CringeViral : clip humillante viralizado
+  CringeViral --> CanceladoSocial : persistencia desesperada
+}
+
+AuraLegendaria --> InmuneTemporal : consolidación de respeto
+CanceladoSocial --> EnAislamiento : pérdida total de credibilidad
+EnAislamiento --> Neutral : paso del tiempo / olvido
+InmuneTemporal --> Neutral : inactividad prolongada
+
+CanceladoSocial --> [*]
+AuraLegendaria --> [*]
+
+@enduml

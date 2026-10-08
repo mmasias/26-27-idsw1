@@ -1,0 +1,19 @@
+@startuml fase2-DC
+title Fase 2 - Diagrama de Colaboración: Farmear Aura (Éxito vs Fracaso)
+
+object Persona
+object Gesto
+object Audiencia
+object RegistroImpacto
+object Aura
+
+Persona --> Gesto : 1: ejecutar()
+Gesto --> Audiencia : 2: exponer()
+Audiencia --> RegistroImpacto : 3a: registrarGanancia() [éxito]
+Audiencia --> RegistroImpacto : 3b: registrarPerdida() [fracaso]
+RegistroImpacto --> Aura : 4a: sumarAura() [éxito]
+RegistroImpacto --> Aura : 4b: restarAura() [fracaso]
+Aura --> Persona : 5a: confirmarPrestigio() [éxito]
+Aura --> Persona : 5b: notificarVerguenzaSocial() [fracaso]
+
+@enduml

@@ -1,0 +1,40 @@
+@startuml v3
+title Version 3 - Diagrama de Farmear Aura
+
+object Persona {
+  aura
+  nombre
+}
+
+object Actor {
+  acciones
+}
+
+object Gesto {
+  tipo
+  impacto
+}
+
+object Audiencia {
+  tamaño
+}
+
+object RedesSociales {
+  plataforma
+}
+
+object Consenso {
+  puntosAura
+}
+
+Persona --> Actor : puede ser
+Persona --> Audiencia : pertenece
+Persona --> RedesSociales : ve
+Actor --> Gesto : hace
+Gesto --> Audiencia : evaluado
+Audiencia --> RedesSociales : publica
+Audiencia --> Consenso : llega
+RedesSociales --> Consenso : llega
+Consenso --> Actor : aumenta/disminuye aura
+
+@enduml

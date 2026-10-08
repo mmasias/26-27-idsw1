@@ -1,0 +1,10 @@
+@startuml
+left to right direction
+hide circle
+
+Luz--> Cuerpo : incide
+Cuerpo -> Sombra : proyecta
+Superficie <-- Sombra : aparece
+
+
+@enduml

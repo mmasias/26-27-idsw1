@@ -1,0 +1,33 @@
+@startuml fase3-DA
+title Fase 3 - Diagrama de Actividad: Farmear Aura (Recuperación y Penalización Tryhard)
+
+start
+:Persona ejecuta gesto inicial;
+:Inicializar contador de intentos = 1;
+repeat
+  :Audiencia evalúa ejecución;
+  if (¿Gesto admirado?) then (sí)
+    :Acreditar GananciaDeAura;
+    :Actualizar balance neto;
+    stop
+  else (no)
+    :Aplicar pérdida leve de aura;
+    if (¿Intentos < 2 y sujeto intenta réplica?) then (sí)
+      :Persona ejecuta contra-gesto / autoironía;
+      :Incrementar contador de intentos;
+    else (no)
+      break
+    endif
+  endif
+repeat while (¿Continúa interacción?) is (sí)
+
+if (¿Superó intentos máximos o forzó desesperadamente?) then (sí)
+  :Activar sanción por "Tryhard" desesperado;
+  :Aplicar pérdida catastrófica de aura;
+  :Audiencia emite burla colectiva;
+else (no)
+  :Asumir pérdida moderada con discreción;
+endif
+stop
+
+@enduml

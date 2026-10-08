@@ -1,0 +1,32 @@
+@startuml fase3-DS
+title Fase 3 - Diagrama de Secuencia: Farmear Aura (Recuperación y Tryhard)
+
+actor Persona
+participant "Gesto" as G
+participant "Audiencia" as Aud
+participant "SistemaEvaluacion" as SE
+participant "Aura" as A
+
+Persona -> G : realizarGestoInicial()
+G -> Aud : exponer()
+Aud -> SE : emitirJuicio()
+alt Juicio Favorable
+    SE -> A : registrarGanancia(+aura)
+    A -> Persona : otorgarRespeto()
+else Juicio Desfavorable
+    SE -> Persona : alertarIncomodidad()
+    loop intentos de salvamento (máx 2)
+        Persona -> G : ejecutarContraGesto()
+        G -> Aud : reintentar()
+        Aud -> SE : reevaluar()
+    end
+    alt Salvamento exitoso
+        SE -> A : compensarAura()
+        A -> Persona : recuperarDignidad()
+    else Persistencia desesperada (Tryhard)
+        SE -> A : aplicarPenalizacionCritica(-500 aura)
+        A -> Persona : declararColapsoDeAura()
+    end
+end
+
+@enduml

@@ -1,0 +1,22 @@
+@startuml fase4-DC
+title Fase 4 - Diagrama de Colaboración: Farmear Aura (Amplificación Viral y Asimetría)
+
+object Persona
+object Gesto
+object AudienciaPresencial
+object RedSocial
+object AudienciaVirtual
+object GestorReputacion
+object HistorialAura
+
+Persona --> Gesto : 1: ejecutarGestoPublico()
+Gesto --> AudienciaPresencial : 2: percibirEnVivo()
+AudienciaPresencial --> RedSocial : 3: publicarClip()
+RedSocial --> AudienciaVirtual : 4: difundirMasivamente()
+AudienciaPresencial --> GestorReputacion : 5a: reportarReaccionLocal()
+AudienciaVirtual --> GestorReputacion : 5b: reportarMetricas()
+GestorReputacion --> HistorialAura : 6a: registrarImpacto() [aclamación viral]
+GestorReputacion --> HistorialAura : 6b: registrarImpacto() [ridículo viral]
+HistorialAura --> Persona : 7: notificarEstadoReputacional()
+
+@enduml

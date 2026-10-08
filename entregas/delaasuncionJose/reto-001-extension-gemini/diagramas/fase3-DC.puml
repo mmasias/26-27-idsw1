@@ -1,0 +1,22 @@
+@startuml fase3-DC
+title Fase 3 - Diagrama de Colaboración: Farmear Aura (Recuperación y Tryhard)
+
+object Persona
+object Gesto
+object Audiencia
+object SistemaEvaluacion
+object Aura
+
+Persona --> Gesto : 1: realizarGestoInicial()
+Gesto --> Audiencia : 2: exponer()
+Audiencia --> SistemaEvaluacion : 3: emitirJuicio()
+SistemaEvaluacion --> Aura : 4a: registrarGanancia() [éxito inicial]
+SistemaEvaluacion --> Persona : 4b: alertarIncomodidad() [fallo inicial]
+Persona --> Gesto : 5: ejecutarContraGesto() [reintento < 2]
+Gesto --> Audiencia : 6: reintentar()
+Audiencia --> SistemaEvaluacion : 7: reevaluar()
+SistemaEvaluacion --> Aura : 8a: compensarAura() [salvamento OK]
+SistemaEvaluacion --> Aura : 8b: aplicarPenalizacionCritica() [tryhard]
+Aura --> Persona : 9: notificarEstadoFinal()
+
+@enduml

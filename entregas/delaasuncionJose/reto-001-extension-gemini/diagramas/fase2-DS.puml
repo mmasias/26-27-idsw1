@@ -1,0 +1,23 @@
+@startuml fase2-DS
+title Fase 2 - Diagrama de Secuencia: Farmear Aura (Éxito vs Fracaso)
+
+actor Persona
+participant "Gesto" as G
+participant "Audiencia" as Aud
+participant "RegistroImpacto" as Reg
+participant "Aura" as A
+
+Persona -> G : ejecutar()
+G -> Aud : exponer()
+Aud -> Aud : evaluarCredibilidad()
+alt Gesto admirado (éxito)
+    Aud -> Reg : registrarGanancia(+aura)
+    Reg -> A : sumarAura(puntos)
+    A -> Persona : confirmarPrestigio()
+else Gesto ridículo / cringe (fracaso)
+    Aud -> Reg : registrarPerdida(-aura)
+    Reg -> A : restarAura(penalizacion)
+    A -> Persona : notificarVerguenzaSocial()
+end
+
+@enduml

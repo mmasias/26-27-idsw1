@@ -1,0 +1,11 @@
+@startuml v1
+title Version 1 - Diagrama de Farmear Aura
+
+object Persona
+object Gesto
+object Actor
+object Audiencia
+object RedesSociales
+object Repercusion
+
+@enduml

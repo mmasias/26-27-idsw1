@@ -1,0 +1,31 @@
+@startuml fase4-DA
+title Fase 4 - Diagrama de Actividad: Farmear Aura (Amplificación Viral y Asimetría)
+
+start
+:Persona detecta SituacionSocial de alta exposición;
+:Evaluar nivel de tensión ambiental y oportunidad;
+:Persona ejecuta gesto con intención de impacto;
+fork
+  :AudienciaPresencial evalúa autenticidad en vivo;
+fork again
+  :Testigo registra vídeo y comparte en RedSocial;
+  :AudienciaVirtual masiva procesa el clip;
+end fork
+:Consolidar percepción colectiva;
+if (¿Gesto calificado como carismático y admirable?) then (sí)
+  :Calcular multiplicador de prestigio según alcance;
+  :Aplicar GananciaDeAura (+aura * factorViral);
+  :Consolidar estado "Aura Legendaria / En Alza";
+else (no)
+  if (¿Percibido como ridículo o "tryhard" extremo?) then (sí)
+    :Activar penalización por asimetría (daño x5);
+    :Aplicar PérdidaMasivaDeAura (-aura * factorViral);
+    :Consolidar estado "Cancelado / Cringe Viral";
+  else (desapercibido / neutro)
+    :Registrar impacto neutro (aura inalterada);
+  endif
+endif
+:Asentar registro en HistorialReputacion;
+stop
+
+@enduml

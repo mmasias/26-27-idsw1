@@ -1,0 +1,42 @@
+@startuml v4
+title Version 4 - Arquitectura del Farm de Aura (Edición Final 100% Real No Fake)
+
+object NPC {
+  auraLevel
+  rizzScore
+}
+
+object Sigma {
+  mewingStreak
+  mogTier
+}
+
+object SkibidiPlay {
+  cringeLevel
+  mogFactor
+}
+
+object ElChat {
+  parasocialCount
+  spamRate
+}
+
+object AlgoritmoFYP {
+  brainrotSlop
+}
+
+object VibeCheck {
+  auraDiff
+}
+
+NPC --> Sigma : hace looksmaxxing
+NPC --> ElChat : es viewer / meatrider
+NPC --> AlgoritmoFYP : doomscrollea
+Sigma --> SkibidiPlay : tira un
+SkibidiPlay --> ElChat : chat que es esto?
+ElChat --> AlgoritmoFYP : lo clipea para
+ElChat --> VibeCheck : spamea W o L
+AlgoritmoFYP --> VibeCheck : viraliza hacia
+VibeCheck --> Sigma : +100k aura (Let him cook) / -999k aura (Bro is cooked)
+
+@enduml

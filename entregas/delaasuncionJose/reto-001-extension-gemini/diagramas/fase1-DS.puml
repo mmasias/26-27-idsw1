@@ -1,0 +1,15 @@
+@startuml fase1-DS
+title Fase 1 - Diagrama de Secuencia: Farmear Aura (Flujo Base)
+
+actor Persona
+participant "Gesto" as G
+participant "Audiencia" as Aud
+participant "Aura" as A
+
+Persona -> G : realizar()
+G -> Aud : proyectarEnEscena()
+Aud -> Aud : presenciarGesto()
+Aud -> A : reconocerPrestigio()
+A -> Persona : notificarIncrementoAura(+100)
+
+@enduml

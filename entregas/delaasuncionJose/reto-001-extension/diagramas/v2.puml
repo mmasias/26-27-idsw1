@@ -1,0 +1,21 @@
+@startuml v2
+title Version 2 - Diagrama de Farmear Aura
+
+object Persona
+object Gesto
+object Actor
+object Audiencia
+object RedesSociales
+object Repercusion
+
+Persona --> Actor : puede ser
+Persona --> Audiencia : pertenece
+Persona --> RedesSociales : ve
+Actor --> Gesto : hace
+Gesto --> Audiencia : evaluado
+Audiencia --> RedesSociales :puede subir a
+Audiencia --> Repercusion : juzga
+RedesSociales --> Repercusion : juzga
+Repercusion --> Actor : aumenta/disminuye aura
+
+@enduml

@@ -1,0 +1,10 @@
+@startuml fase1-DE
+title Fase 1 - Diagrama de Estados: Ciclo de Aura (Flujo Base)
+
+[*] --> ReposoSocial : persona presente
+ReposoSocial --> GestoEnEjecucion : ejecutar gesto
+GestoEnEjecucion --> EnObservacion : proyectar ante audiencia
+EnObservacion --> AuraAumentada : aprobación de audiencia
+AuraAumentada --> [*]
+
+@enduml
