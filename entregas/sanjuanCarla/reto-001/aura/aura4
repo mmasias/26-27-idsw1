@@ -1,0 +1,41 @@
+@startuml
+title Farmear aura - Version 4
+
+class Persona
+class Accion
+class Situacion
+class Momento
+class Observador
+class Valoracion
+class Aura
+class Cringe
+class Postureo
+class Epico
+
+Persona "1" -- "0..*" Accion : realiza
+
+Accion "1" -- "1" Situacion : ocurre en
+
+Situacion "1" -- "0..*" Momento : genera
+
+Momento "1" -- "0..*" Observador : es visto por
+
+Observador "1" -- "0..*" Valoracion : realiza
+
+Valoracion "1" --> "1" Persona : valora
+
+Persona "1" -- "1" Aura : tiene
+
+Accion "0..*" --> "0..1" Postureo : puede ser
+
+Valoracion "0..*" --> "0..1" Cringe : puede ser
+
+Valoracion "0..*" --> "0..1" Epico : puede ser
+
+Cringe --> Valoracion : reduce aura
+
+Epico --> Valoracion : aumenta aura
+
+Valoracion --> Aura : modifica
+
+@enduml

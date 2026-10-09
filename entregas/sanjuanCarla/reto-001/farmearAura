@@ -1,0 +1,42 @@
+@startuml
+title Modelo de dominio - Farmear aura
+
+class Persona
+class Accion
+class Situacion
+class Momento
+class Observador
+class Valoracion
+class Aura
+class Cringe
+class Postureo
+class Epico
+
+Persona "1" -- "0..*" Accion : realiza
+
+Accion "1" -- "1" Situacion : ocurre en
+
+Situacion "1" -- "0..*" Momento : genera
+
+Momento "1" -- "0..*" Observador : es visto por
+
+Observador "1" -- "0..*" Valoracion : realiza
+
+Valoracion "1" --> "1" Persona : valora
+
+Persona "1" -- "1" Aura : tiene
+
+Valoracion "0..*" --> "0..1" Cringe : puede ser
+
+Valoracion "0..*" --> "0..1" Epico : puede ser
+
+Accion "0..*" --> "0..1" Postureo : puede ser
+
+Postureo "1" --> "1" Accion : representa
+
+Cringe --> Valoracion : reduce aura
+Epico --> Valoracion : aumenta aura
+
+Valoracion --> Aura : modifica
+
+@enduml

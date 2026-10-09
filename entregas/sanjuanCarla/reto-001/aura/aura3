@@ -1,0 +1,25 @@
+@startuml
+title Farmear aura - Version 3
+
+class Persona
+class Accion
+class Situacion
+class Observador
+class Valoracion
+class Aura
+
+Persona "1" -- "0..*" Accion : realiza
+
+Accion "1" -- "1" Situacion : ocurre en
+
+Situacion "1" -- "0..*" Observador : es presenciada por
+
+Observador "1" -- "0..*" Valoracion : realiza
+
+Valoracion --> Persona : valora
+
+Persona "1" -- "1" Aura : tiene
+
+Valoracion --> Aura : modifica
+
+@enduml

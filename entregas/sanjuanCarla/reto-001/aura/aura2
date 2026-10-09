@@ -1,0 +1,14 @@
+@startuml
+title Farmear aura - Version 2
+
+class Persona
+class Accion
+class Situacion
+class Aura
+
+Persona "1" -- "0..*" Accion : realiza
+Accion "1" -- "1" Situacion : ocurre en
+Persona "1" -- "1" Aura : tiene
+Situacion --> Aura : puede modificar
+
+@enduml

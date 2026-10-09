@@ -1,0 +1,12 @@
+@startuml
+title Farmear aura - Version 1
+
+class Persona
+class Accion
+class Aura
+
+Persona "1" -- "0..*" Accion : realiza
+Persona "1" -- "1" Aura : tiene
+Accion --> Aura : modifica
+
+@enduml

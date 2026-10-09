@@ -1,0 +1,30 @@
+@startuml
+title Modelo de dominio - Simpatía
+
+class Persona {
+    nombre
+    edad
+}
+
+class Interaccion {
+    fecha
+    contexto
+    duración
+}
+
+class Valoracion {
+    puntuacion
+    comentario
+}
+
+class Simpatia {
+    nivel
+}
+
+Persona "2..*" --> "0..*" Interaccion : participa en
+Interaccion "1" --> "0..*" Valoracion : genera
+Persona "1" --> "0..*" Valoracion : realiza
+Valoracion "0..*" --> "1" Persona : evalúa
+Persona "1" --> "1" Simpatia : tiene
+
+@enduml
