@@ -1,0 +1,19 @@
+@startuml
+hide circle
+hide empty members
+
+class Persona
+class Aura
+class Contexto
+class Farmear
+class Accion
+class Validacion
+
+
+Persona -- Aura
+Persona -- Farmear
+Farmear -- Accion
+Accion -- Contexto
+Accion -- Validacion
+
+@enduml

@@ -1,0 +1,20 @@
+@startuml
+hide circle
+hide empty members
+
+class FuenteDeLuz
+class Objeto
+class Sombra
+class Superficie
+class Observador
+class Percepcion
+
+
+FuenteDeLuz -- Objeto
+Objeto -- Sombra
+Sombra -- Superficie
+
+Sombra -- Percepcion
+Observador -- Percepcion
+
+@enduml
