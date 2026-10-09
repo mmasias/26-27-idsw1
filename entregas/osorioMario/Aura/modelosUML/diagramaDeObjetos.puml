@@ -1,0 +1,37 @@
+@startuml
+!theme plain
+
+object "juanito : Persona" as juanito {
+  Aura Actual = 1600
+  Confianza = "Por las nubes"
+}
+
+object "Gesto : IntentoDeFarmeo" as intento {
+  AccionConcreta = "Hacer un six seven"
+  Nivel de riesgo = "Altísimo"
+}
+
+object "aulaUniversidad : Contexto" as contexto {
+  Donde Paso = "Frente a toda la clase en la universidad"
+  Quienes Estaban Viendo = "El profesor y 35 compañeros"
+}
+
+object "silencioIncomodo : ReaccionDelPublico" as reaccion {
+  Impresion General = "Sintieron vergüenza y lastima por el"
+  Hubo Risas = "Sí, pero se rieron de él"
+}
+
+object "desastreSocial : Consecuencia" as consecuencia {
+  Aura Ganada = 0
+  Aura Perdida = 5000
+  Confianza Ganada = 0
+  Confianza Perdida = "Toda"
+  Estatus Final = "Cancelado"
+}
+
+juanito --> intento : se la juega haciendo un
+intento --> contexto : ocurre en un
+contexto --> reaccion : provoca una
+reaccion --> consecuencia : que se transforma en
+consecuencia --> juanito : se actualiza
+@enduml

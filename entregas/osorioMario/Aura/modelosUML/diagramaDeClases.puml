@@ -1,0 +1,38 @@
+@startuml
+!theme plain
+hide empty members
+
+class Persona {
+  - Aura Actual
+  - Confianza
+}
+
+class IntentoDeFarmeo {
+  - AccionConcreta (ej. "Hacer un gesto", "Decir un chiste", "Hacerse el misterioso")
+  - Nivel de riesgo
+}
+
+class Contexto {
+  - Donde Paso 
+  - Quienes Estaban Viendo
+}
+
+class ReaccionDelPublico {
+  - Impresion General (Quedaron locos / Sintieron vergüenza ajena)
+  - Hubo Risas (Contigo o de ti)
+}
+
+class Consecuencia {
+  - Aura Ganada (Respeto total)
+  - Aura Perdida (cringe)
+  - Confianza Ganada
+  -Confianza Perdida
+  - Estatus Final (Dios del aura, Normal, Cancelado)
+}
+
+Persona "1" --> "*" IntentoDeFarmeo : se la juega haciendo un
+IntentoDeFarmeo "*" --> "1" Contexto : ocurre en un
+Contexto "1" --> "1" ReaccionDelPublico : provoca una
+ReaccionDelPublico "1" --> "1" Consecuencia : que se transforma en
+Consecuencia "*" --> "1" Persona : se actualiza
+@enduml

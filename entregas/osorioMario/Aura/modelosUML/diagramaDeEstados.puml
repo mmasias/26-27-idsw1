@@ -1,0 +1,17 @@
+@startuml
+!theme plain
+
+[*] --> Normal : Existiendo sin llamar la atención
+
+Normal --> EnLaCima : Gana aura de forma natural
+EnLaCima --> EnLaCima : Mantiene el respeto
+
+Normal --> EnElPozo : Hace algo que da Cringe
+EnLaCima --> EnElPozo : Se vuelve "Tryhard" y queda mal
+
+EnElPozo --> Normal : Aplica la ley del hielo (Silencio y tiempo)
+
+EnLaCima --> [*] : Se retira invicto
+EnElPozo --> [*] : Desaparece socialmente
+
+@enduml
