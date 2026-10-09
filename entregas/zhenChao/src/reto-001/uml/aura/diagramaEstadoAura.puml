@@ -1,0 +1,25 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing false
+
+skinparam state {
+    BackgroundColor white
+    BorderColor black
+    ArrowColor black
+}
+
+[*] --> EnVivo : Se produce en un lugar
+
+EnVivo --> EnVivo : Persona se marca un farmeo
+
+EnVivo --> Publicado : Se sube a Internet
+
+EnVivo --> ValoracionRecibida : Persona presencia\ny realiza valoración
+
+Publicado --> ValoracionRecibida : Persona lo ve\ny realiza valoración
+
+ValoracionRecibida --> AuraModificada : Se procesa la valoración
+
+AuraModificada --> [*] : Fin
+
+@enduml

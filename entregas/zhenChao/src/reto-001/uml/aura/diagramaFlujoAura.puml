@@ -1,0 +1,26 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing false
+
+
+:El EventoSocial se da en un Lugar;
+
+if (¿La Persona se marca un Farmeo?) then (Sí)
+    :La Persona se marca un Farmeo;
+    :El Farmeo ocurre en el EventoSocial;
+endif
+
+if (¿La visualización es presencial?) then (Sí)
+    :La Persona ve el EventoSocial en el Lugar;
+else (No, online)
+    :El EventoSocial se sube a Internet;
+    :La Persona ve el EventoSocial online;
+endif
+
+:La Persona da una Valoracion;
+:La Valoracion califica al EventoSocial;
+:La Valoracion cambia el aura de la Persona;
+
+stop
+
+@enduml

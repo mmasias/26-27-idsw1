@@ -1,0 +1,15 @@
+@startuml
+skinparam monochrome true
+hide circle
+hide empty members
+
+class FuenteDeLuz
+class Sombra
+class Superficie
+
+
+FuenteDeLuz --> Cuerpo : ilumina 
+Cuerpo --> Sombra : genera 
+Sombra --> Superficie : se proyecta sobre
+
+@enduml

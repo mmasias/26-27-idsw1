@@ -1,0 +1,42 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing false
+hide circle
+hide methods
+
+class Persona {
+    aura 
+}
+
+class EventoSocial {
+   
+}
+
+class Farmeo {
+
+}
+
+class Valoracion {
+
+}
+
+class Lugar {
+
+}
+
+class Internet {
+
+}
+
+Persona -- Farmeo : se marca un >
+Farmeo -- EventoSocial : en un >
+
+Persona -- EventoSocial : ve >
+EventoSocial -- Lugar : se da en >
+EventoSocial -- Internet : se sube a >
+
+Persona -- Valoracion : da una >
+Valoracion -- EventoSocial : califica a >
+Valoracion -- Persona : le cambia el aura a >
+
+@enduml

@@ -1,0 +1,71 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing false
+autonumber
+
+participant ":Persona" as Persona
+participant ":Lugar" as Lugar
+participant ":EventoSocial" as EventoSocial
+participant ":Farmeo" as Farmeo
+participant ":Internet" as Internet
+participant ":Valoracion" as Valoracion
+
+== Ubicación del Evento ==
+Persona -> EventoSocial : inicializar()
+activate EventoSocial
+EventoSocial -> Lugar : seDaEn()
+activate Lugar
+Lugar --> EventoSocial
+deactivate Lugar
+EventoSocial --> Persona
+deactivate EventoSocial
+
+== Farmeo ==
+opt
+    Persona -> Farmeo : seMarcaUn()
+    activate Farmeo
+    Farmeo -> EventoSocial : enUn()
+    activate EventoSocial
+    EventoSocial --> Farmeo
+    deactivate EventoSocial
+    Farmeo --> Persona
+    deactivate Farmeo
+end
+
+== Visualización ==
+alt Presencial
+    Persona -> EventoSocial : ve()
+    activate EventoSocial
+    EventoSocial --> Persona
+    deactivate EventoSocial
+
+else Online
+    EventoSocial -> Internet : seSubeA()
+    activate Internet
+    Internet --> EventoSocial
+    deactivate Internet
+
+    Persona -> EventoSocial : ve()
+    activate EventoSocial
+    EventoSocial --> Persona
+    deactivate EventoSocial
+end
+
+==  Valoración y Modificación de Aura ==
+Persona -> Valoracion : daUna()
+activate Valoracion
+
+Valoracion -> EventoSocial : calificaA()
+activate EventoSocial
+EventoSocial --> Valoracion
+deactivate EventoSocial
+
+Valoracion -> Persona : leCambiaElAuraA()
+activate Persona
+Persona --> Valoracion
+deactivate Persona
+
+Valoracion --> Persona
+deactivate Valoracion
+
+@enduml

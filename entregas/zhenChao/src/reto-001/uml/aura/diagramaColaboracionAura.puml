@@ -1,0 +1,27 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing false
+top to bottom direction
+
+
+object "persona : Persona" as Persona {
+    aura
+}
+object "evento : EventoSocial" as EventoSocial
+object "farmeo : Farmeo" as Farmeo
+object "valoracion : Valoracion" as Valoracion
+object "lugar : Lugar" as Lugar
+object "internet : Internet" as Internet
+
+Persona -- Farmeo : se marca un >
+Farmeo -- EventoSocial : en un >
+
+Persona -- EventoSocial : ve >
+EventoSocial -- Lugar : se da en >
+EventoSocial -- Internet : se sube a >
+
+Persona -- Valoracion : da una >
+Valoracion -- EventoSocial : califica a >
+Valoracion -- Persona : le cambia el aura a >
+
+@enduml

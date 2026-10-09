@@ -1,0 +1,16 @@
+@startuml
+skinparam monochrome true
+hide circle
+hide empty members
+
+class Persona
+class Comportamiento
+class EvaluacionSocial
+class RasgoSocial
+
+Persona --> Comportamiento : emite 
+Persona --> EvaluacionSocial : realiza 
+EvaluacionSocial --> Comportamiento : se basa en 
+EvaluacionSocial --> RasgoSocial: concluye en 
+
+@enduml

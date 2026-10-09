@@ -1,0 +1,48 @@
+@startuml
+skinparam monochrome true
+
+object "juan : Persona" as persona {
+  nombre = "Juan"
+  aura = "+500 Aura"
+}
+
+object "Farneo del Año : EventoSocial" as evento {
+  id = "03255514"
+  fecha = "2026-07-04"
+  nombre = "La Farmeada del Año"
+  categoria = "farmeo de Aura"
+}
+
+object "67 : Farmeo" as farmeo {
+  tipo = "Fotos,videos  y TikToks"
+  duracionSegundos = 120
+}
+
+object "grito/abucheo : Valoracion" as valoracion {
+  puntosAura = +200
+  accion = "Grito"
+}
+
+object "Centro Botin : Lugar" as lugar {
+  nombre = "Centro Botin"
+  ubicacion = "Santander"
+}
+
+object "Tiktok : Internet" as internet {
+  plataforma = "tiktok"
+  url = ""
+}
+
+
+persona --> farmeo : se marca un
+farmeo --> evento : en un
+
+persona --> evento : ve
+evento --> lugar : se da en
+evento --> internet : se sube a
+
+persona --> valoracion : da una
+valoracion --> evento : califica a
+valoracion -up-> persona : le cambia el aura a
+
+@enduml
