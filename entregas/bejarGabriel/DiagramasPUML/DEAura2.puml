@@ -1,0 +1,12 @@
+@startuml
+[*] --> Neutral : inicia
+
+Neutral --> Farmeando : realiza una acción
+Farmeando --> Expuesto : es visto por espectadores
+
+Expuesto --> Neutral : Aura
+Expuesto --> Neutral : Laura
+Expuesto --> Neutral : Ignorado
+
+Neutral --> [*] : fin
+@enduml

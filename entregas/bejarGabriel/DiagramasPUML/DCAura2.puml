@@ -1,0 +1,17 @@
+@startuml
+hide empty members
+
+class Persona
+class Farmeador
+class Espectador
+class Accion
+class Aura
+
+Farmeador --|> Persona
+Espectador --|> Persona
+
+Persona -- Aura : posee >
+Farmeador -- Accion : realiza >
+Accion -- Espectador : vista por >
+Accion -- Aura : afecta >
+@enduml
