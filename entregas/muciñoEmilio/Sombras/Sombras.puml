@@ -1,0 +1,76 @@
+@startuml
+skinparam style strictuml
+hide empty members
+
+title Modelo del Dominio: Óptica de Sombras (Proyección y Oclusión)
+
+class FuenteLuz {
+  + idEmisor: String
+  + tipoEmisión: TipoEmisor
+  + intensidadLuminosa: Float
+}
+
+class ObjetoOclusor {
+  + idCuerpo: String
+  + coeficienteOpacidad: Float
+  + contornoGeométrico: String
+}
+
+class SuperficieReceptora {
+  + idPlano: String
+  + tipoGeometria: TipoGeometria
+  + anguloInclinacion: Float
+}
+
+class IntercepcionLuz {
+  + porcentajeBloqueo: Float
+  + distanciaAlEmisor: Float
+}
+
+class CriterioProyeccion {
+  + factorPenumbra: Float
+  + indiceAtenuacion: Float
+  + nitidezBorde: Float
+}
+
+class SombraProyectada {
+  + idSombra: String
+  + areaCobertura: Float
+  + nivelOscuridad: Float
+  + esPenumbra: Boolean
+}
+
+' Relaciones
+FuenteLuz "1" -- "0..*" ObjetoOclusor : ilumina >
+FuenteLuz "1" -- "0..*" SombraProyectada : origina >
+
+ObjetoOclusor "1" -- "1..*" SuperficieReceptora : proyecta sobre >
+(ObjetoOclusor, SuperficieReceptora) .. IntercepcionLuz
+
+ObjetoOclusor "1" -- "1" SombraProyectada : genera >
+SombraProyectada "*" -- "1" CriterioProyeccion : es calculada por >
+
+note top of IntercepcionLuz
+  Clase asociación: Modela el fenómeno físico exacto
+  de bloqueo de luz entre un cuerpo opaco y la 
+  geometría del plano receptor.
+end note
+
+note right of CriterioProyeccion
+  Aplica las ecuaciones ópticas y factores
+  de atenuación/nitidez del entorno.
+end note
+
+note top of SombraProyectada
+  Entidad Reificada: Se modela como una
+  clase independiente para gestionar su
+  propio ciclo de vida, área y penumbra.
+end note
+
+note left of FuenteLuz
+  Emisor principal: Define la intensidad
+  y la dirección del haz de fotones en
+  el espacio.
+end note
+
+@enduml

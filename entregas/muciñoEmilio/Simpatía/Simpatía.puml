@@ -1,0 +1,64 @@
+@startuml
+skinparam style strictuml
+hide empty members
+
+title Modelo del Dominio: Sistema de Afinidad Social (Simpatia)
+
+class Persona {
+  + alias: String
+  + nickname: String
+  + indiceAfinidad: Float
+}
+
+class InteraccionSocial {
+  + idActo: String
+  + detalleGesto: String
+  + fechaHora: DateTime
+  + nivelCalidez: NivelCalidez
+  + nivelEscuchaActiva: NivelEscucha
+}
+
+class Interlocutor {
+  + idReceptor: String
+  + tipoVincular: TipoVincular
+  + predisposicionAfectiva: Float
+}
+
+class PercepcionEmpatica {
+  + agradoGenerado: Float
+  + coincideConExpectativa: Boolean
+}
+
+class CriterioAfinidad {
+  + umbralAprobacion: Float
+  + toleranciaContextual: Float
+  + pesoEscucha: Float
+}
+
+class EvaluacionSimpatia {
+  + esSimpatico: Boolean
+  + puntuaciónProcesada: Float
+}
+
+' Relaciones
+Persona "1" -- "0..*" InteraccionSocial : realiza >
+Persona "1" -- "0..*" EvaluacionSimpatia : proyecta >
+
+InteraccionSocial "1" -- "1..*" Interlocutor : es recibida por >
+(InteraccionSocial, Interlocutor) .. PercepcionEmpatica
+
+InteraccionSocial "1" -- "1" EvaluacionSimpatia : genera >
+EvaluacionSimpatia "*" -- "1" CriterioAfinidad : es procesada por >
+
+note top of PercepcionEmpatica
+  Clase asociación: Captura la impresión afectiva 
+  y el agrado especifico que un Interlocutor 
+  siente tras una InteraccionSocial.
+end note
+
+note right of CriterioAfinidad
+  Aplica los umbrales de aprobacion, reglas 
+  culturales y expectativas del entorno.
+end note
+
+@enduml

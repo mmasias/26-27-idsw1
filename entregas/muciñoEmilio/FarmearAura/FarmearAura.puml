@@ -1,0 +1,64 @@
+@startuml
+skinparam style strictuml
+hide empty members
+
+title Modelo del Dominio: Sistema de Reputación Social (Farmear Aura)
+
+class Persona {
+  + alias: String
+  + nickname: String
+  + auraAcumulada: Integer
+}
+
+class AccionRealizada {
+  + idActo: String
+  + detalleActo: String
+  + fechaHora: DateTime
+  + factorRiesgo: FactorRiesgo
+  + nivelEstilo: NivelEstilo
+}
+
+class Observador {
+  + idTestigo: String
+  + tipoAudiencia: TipoAudiencia
+  + credibilidad: Float
+}
+
+class Evaluacion {
+  + aprobada: Boolean
+  + nivelAutenticidad: Float
+}
+
+class CriterioAura {
+  + multRiesgo: Float
+  + multPresionSocial: Float
+  + castigoTorpeza: Float
+}
+
+class ImpactoAura {
+  + deltaAura: Integer
+  + esPositivo: Boolean
+}
+
+' Relaciones
+Persona "1" -- "0..*" AccionRealizada : ejecuta >
+Persona "1" -- "0..*" ImpactoAura : acumula >
+
+AccionRealizada "1" -- "1..*" Observador : es presenciada por >
+(AccionRealizada, Observador) .. Evaluacion
+
+AccionRealizada "1" -- "1" ImpactoAura : genera >
+ImpactoAura "*" -- "1" CriterioAura : es calculado mediante >
+
+note top of Evaluacion
+  Clase asociación: Representa la 
+  validación/juicio individual que un 
+  Observador emite sobre una Acción.
+end note
+
+note right of CriterioAura
+  Define las reglas de negocio y multiplicadores
+  según riesgo, contexto y torpeza.
+end note
+
+@enduml
