@@ -1,0 +1,25 @@
+@startuml
+
+class Alfa {
+}
+
+class Aura {
+}
+
+class Looksmaxx {
+}
+
+class Followers {
+}
+
+class MomentoSigma {
+
+}
+
+Alfa -- Aura : posee >
+Alfa  -- Looksmaxx : farmea >
+Looksmaxx  -- MomentoSigma : causa >
+Followers  -- MomentoSigma : siente >
+MomentoSigma --  Aura : sube/baja >
+
+@enduml

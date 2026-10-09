@@ -1,0 +1,23 @@
+@startuml
+
+class Sombra {
+
+}
+
+class ObjetoLuminoso {
+
+}
+
+class ObjetoOpaco {
+
+}
+
+class Proyeccion {
+
+}
+
+ObjetoLuminoso  -- ObjetoOpaco : incide luz en  >
+ObjetoOpaco -- Sombra : genera >
+Superficie  -- Sombra : se muestra sobre <
+
+@enduml

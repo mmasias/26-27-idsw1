@@ -1,0 +1,30 @@
+@startuml
+
+
+class Persona {
+
+}
+
+class RasgoDeSimpatia {
+
+}
+
+class ConductaObservable {
+
+}
+
+class ContextoSocial {
+
+}
+
+class EvaluacionDeSimpatia {
+
+}
+
+Persona  -- RasgoDeSimpatia : demuestra >
+RasgoDeSimpatia  -- ConductaObservable : se evidencia en >
+Persona  -- EvaluacionDeSimpatia : emite (Observador) >
+Persona  -- EvaluacionDeSimpatia : recibe (Evaluado) >
+EvaluacionDeSimpatia  -- ContextoSocial : se realiza en >
+
+@enduml
