@@ -1,4 +1,4 @@
-@startuml Sombra_Dominio_Modificado
+@startuml Sombra_Dominio
 title Modelo del dominio: Proyección de Sombras
 hide empty methods
 skinparam classAttributeIconSize 0
