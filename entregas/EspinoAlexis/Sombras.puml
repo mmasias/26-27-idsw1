@@ -1,0 +1,67 @@
+@startuml Sombra_Dominio_Modificado
+title Modelo del dominio: Proyección de Sombras
+hide empty methods
+skinparam classAttributeIconSize 0
+
+enum TipoEmision {
+  PUNTUAL
+  EXTENSA
+}
+
+enum CategoriaOscuridad {
+  UMBRA
+  PENUMBRA
+}
+
+class Entorno
+
+class EmisorLuz {
+  posicion
+  intensidad
+  tipo : TipoEmision
+}
+
+class ObjetoFisico {
+  forma
+  nivelOpacidad : Real
+}
+
+class Superficie {
+  geometria
+}
+
+class "/Sombra" as Sombra {
+  /region
+  /gradoOscuridad
+}
+
+class AreaSombra {
+  categoria : CategoriaOscuridad
+  /region
+}
+
+Entorno "1" *-- "1..*" EmisorLuz
+Entorno "1" *-- "1..*" ObjetoFisico
+ObjetoFisico "1" *-- "1..*" Superficie
+
+Sombra "0..*" --> "1" EmisorLuz : originadaPor
+Sombra "0..*" --> "1" ObjetoFisico : actuaComoOclusor
+Sombra "0..*" --> "1" Superficie : actuaComoReceptora
+Sombra "1" *-- "1..2" AreaSombra
+
+note right of Sombra
+  R1: actuaComoOclusor.nivelOpacidad > 0
+  R2: El objeto oclusor se interpone, al menos
+      parcialmente, entre el emisor y la receptora
+  R3: Si originadaPor.tipo = PUNTUAL,
+      únicamente se genera un área de UMBRA
+  R4: La superficie receptora puede pertenecer
+      al mismo objeto oclusor (autosombra)
+end note
+
+note bottom of Entorno 
+  Entorno estático: representa
+  una captura en un instante específico
+end note
+
+@enduml
