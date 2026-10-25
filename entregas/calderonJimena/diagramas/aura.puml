@@ -1,0 +1,66 @@
+@startuml
+title Modelo del dominio: Farmear aura
+
+skinparam classAttributeIconSize 0
+
+class Persona {
+  +id: UUID
+  +nombre: String
+}
+
+class Aura {
+  +cantidad: int
+  +acumular(recompensa: Recompensa)
+}
+
+class SesionDeFarmeo {
+  +inicio: DateTime
+  +fin: DateTime [0..1]
+  +estado: EstadoSesion
+  +finalizar(fin: DateTime)
+}
+
+enum EstadoSesion {
+  ACTIVA
+  FINALIZADA
+}
+
+class Actividad {
+  +descripcion: String
+}
+
+class Recompensa {
+  +cantidad: int
+  +aplicada: Boolean
+  +aplicar()
+}
+
+Persona "1" -- "1" Aura : administra
+Persona "1" -- "0..*" SesionDeFarmeo : realiza
+
+SesionDeFarmeo "1" -- "1..*" Actividad : registra
+Actividad "1" -- "0..*" Recompensa : genera
+Recompensa "1" -- "1" Aura : incrementa
+
+note right of Aura
+  La cantidad acumulada
+  no puede ser negativa.
+end note
+
+note right of Recompensa
+  La cantidad debe ser positiva.
+  Una recompensa solo puede
+  aplicarse una vez.
+end note
+
+note bottom of SesionDeFarmeo
+  Una sesión contiene al menos
+  una actividad.
+end note
+
+note right of EstadoSesion
+  Una sesion nueva comienza como ACTIVA.
+  Al finalizarse, debe registrar su fecha fin.
+end note
+
+@enduml
