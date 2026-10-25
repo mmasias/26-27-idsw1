@@ -1,0 +1,18 @@
+
+@startuml
+title Secuencia - Iteracion 3
+
+participant Persona
+participant Accion
+participant Contexto
+participant Observador
+participant Valoracion
+participant Aura
+
+Persona -> Accion : Realiza una accion
+Accion -> Contexto : Ocurre en un contexto
+Accion -> Observador : Es observada
+Observador -> Valoracion : Expresa una opinion
+Valoracion -> Aura : Influye en el aura
+
+@enduml

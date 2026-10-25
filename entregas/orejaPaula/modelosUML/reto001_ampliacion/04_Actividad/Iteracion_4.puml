@@ -1,0 +1,37 @@
+
+@startuml
+title Actividad - Iteracion 4 (Final)
+
+|Persona|
+start
+:Realizar una accion;
+
+|Observador|
+if (La accion es observada?) then (Si)
+  :Interpretar la accion;
+  :Considerar el contexto;
+  :Expresar una valoracion;
+
+  if (Valoracion positiva?) then (Si)
+    :Reconocer positivamente la accion;
+    |Aura|
+    :El aura puede aumentar;
+  else (No)
+    |Observador|
+    if (Valoracion negativa?) then (Si)
+      :Valorar negativamente la accion;
+      |Aura|
+      :El aura puede disminuir;
+    else (No)
+      |Aura|
+      :El aura puede mantenerse;
+    endif
+  endif
+
+else (No)
+  |Aura|
+  :El aura se mantiene sin esa valoracion;
+endif
+
+stop
+@enduml

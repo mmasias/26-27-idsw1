@@ -1,0 +1,25 @@
+
+@startuml
+title Modelo del dominio - Sombra
+
+skinparam classAttributeIconSize 0
+top to bottom direction
+hide empty members
+
+class FuenteDeLuz
+class CuerpoOpaco
+class PlanoProyeccion
+class Sombra
+
+FuenteDeLuz "1" ..> "0..*" CuerpoOpaco : emite luz hacia
+
+FuenteDeLuz "1" -- "0..*" Sombra : interviene en su formacion
+
+CuerpoOpaco "1" -- "0..*" Sombra : origina
+
+CuerpoOpaco "0..*" ..> "1" PlanoProyeccion : se interpone ante
+
+PlanoProyeccion "1" -- "0..*" Sombra : contiene su proyeccion
+
+@enduml
+

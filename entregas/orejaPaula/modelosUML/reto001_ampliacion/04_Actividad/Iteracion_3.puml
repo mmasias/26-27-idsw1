@@ -1,0 +1,15 @@
+
+@startuml
+title Actividad - Iteracion 3
+
+start
+
+:Realizar una accion;
+:Ocurrir en un contexto;
+:Ser observada;
+:Interpretar la accion;
+:Expresar una valoracion;
+:Influir en el aura;
+
+stop
+@enduml

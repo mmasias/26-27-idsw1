@@ -1,0 +1,29 @@
+
+@startuml
+title Modelo del dominio - Farmear aura
+
+skinparam classAttributeIconSize 0
+top to bottom direction
+hide empty members
+
+class Persona
+class Accion
+class Observador
+class Contexto
+class Valoracion
+class Aura
+
+Persona "1" -- "0..*" Accion : lleva a cabo
+
+Accion "0..*" --> "1" Contexto : sucede en
+
+Observador "1" -- "0..*" Valoracion : expresa
+
+Accion "1" -- "0..*" Valoracion : es evaluada mediante
+
+Persona "1" -- "0..*" Aura : proyecta
+
+Aura "1" -- "0..*" Valoracion : se construye a partir de
+
+@enduml
+

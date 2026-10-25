@@ -1,0 +1,13 @@
+
+@startuml
+title Actividad - Iteracion 2
+
+start
+
+:Realizar una accion;
+:Ocurrir en un contexto;
+:Ser observada por otra persona;
+:Influir en el aura;
+
+stop
+@enduml

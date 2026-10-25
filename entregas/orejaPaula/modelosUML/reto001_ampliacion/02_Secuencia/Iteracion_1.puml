@@ -1,0 +1,12 @@
+
+@startuml
+title Secuencia - Iteracion 1
+
+participant Persona
+participant Accion
+participant Aura
+
+Persona -> Accion : Realiza una accion
+Accion -> Aura : Puede influir en el aura
+
+@enduml

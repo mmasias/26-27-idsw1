@@ -1,0 +1,11 @@
+
+@startuml
+title Actividad - Iteracion 1
+
+start
+
+:Realizar una accion;
+:Influir en el aura;
+
+stop
+@enduml

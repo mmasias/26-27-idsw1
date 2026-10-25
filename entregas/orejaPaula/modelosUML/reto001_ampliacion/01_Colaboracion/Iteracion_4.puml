@@ -1,0 +1,32 @@
+
+@startuml
+title Colaboracion - Iteracion 4 (Final)
+left to right direction
+
+object "persona:Persona" as P
+object "accion:Accion" as A
+object "contexto:Contexto" as C
+object "observador:Observador" as O
+object "valoracion:Valoracion" as V
+object "aura:Aura" as U
+
+P --> A : 1: realizar accion
+A --> C : 1.1: ocurrir en un contexto
+A --> O : 2: ser observada
+O --> V : 3: expresar valoracion
+V --> P : 3.1: valorar a la persona
+
+V --> U : 4: influir en el aura
+
+note bottom of U
+  Valoracion positiva:
+  puede aumentar el aura
+
+  Valoracion negativa:
+  puede disminuir el aura
+
+  Valoracion neutra:
+  puede mantener el aura
+end note
+
+@enduml
