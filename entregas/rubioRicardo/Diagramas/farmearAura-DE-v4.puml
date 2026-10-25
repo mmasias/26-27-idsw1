@@ -1,0 +1,15 @@
+@startuml
+[*] --> Observando
+
+Observando --> Interactuando : iniciar accion
+Interactuando --> EvaluandoContexto : accion finalizada
+
+EvaluandoContexto --> Aura : [farmear aura]
+EvaluandoContexto --> Laura : [perdiendoAura]
+
+Aura --> Interactuando : continuar farmeando
+Aura --> [*] : [retiradaTriunfal]
+
+Laura --> Interactuando : recuperar Aura
+Laura --> [*] : [abandonoPorCringe]
+@enduml: [abandonoPorCringe]

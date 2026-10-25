@@ -1,0 +1,1 @@
+Se mejoraron el nombrado de los estados y sus bucles lo cual te permite encadenar un conjunto de acciones para recuperar o seguir farmeando Aura

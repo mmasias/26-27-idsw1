@@ -1,0 +1,8 @@
+@startuml
+[*] --> Persona
+
+Persona --> Accion : realizar
+Accion --> Contexto : pasa a
+Contexto --> Aura : [tiene validacion]
+Contexto --> [*] : [no tiene validacion]
+@enduml
