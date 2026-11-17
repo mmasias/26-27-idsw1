@@ -1,22 +1,17 @@
-# Reto 002 · Revisión crítica de los requisitos de Tetris
+# Reto 002: revisión del ejemplo de Tetris
 
-**Autor:** Marcos González Hidalgo · **Asignatura:** Ingeniería del Software I
+**Marcos González Hidalgo · Ingeniería del Software I**
 
-Revisión del modelo del dominio y de la disciplina de requisitos de `puntoReflex/pyTetris`: textos, tablas, diagramas de casos de uso y estados, siete detalles de casos de uso y prototipo.
+He revisado los textos, tablas, diagramas y prototipo del ejemplo de Tetris. La entrega distingue entre incoherencias, donde dos partes dicen cosas distintas, y decisiones discutibles, donde propongo un cambio y explico el motivo.
 
-## Organización del trabajo
+## Contenido
 
-1. Fijar la versión de las fuentes e inventariar los artefactos.
-2. Contrastar lo que afirman y separar incoherencias de decisiones discutibles.
-3. Proponer correcciones trazables, con especial atención al detalle de casos de uso.
-4. Exportar los modelos PlantUML a SVG y comprobar la navegabilidad de la entrega.
+- [Análisis](docs/analisis.md): 3 incoherencias y 20 decisiones discutibles, con enlaces a los puntos revisados.
+- [Propuesta](docs/propuesta.md): corrección de los estados y del detalle de reiniciar, con ejemplos para comprobar el resultado.
+- [Fuentes PlantUML](modelosUML/) e [imágenes SVG](images/).
 
-El [método de revisión](docs/metodo.md) explica los criterios y el alcance. No se crea una carpeta `src`, porque este reto no incluye implementación.
+No hay carpeta `src` porque el ejercicio no incluye código.
 
-## Resultados de la revisión
+## Proceso
 
-- [Fuentes e inventario](docs/fuentes.md), con versión fijada y copia del prototipo original.
-- [Tres incoherencias](docs/incoherencias.md): nombre de la solicitud de velocidad, transición de reinicio y alcance del nivel.
-- [28 decisiones discutibles](docs/decisiones-discutibles.md), agrupadas por dominio, contextos, detalles y prototipo.
-
-Las lagunas y ambigüedades se incluyen como decisiones discutibles; no se presentan como contradicciones demostradas ni como fallos de una implementación que no se ha evaluado.
+Primero fijé la versión del ejemplo y revisé sus artefactos. Después separé los hallazgos y preparé dos diagramas para explicar las correcciones principales. Los cambios están repartidos en commits breves dentro de `entrega-002`.

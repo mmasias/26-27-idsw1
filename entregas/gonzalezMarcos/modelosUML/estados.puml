@@ -1,0 +1,35 @@
+@startuml
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam defaultFontName SansSerif
+skinparam ArrowColor #374151
+skinparam stateBackgroundColor #F3F7FC
+skinparam stateBorderColor #374151
+hide empty description
+
+title Estados del sistema: propuesta
+
+state INACTIVO
+state EN_CURSO
+state FINALIZADO
+
+[*] -down-> INACTIVO : arrancarSistema()
+INACTIVO -down-> EN_CURSO : iniciarPartida()
+EN_CURSO --> EN_CURSO : moverPieza(), rotarPieza(),\nalternarVelocidadCaida(), descenderPieza()\n[la partida continúa]
+EN_CURSO -down-> FINALIZADO : descenderPieza()\n[no cabe la nueva pieza]
+EN_CURSO -up-> INACTIVO : reiniciarPartida()\n[confirmado]
+FINALIZADO --> INACTIVO : reiniciarPartida()\n[confirmado]
+
+note top of INACTIVO
+  El diagrama resume los resultados
+  de los casos de uso.
+  Un movimiento o giro bloqueado
+  también conserva EN_CURSO.
+end note
+
+note bottom of FINALIZADO
+  Cancelar el reinicio conserva el estado de origen.
+  Mientras se confirma, la partida no avanza.
+  FINALIZADO es fin de partida, no cierre del sistema.
+end note
+@enduml
