@@ -4,7 +4,7 @@
 
 He revisado el [modelo del dominio][dominio] y el [proceso de requisitos][requisitos], incluyendo sus textos, tablas, diagramas y prototipo. Los enlaces corresponden al commit `92c950ad9746dc768be130f75c988c0f712d5509`, consultado el 17/11/2026. Así se puede comprobar qué versión estoy comentando.
 
-He separado **3 incoherencias** y **20 decisiones discutibles**. Una falta de información no siempre es una contradicción. Por eso, los detalles que quedan sin explicar están en el segundo grupo.
+He separado **3 incoherencias** y **19 decisiones discutibles**. Una falta de información no siempre es una contradicción. Por eso, los detalles que quedan sin explicar están en el segundo grupo.
 
 ## Incoherencias
 
@@ -38,7 +38,7 @@ He separado **3 incoherencias** y **20 decisiones discutibles**. Una falta de in
 
 - **Decisión:** el [texto del dominio][dominio] indica multiplicidades y dice que puntuación y velocidad son atributos. El [diagrama final][modelo] no muestra ni multiplicidades ni atributos.
 - **Propuesta:** añadir los datos que ya se han acordado: un tablero por partida, las multiplicidades de celdas y líneas, puntuación y modo de caída.
-- **Argumento:** si solo miro el resultado final, no puedo recuperar esas decisiones. No digo que una multiplicidad sin escribir signifique necesariamente uno; el problema es que falta información útil para entender el modelo.
+- **Argumento:** el dibujo debería recoger las decisiones del texto para poder entenderlo sin tener que reconstruirlas leyendo toda la página.
 
 ### D03. No se precisa cuántas piezas están activas ni qué representa un turno
 
@@ -50,7 +50,7 @@ He separado **3 incoherencias** y **20 decisiones discutibles**. Una falta de in
 
 - **Decisión:** en el [apartado 3 del dominio][dominio] se elige Juego porque se considera Partida más propio del multijugador.
 - **Propuesta:** usar Partida para una sesión concreta y Sistema Tetris para la aplicación. También valdría mantener Juego si se aclara que significa Partida.
-- **Argumento:** también hay partidas de un solo jugador. Lo que interesa distinguir es arrancar el sistema de empezar una partida. Un pequeño glosario ayudaría a mantener los mismos nombres, incluidos `EnCurso` y `EN_CURSO`.
+- **Argumento:** también hay partidas de un solo jugador. Lo que interesa distinguir es arrancar el sistema de empezar una partida. Lo importante es mantener ese significado en todo el documento.
 
 ### D05. Se elimina Bloque sin explicar qué pasa al borrar parte de una pieza
 
@@ -96,14 +96,14 @@ He separado **3 incoherencias** y **20 decisiones discutibles**. Una falta de in
 
 ### D12. Se puede confundir terminar una partida con cerrar el sistema
 
-- **Decisión:** el [diagrama general][estados] permite pasar de Finalizado al estado final y también volver a Inactivo, sin explicar qué provoca cada salida. El [diagrama de casos de uso][casos] tampoco dibuja el límite del sistema.
-- **Propuesta:** identificar el sistema y dejar `FINALIZADO` como estado desde el que se puede pedir reinicio. Quitar la salida terminal sin explicar, o definirla si cerrar la aplicación entra en el alcance.
+- **Decisión:** el [diagrama general][estados] permite pasar de Finalizado al estado final y también volver a Inactivo, sin explicar qué provoca cada salida.
+- **Propuesta:** dejar `FINALIZADO` como estado desde el que se puede pedir reinicio. Quitar la salida terminal sin explicar, o definirla si cerrar la aplicación entra en el alcance.
 - **Argumento:** perder una partida no significa necesariamente cerrar el juego. No hace falta inventar un caso de salida si no se quiere estudiar; basta con aclarar qué representan los estados.
 
-### D13. Las salidas de varios detalles quedan poco claras
+### D13. Falta precisar qué salida corresponde a cada resultado
 
-- **Decisión:** en [reiniciar][reiniciarPartida], [descender][descenderPieza], [mover][moverPieza] y [rotar][rotarPieza], distintas alternativas llegan al mismo final interno y después salen hacia resultados diferentes. Se usan colores y notas, pero no siempre condiciones claras. Al cancelar el reinicio aparecen dos destinos sin indicar de cuál se venía.
-- **Propuesta:** escribir la condición de cada salida. En reiniciar, cancelar desde `EN_CURSO` vuelve a `EN_CURSO`, y cancelar desde `FINALIZADO` vuelve a `FINALIZADO`. En el [contexto del jugador][jugador], indicar también que solo el reinicio confirmado lleva a `INACTIVO`.
+- **Decisión:** en [reiniciar][reiniciarPartida] y [descender][descenderPieza], distintas alternativas llegan al mismo final interno y después aparecen salidas hacia estados diferentes. Se usan colores y notas, pero no siempre condiciones claras. Al cancelar el reinicio aparecen dos destinos sin indicar de cuál se venía.
+- **Propuesta:** escribir la condición de cada salida. En descender, solo se llega a `FINALIZADO` si no cabe la nueva pieza. En reiniciar, cancelar desde `EN_CURSO` vuelve a `EN_CURSO`, y cancelar desde `FINALIZADO` vuelve a `FINALIZADO`. En el [contexto del jugador][jugador], indicar también que solo el reinicio confirmado lleva a `INACTIVO`.
 - **Argumento:** no debería depender del color saber qué resultado corresponde. Cancelar tampoco debe reactivar una partida terminada. El contexto podría resumir solo los casos que se completan, pero tendría que decirlo.
 
 ### D14. Se muestra el descenso antes de comprobar si se puede bajar
@@ -116,13 +116,13 @@ He separado **3 incoherencias** y **20 decisiones discutibles**. Una falta de in
 
 - **Decisión:** [descenderPieza()][descenderPieza] presenta el tablero sin líneas completas y la puntuación actualizada, pero no explica cómo se recolocan las ocupaciones ni cuántos puntos se ganan.
 - **Propuesta:** indicar que se eliminan todas las filas completas tras la fijación y que las ocupaciones superiores bajan los huecos correspondientes. Añadir una regla de puntos para cero, una o varias filas.
-- **Argumento:** sin esas reglas podrían obtenerse tableros y puntuaciones diferentes siguiendo el mismo texto. Una regla sencilla podría ser 100 puntos por fila, si se acuerda para este ejercicio; no la doy por regla oficial de Tetris.
+- **Argumento:** sin esas reglas podrían obtenerse tableros y puntuaciones diferentes siguiendo el mismo texto. La puntuación debe depender de una regla acordada, no de lo que cada uno dé por supuesto.
 
-### D16. Las velocidades no están definidas del todo
+### D16. No se concretan las velocidades ni los tiempos de respuesta
 
-- **Decisión:** [alternarVelocidadCaida()][alternarVelocidadCaida] distingue normal y acelerada. La [tabla de actores][requisitos] habla de un intervalo configurado, pero no se concreta. [iniciar][iniciarPartida] y [reiniciar][reiniciarPartida] tampoco indican el modo inicial.
-- **Propuesta:** fijar los dos intervalos, empezar en normal y aclarar si el modo se mantiene al aparecer otra pieza. Explicar si alternar solo cambia el intervalo o provoca además un descenso.
-- **Argumento:** caer más rápido es una descripción insuficiente para comprobar el comportamiento. También hay que saber cuándo se vuelve a normal. Mantendría el descenso como respuesta al actor Tiempo y la alternancia como cambio de velocidad.
+- **Decisión:** [alternarVelocidadCaida()][alternarVelocidadCaida] distingue normal y acelerada, pero no se fijan sus intervalos ni el modo inicial. Los [detalles][requisitos] tampoco indican cuánto puede tardar el sistema en mostrar la respuesta a una solicitud.
+- **Propuesta:** definir los dos intervalos, empezar en normal y aclarar si el modo se mantiene al cambiar de pieza. Mantener alternar como un cambio de velocidad, sin un descenso extra. Acordar también un tiempo máximo de respuesta y cómo comprobarlo.
+- **Argumento:** caer más rápido no indica cuánto ni desde cuándo. Además, un movimiento que se muestra varios segundos después podría cumplir el texto y dificultar el juego. Son datos necesarios para comprobar la interacción.
 
 ### D17. Reiniciar no explica bien el resultado ni la espera de confirmación
 
@@ -142,12 +142,6 @@ He separado **3 incoherencias** y **20 decisiones discutibles**. Una falta de in
 - **Propuesta:** añadir bocetos sencillos de inicio, confirmación y fin de partida; explicar los controles que faltan y qué ocurre con un comando no válido. Para la velocidad y el descenso, acompañarlos de una secuencia breve que muestre los cambios.
 - **Argumento:** una captura no muestra movimiento ni permite distinguir dos velocidades. El texto de alternar tampoco explica la vuelta de acelerada a normal. No hace falta una pantalla por caso de uso, pero sí poder seguir las interacciones que se han definido. Las teclas concretas deben quedar aquí, sin mezclarlas con los detalles abstractos.
 
-### D20. Faltan condiciones para comprobar la respuesta del sistema
-
-- **Decisión:** los [detalles de casos de uso][requisitos] dicen qué se presenta, pero no cuánto puede tardar en aparecer ni con qué precisión se respeta el intervalo de caída.
-- **Propuesta:** acordar un tiempo máximo de respuesta a las solicitudes y una tolerancia para los intervalos, indicando cómo se medirían.
-- **Argumento:** un movimiento mostrado varios segundos después podría cumplir literalmente el texto y hacer que el juego no se pueda usar bien. No hace falta añadir muchas exigencias: solo las necesarias para comprobar la interacción.
-
 ## Criterios que he mantenido
 
 No considero un error usar Tiempo como actor: los [apuntes de encontrar actores y casos de uso](https://github.com/mmasias/idsw1/blob/main/temario/contenidos/00006-CdU.eAyCdU.md) lo permiten. Tampoco veo mal usar diagramas de estados para los detalles, porque es una de las formas trabajadas en [detallar casos de uso](https://github.com/mmasias/idsw1/blob/main/temario/contenidos/00008-Cdu.dCdU.md).
@@ -159,10 +153,8 @@ No propongo añadir multijugador, niveles ni funciones avanzadas. He comparado l
 [dominio]: https://github.com/puntoReflex/pyTetris/blob/92c950ad9746dc768be130f75c988c0f712d5509/docs/modeloDelDominio.md
 [requisitos]: https://github.com/puntoReflex/pyTetris/blob/92c950ad9746dc768be130f75c988c0f712d5509/docs/ProcesoRequisitos.md
 [modelo]: https://github.com/puntoReflex/pyTetris/blob/92c950ad9746dc768be130f75c988c0f712d5509/modelosUML/ModeloDominio.puml
-[casos]: https://github.com/puntoReflex/pyTetris/blob/92c950ad9746dc768be130f75c988c0f712d5509/modelosUML/DiagramaCasosUso.puml
 [estados]: https://github.com/puntoReflex/pyTetris/blob/92c950ad9746dc768be130f75c988c0f712d5509/modelosUML/DiagramaDeContexto000.puml
 [jugador]: https://github.com/puntoReflex/pyTetris/blob/92c950ad9746dc768be130f75c988c0f712d5509/modelosUML/DiagramaDeContexto001-ActorJugador.puml
-[tiempo]: https://github.com/puntoReflex/pyTetris/blob/92c950ad9746dc768be130f75c988c0f712d5509/modelosUML/DiagramaDeContexto001-ActorTiempo.puml
 [imagen]: https://github.com/puntoReflex/pyTetris/blob/92c950ad9746dc768be130f75c988c0f712d5509/images/tetris.png
 [descenderPieza]: https://github.com/puntoReflex/pyTetris/blob/92c950ad9746dc768be130f75c988c0f712d5509/modelosUML/detalleCasosUso/descenderPieza.puml
 [iniciarPartida]: https://github.com/puntoReflex/pyTetris/blob/92c950ad9746dc768be130f75c988c0f712d5509/modelosUML/detalleCasosUso/iniciarPartida.puml
@@ -170,4 +162,3 @@ No propongo añadir multijugador, niveles ni funciones avanzadas. He comparado l
 [reiniciarPartida]: https://github.com/puntoReflex/pyTetris/blob/92c950ad9746dc768be130f75c988c0f712d5509/modelosUML/detalleCasosUso/reiniciarPartida.puml
 [rotarPieza]: https://github.com/puntoReflex/pyTetris/blob/92c950ad9746dc768be130f75c988c0f712d5509/modelosUML/detalleCasosUso/rotarPieza.puml
 [alternarVelocidadCaida]: https://github.com/puntoReflex/pyTetris/blob/92c950ad9746dc768be130f75c988c0f712d5509/modelosUML/detalleCasosUso/alternarVelocidadCaida.puml
-[arrancarSistema]: https://github.com/puntoReflex/pyTetris/blob/92c950ad9746dc768be130f75c988c0f712d5509/modelosUML/detalleCasosUso/arrancarSistema.puml

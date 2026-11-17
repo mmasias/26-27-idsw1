@@ -10,9 +10,7 @@ Estos dos diagramas desarrollan las correcciones de I02, D12, D13 y D17. Manteng
 
 [Fuente PlantUML](../modelosUML/estados.puml)
 
-Añado el paso de `EN_CURSO` a `INACTIVO` cuando se confirma el reinicio. También indico qué provoca el fin de la partida y aclaro que `FINALIZADO` no significa cerrar la aplicación. Los nombres se escriben igual en los dos diagramas.
-
-El diagrama resume los resultados de cada caso de uso. Si el reinicio se cancela, se conserva el estado anterior, como se detalla a continuación.
+Añado el paso de `EN_CURSO` a `INACTIVO` por reinicio confirmado y distingo el fin de partida del cierre de la aplicación. El diagrama resume los resultados de los casos de uso; la cancelación se detalla a continuación.
 
 ## Detalle de reiniciarPartida()
 
@@ -39,14 +37,10 @@ Mientras se espera la respuesta, la partida no avanza ni permite mover, girar o 
 
 | Situación | Solicitud | Resultado esperado |
 |---|---|---|
-| Partida en curso con puntos y bloques fijados | Reiniciar y confirmar | `INACTIVO`, sin bloques, puntuación 0 y modo normal |
-| Partida finalizada | Reiniciar y confirmar | `INACTIVO`, con opción de iniciar otra partida |
+| Partida en curso o finalizada | Reiniciar y confirmar | `INACTIVO`, sin pieza activa ni bloques, puntuación 0, modo normal y opción de iniciar |
 | Partida en curso | Reiniciar y cancelar | Misma pieza, tablero, puntos y velocidad; continúa en `EN_CURSO` |
 | Partida finalizada | Reiniciar y cancelar | Conserva tablero y puntuación; sigue en `FINALIZADO` |
 | Confirmación abierta durante una partida | Esperar sin responder | La pieza no baja ni se modifica la partida |
-| Reinicio confirmado | No solicitar todavía iniciar | Se mantiene en `INACTIVO`; no aparece una pieza nueva |
-
-Estos ejemplos sirven para revisar la propuesta. No son pruebas de un programa, ya que esta entrega no tiene implementación.
 
 ## Generar las imágenes
 
