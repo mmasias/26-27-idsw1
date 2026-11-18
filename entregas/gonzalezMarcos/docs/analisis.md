@@ -1,154 +1,150 @@
-# Análisis del ejemplo de Tetris
+# Revisión del ejemplo de Tetris
 
 [Volver al README](../README.md) · [Ver la propuesta](propuesta.md)
 
-He revisado el [modelo del dominio][dominio] y el [proceso de requisitos][requisitos], incluyendo sus textos, tablas, diagramas y prototipo. Los enlaces corresponden al commit `92c950ad9746dc768be130f75c988c0f712d5509`, consultado el 17/11/2026. Así se puede comprobar qué versión estoy comentando.
-
-He separado **3 incoherencias** y **19 decisiones discutibles**. Una falta de información no siempre es una contradicción. Por eso, los detalles que quedan sin explicar están en el segundo grupo.
+He comparado el [modelo del dominio][dominio] con los [requisitos][requisitos], sus diagramas y el prototipo. Estos son los puntos que cambiaría. Primero están las partes que dicen cosas distintas sobre lo mismo y después las decisiones que creo que se podrían explicar o plantear mejor.
 
 ## Incoherencias
 
-### I01. Acelerar y alternar no son lo mismo
+### Acelerar y alternar no son lo mismo
 
-- **Dónde y qué dice cada uno:** el [catálogo de casos de uso][requisitos] incluye `alternarVelocidadCaida()`. Su [detalle][alternarVelocidadCaida] permite pasar de normal a acelerada y también volver a normal. Sin embargo, al terminar [iniciarPartida()][iniciarPartida], el sistema ofrece `acelerarCaida()`, que no aparece en el catálogo.
-- **Qué corregiría:** cambiaría `acelerarCaida()` por `alternarVelocidadCaida()` en el detalle de iniciar y en su imagen.
-- **Por qué:** si la caída ya está acelerada, alternar la devuelve a normal. Acelerar no expresa ese resultado. Mantendría el nombre que ya comparten el catálogo, el contexto del jugador y el detalle de alternar.
+El [catálogo de casos de uso][requisitos] incluye `alternarVelocidadCaida()`. Su [detalle][alternarVelocidadCaida] permite pasar de velocidad normal a acelerada y volver a normal. Sin embargo, al terminar [iniciarPartida()][iniciarPartida], el sistema ofrece `acelerarCaida()`, que no aparece en el catálogo.
 
-### I02. Falta una transición en el diagrama general
+Cambiaría ese nombre por `alternarVelocidadCaida()` en el detalle de iniciar y en su imagen. Si la pieza ya cae rápido, alternar hace que vuelva a caer a velocidad normal; acelerar no expresa eso. Además, el catálogo, el contexto del jugador y el detalle de alternar ya usan el mismo nombre.
 
-- **Dónde y qué dice cada uno:** en el [diagrama general][estados] no aparece el paso de `EnCurso` a `Inactivo`. En el [contexto del jugador][jugador] sí aparece mediante `reiniciarPartida()`. El [detalle de reiniciar][reiniciarPartida] también permite ese resultado cuando se confirma.
-- **Qué corregiría:** añadiría al diagrama general la transición de `EN_CURSO` a `INACTIVO` por reinicio confirmado.
-- **Por qué:** la vista general debe recoger los cambios de estado que aparecen en las vistas más detalladas. Aquí no se indica que sea una vista parcial. No eliminaría el reinicio durante la partida, porque los otros dos diagramas coinciden en permitirlo.
+### Falta una transición en el diagrama general
 
-### I03. No queda claro si hay nivel o no
+En el [diagrama general][estados] no aparece el paso de `EnCurso` a `Inactivo`. En el [contexto del jugador][jugador] sí aparece con `reiniciarPartida()`. El [detalle de reiniciar][reiniciarPartida] también permite llegar a `INACTIVO` cuando se confirma el reinicio durante una partida.
 
-- **Dónde y qué dice cada uno:** en [Modelo del dominio, apartado 6][dominio], se decide que Puntuación y Nivel son propiedades de Juego. Más abajo, la tabla de «Simplificaciones conscientes» dice que no hay niveles de dificultad.
-- **Qué corregiría:** mantendría la simplificación sin niveles y quitaría Nivel de la decisión del apartado 6, indicando que se ha descartado.
-- **Por qué:** no basta con quitarlo como entidad si todavía se conserva como propiedad. Aunque el documento cuenta la evolución del modelo, no señala que esta decisión haya quedado sustituida. Ningún caso de uso necesita niveles; alternar dos velocidades tampoco implica tener niveles de dificultad.
+Añadiría esa transición al diagrama general. Si pretende mostrar los estados del sistema, debería recoger este cambio, que ya está en los otros dos diagramas. No quitaría la posibilidad de reiniciar mientras se juega, porque ambos coinciden en permitirla.
+
+### No queda claro si hay nivel o no
+
+En el [apartado 6 del modelo del dominio][dominio] se decide que Puntuación y Nivel son propiedades de Juego. Más abajo, la tabla de «Simplificaciones conscientes» dice que no hay niveles de dificultad.
+
+Dejaría el ejemplo sin niveles y corregiría el apartado 6 para indicar que Nivel se ha descartado. El documento cuenta cómo se fue construyendo el modelo, pero no señala que la primera decisión haya cambiado. Quitar Nivel como entidad no lo elimina del modelo si todavía se mantiene como propiedad. Además, los casos de uso no necesitan niveles: cambiar entre dos velocidades no implica tener niveles de dificultad.
 
 ## Decisiones discutibles
 
-### D01. Las celdas pertenecen por composición a dos elementos
+### Las celdas pertenecen por composición a dos elementos
 
-- **Decisión:** tanto la [tabla del apartado 7][dominio] como el [modelo final][modelo] ponen composición de Tablero a Celda y de Línea a Celda.
-- **Propuesta:** dejar la composición entre Tablero y Celda, y usar una asociación entre Línea y Celda.
-- **Argumento:** las celdas de una línea son las mismas que las del tablero. No deberían tener dos propietarios por composición al mismo tiempo. La tabla y el dibujo coinciden, por eso lo considero una decisión de modelado mal elegida y no una diferencia entre artefactos. Esta restricción aparece en [UML 2.5.1, apartado 9.5.3, página 112](https://www.omg.org/spec/UML/2.5.1/PDF).
+La [tabla del apartado 7][dominio] y el [modelo final][modelo] ponen composición de Tablero a Celda y de Línea a Celda. Pero las celdas de una línea son las mismas que las del tablero, y una celda no debería tener dos propietarios por composición al mismo tiempo. Esta es la regla que recoge la [referencia de UML sobre composición](https://www.omg.org/spec/UML/2.5.1/PDF).
 
-### D02. El modelo final pierde información que ya se había decidido
+Dejaría la composición entre Tablero y Celda, y pondría una asociación entre Línea y Celda. Así se puede indicar qué celdas forman cada línea sin darles dos propietarios. Aquí la tabla y el dibujo coinciden; lo que cambiaría es la relación elegida.
 
-- **Decisión:** el [texto del dominio][dominio] indica multiplicidades y dice que puntuación y velocidad son atributos. El [diagrama final][modelo] no muestra ni multiplicidades ni atributos.
-- **Propuesta:** añadir los datos que ya se han acordado: un tablero por partida, las multiplicidades de celdas y líneas, puntuación y modo de caída.
-- **Argumento:** el dibujo debería recoger las decisiones del texto para poder entenderlo sin tener que reconstruirlas leyendo toda la página.
+### Faltan datos en el modelo final
 
-### D03. No se precisa cuántas piezas están activas ni qué representa un turno
+El [texto del dominio][dominio] indica multiplicidades y dice que puntuación y velocidad son atributos. Sin embargo, el [diagrama final][modelo] no muestra esos datos.
 
-- **Decisión:** la [tabla de relaciones][dominio] usa `1:*` para las piezas activas. El [modelo][modelo] relaciona Turno con Pieza y Movimiento, pero no explica cuándo empieza y termina un turno.
-- **Propuesta:** indicar que hay una pieza activa mientras la partida está en curso y que puede no haber ninguna antes de empezar o al terminar. Definir el turno desde la aparición de una pieza hasta que queda fijada.
-- **Argumento:** se distingue así la pieza que se controla de las ocupaciones ya fijadas. También se evita interpretar que cada movimiento es un turno o que pueden controlarse varias piezas a la vez. La relación actual no obliga a tener varias, pero tampoco expresa el límite.
+Añadiría las multiplicidades que ya se han decidido, la puntuación y el modo de caída. Por ejemplo, debería verse que una partida tiene un tablero. Así el dibujo se entendería sin tener que buscar esa información por toda la página.
 
-### D04. La elección de Juego frente a Partida no está bien justificada
+### No se explica bien qué es una pieza activa ni cuánto dura un turno
 
-- **Decisión:** en el [apartado 3 del dominio][dominio] se elige Juego porque se considera Partida más propio del multijugador.
-- **Propuesta:** usar Partida para una sesión concreta y Sistema Tetris para la aplicación. También valdría mantener Juego si se aclara que significa Partida.
-- **Argumento:** también hay partidas de un solo jugador. Lo que interesa distinguir es arrancar el sistema de empezar una partida. Lo importante es mantener ese significado en todo el documento.
+La [tabla de relaciones][dominio] usa `1:*` para las piezas activas. El [modelo][modelo] también relaciona Turno con Pieza y Movimiento, pero no explica cuándo empieza y termina un turno.
 
-### D05. Se elimina Bloque sin explicar qué pasa al borrar parte de una pieza
+Indicaría que, mientras se juega, hay una sola pieza activa, y que puede no haber ninguna antes de empezar o al terminar. También definiría el turno desde que aparece una pieza hasta que queda fijada. Así se distingue la pieza que se está controlando de los bloques que ya están colocados, y no se confunde cada movimiento con un turno nuevo. La relación actual permite varias piezas activas, aunque no obliga a que las haya.
 
-- **Decisión:** en el [apartado 3 y la tabla de descartados][dominio] se elimina Bloque porque se considera parte de Pieza y se dice que no existe independientemente.
-- **Propuesta:** distinguir una celda, que es un espacio del tablero, de un bloque, que lo ocupa. Si no se quiere añadir Bloque al modelo, explicar que al fijarse la pieza quedan ocupaciones independientes.
-- **Argumento:** al borrar una línea pueden desaparecer unos bloques de una pieza y quedar otros. El modelo debe permitir explicar ese caso, aunque se mantenga sencillo.
+### La elección de Juego frente a Partida no me parece bien justificada
 
-### D06. Línea mezcla la fila con estar completa
+En el [apartado 3 del dominio][dominio] se elige Juego porque se considera que Partida es más propio del multijugador. Sin embargo, también hay partidas de un solo jugador.
 
-- **Decisión:** en la [lista de conceptos][dominio], Línea es una fila horizontal completa. Después se utiliza como agrupación de celdas del tablero.
-- **Propuesta:** definir Fila como las celdas de una misma altura, y fila completa como aquella cuyas celdas están todas ocupadas por bloques fijados.
-- **Argumento:** una fila existe aunque esté vacía. Usar la misma palabra para la estructura y para una condición deja dudas sobre qué se elimina y qué representa el diagrama.
+Usaría Partida para una sesión de juego y Sistema Tetris para la aplicación. También se podría mantener Juego si se explica que significa Partida. Lo importante es distinguir entre abrir el juego y empezar una partida, y usar las palabras con el mismo significado en todo el documento.
 
-### D07. Algunas razones para incluir o excluir conceptos son poco claras
+### Se descarta Bloque sin explicar qué queda al borrar una línea
 
-- **Decisión:** en el [apartado 4 y los descartados][dominio] se usan los verbos para decidir qué es una entidad y se descarta Columna por no tener comportamiento. Jugador se excluye por ser monojugador.
-- **Propuesta:** decidir según la información y las relaciones que necesita el ejemplo. Columna puede quedar como coordenada y Jugador fuera del modelo si no se necesitan sus datos.
-- **Argumento:** un concepto puede ser importante aunque no tenga acciones propias o solo haya uno. Mantendría esas exclusiones, pero cambiaría sus razones. Que Jugador no esté en el dominio no impide que sea actor en los casos de uso.
+En el [apartado 3 y la tabla de descartados][dominio] se elimina Bloque porque se considera parte de Pieza y se dice que no existe independientemente. El problema es que, al borrar una línea, pueden desaparecer algunos bloques de una pieza y quedar otros.
 
-### D08. Falta concretar las formas y los movimientos
+Distinguiría la celda, que es un espacio del tablero, del bloque que la ocupa. Si se quiere evitar añadir Bloque al modelo, al menos explicaría que, cuando una pieza queda fijada, sus partes pueden permanecer o desaparecer por separado. Esto permite entender qué pasa cuando una pieza no se borra entera.
 
-- **Decisión:** el [dominio][dominio] menciona siete tipos, pero no los desarrolla. [moverPieza()][moverPieza] indica izquierda o derecha sin distancia. [rotarPieza()][rotarPieza] no recoge el sentido, aunque el [prototipo][imagen] ofrece dos comandos de giro.
-- **Propuesta:** definir los siete tipos y sus posiciones de aparición, un desplazamiento de una celda por solicitud y giros de 90 grados en el sentido pedido. Aclarar el punto de giro de cada tipo.
-- **Argumento:** sin esas reglas no se puede saber qué posición debería mostrar el sistema ni cuándo un giro es válido. No hace falta añadir reglas avanzadas, pero sí explicar las básicas. El detalle no niega el giro en ambos sentidos: simplemente no lo concreta.
+### Línea se usa con dos sentidos
 
-### D09. Siguiente pieza y sombra se descartan solo por ser visibles en la interfaz
+En la [lista de conceptos][dominio], Línea se define como una fila horizontal completa. Después se usa como una agrupación de celdas del tablero.
 
-- **Decisión:** en los [conceptos descartados][dominio], Preview/Siguiente y Sombra/Ghost se consideran solo detalles de interfaz.
-- **Propuesta:** dejarlos fuera por simplificar el alcance del ejercicio, separando la información de su representación visual.
-- **Argumento:** saber cuál es la siguiente pieza o dónde aterrizaría la actual tiene un significado, aunque se muestre en pantalla. La puntuación también se muestra y sí forma parte del modelo. No propongo añadir estas funciones, sino mejorar la justificación para excluirlas.
+Llamaría Fila al conjunto de celdas que están a la misma altura, y fila completa a la que tiene todas sus celdas ocupadas por bloques fijados. Una fila existe aunque esté vacía. Separar las dos ideas ayudaría a entender qué representa el diagrama y cuándo hay que eliminar una fila.
 
-### D10. Pausar se menciona, pero no se aclara si entra en el ejercicio
+### Algunas razones para descartar conceptos no me convencen
 
-- **Decisión:** el [apartado 4 del dominio][dominio] asocia pausar a Juego, pero el [catálogo][requisitos] no incluye pausa.
-- **Propuesta:** indicar que se descarta o se deja para otra versión. Si se incluye, habría que añadir sus estados y explicar qué pasa con el tiempo.
-- **Argumento:** una idea inicial no tiene que convertirse en requisito. Lo que falta es dejar clara la decisión para que no parezca un olvido. Por eso no lo cuento como incoherencia.
+En el [apartado 4 y los conceptos descartados][dominio] se usan los verbos para decidir qué es una entidad. Columna se descarta por no tener comportamiento propio y Jugador por tratarse de un juego de un solo jugador.
 
-### D11. La validación se afirma sin explicar cómo se comprobó
+Creo que habría que decidirlo según la información que necesita el ejemplo. Columna podría quedar como una coordenada y Jugador fuera del modelo si no se van a guardar datos de la persona. Mantendría esas exclusiones, pero cambiaría la explicación: un concepto puede ser importante aunque no tenga acciones propias o solo haya uno. Además, Jugador puede seguir siendo actor aunque no aparezca como entidad del dominio.
 
-- **Decisión:** en los [apartados 1 y 9 del dominio][dominio] se mencionan reglas oficiales y validación con expertos. La tabla concluye que el modelo cubre la mecánica completa, pero no identifica las reglas ni los ejemplos comprobados.
-- **Propuesta:** indicar qué versión del juego se toma como referencia y anotar algunos casos revisados, como borrar varias filas o no poder colocar la siguiente pieza.
-- **Argumento:** así se puede comprobar en qué se basa la conclusión. No afirmo que no se validara; digo que el documento no permite saber qué se revisó.
+### Falta concretar las formas y los movimientos
 
-### D12. Se puede confundir terminar una partida con cerrar el sistema
+El [dominio][dominio] menciona siete tipos de piezas, pero no explica sus formas. En [moverPieza()][moverPieza] se indica izquierda o derecha sin decir cuánto se mueve. En [rotarPieza()][rotarPieza] no se pide el sentido del giro, aunque el [prototipo][imagen] ofrece dos comandos distintos.
 
-- **Decisión:** el [diagrama general][estados] permite pasar de Finalizado al estado final y también volver a Inactivo, sin explicar qué provoca cada salida.
-- **Propuesta:** dejar `FINALIZADO` como estado desde el que se puede pedir reinicio. Quitar la salida terminal sin explicar, o definirla si cerrar la aplicación entra en el alcance.
-- **Argumento:** perder una partida no significa necesariamente cerrar el juego. No hace falta inventar un caso de salida si no se quiere estudiar; basta con aclarar qué representan los estados.
+Describiría las siete piezas, dónde aparece cada una y alrededor de qué punto gira. También indicaría que cada solicitud mueve una celda o gira 90 grados en el sentido elegido. Sin esas reglas, no se puede comprobar qué posición debería mostrar el sistema ni si una rotación es válida. No hacen falta reglas avanzadas, pero sí dejar claras las básicas.
 
-### D13. Falta precisar qué salida corresponde a cada resultado
+### Siguiente pieza y sombra se descartan solo por ser detalles de interfaz
 
-- **Decisión:** en [reiniciar][reiniciarPartida] y [descender][descenderPieza], distintas alternativas llegan al mismo final interno y después aparecen salidas hacia estados diferentes. Se usan colores y notas, pero no siempre condiciones claras. Al cancelar el reinicio aparecen dos destinos sin indicar de cuál se venía.
-- **Propuesta:** escribir la condición de cada salida. En descender, solo se llega a `FINALIZADO` si no cabe la nueva pieza. En reiniciar, cancelar desde `EN_CURSO` vuelve a `EN_CURSO`, y cancelar desde `FINALIZADO` vuelve a `FINALIZADO`. En el [contexto del jugador][jugador], indicar también que solo el reinicio confirmado lleva a `INACTIVO`.
-- **Argumento:** no debería depender del color saber qué resultado corresponde. Cancelar tampoco debe reactivar una partida terminada. El contexto podría resumir solo los casos que se completan, pero tendría que decirlo.
+En los [conceptos descartados][dominio], Preview/Siguiente y Sombra/Ghost se consideran únicamente detalles de interfaz. Yo los dejaría fuera para simplificar el ejercicio, pero no por esa razón.
 
-### D14. Se muestra el descenso antes de comprobar si se puede bajar
+Saber cuál es la siguiente pieza o dónde caería la actual también tiene un significado dentro del juego. La puntuación se muestra en pantalla y sí se incluye en el modelo. Por eso explicaría que estas funciones no se van a estudiar en este ejemplo, en vez de descartarlas solo por cómo se muestran.
 
-- **Decisión:** en [descenderPieza()][descenderPieza], primero se presenta una nueva posición y después se comprueba si está en el fondo o sobre piezas fijadas.
-- **Propuesta:** comprobar antes si la pieza puede bajar una celda. Si no puede, fijarla donde está. Si puede, mostrar la nueva posición y dejar claro cuándo se fija al quedar apoyada.
-- **Argumento:** una pieza puede aparecer ya apoyada o llegar a un apoyo tras moverse lateralmente. El detalle debe cubrirlo sin mostrar antes una posición que choque con otra pieza o salga del tablero. Esto no demuestra un fallo del programa; es una duda que deja el detalle.
+### Se menciona pausar, pero después no se vuelve a explicar
 
-### D15. Borrar líneas y actualizar puntos no basta para definir el resultado
+El [apartado 4 del dominio][dominio] incluye pausar entre las acciones de Juego, pero el [catálogo][requisitos] no tiene un caso de uso para ello.
 
-- **Decisión:** [descenderPieza()][descenderPieza] presenta el tablero sin líneas completas y la puntuación actualizada, pero no explica cómo se recolocan las ocupaciones ni cuántos puntos se ganan.
-- **Propuesta:** indicar que se eliminan todas las filas completas tras la fijación y que las ocupaciones superiores bajan los huecos correspondientes. Añadir una regla de puntos para cero, una o varias filas.
-- **Argumento:** sin esas reglas podrían obtenerse tableros y puntuaciones diferentes siguiendo el mismo texto. La puntuación debe depender de una regla acordada, no de lo que cada uno dé por supuesto.
+Indicaría que la pausa se ha descartado o se deja para otra versión. Si se quiere incluir, habría que explicar sus estados y qué ocurre con el tiempo. No considero que sea una contradicción, porque una idea inicial puede descartarse; lo que falta es dejar escrita esa decisión.
 
-### D16. No se concretan las velocidades ni los tiempos de respuesta
+### Se dice que el modelo está validado, pero faltan ejemplos de esa revisión
 
-- **Decisión:** [alternarVelocidadCaida()][alternarVelocidadCaida] distingue normal y acelerada, pero no se fijan sus intervalos ni el modo inicial. Los [detalles][requisitos] tampoco indican cuánto puede tardar el sistema en mostrar la respuesta a una solicitud.
-- **Propuesta:** definir los dos intervalos, empezar en normal y aclarar si el modo se mantiene al cambiar de pieza. Mantener alternar como un cambio de velocidad, sin un descenso extra. Acordar también un tiempo máximo de respuesta y cómo comprobarlo.
-- **Argumento:** caer más rápido no indica cuánto ni desde cuándo. Además, un movimiento que se muestra varios segundos después podría cumplir el texto y dificultar el juego. Son datos necesarios para comprobar la interacción.
+En los [apartados 1 y 9 del dominio][dominio] se mencionan reglas oficiales y validación con expertos. La tabla dice que el modelo cubre la mecánica completa, pero no indica qué reglas se consultaron ni qué situaciones se comprobaron.
 
-### D17. Reiniciar no explica bien el resultado ni la espera de confirmación
+Añadiría la versión del juego que se toma como referencia y algunos ejemplos revisados, como borrar varias filas o no poder colocar la siguiente pieza. No digo que no se haya validado, sino que con lo que está escrito no se puede saber en qué se basa esa conclusión.
 
-- **Decisión:** [reiniciarPartida()][reiniciarPartida] lleva a `INACTIVO` y dice que el sistema limpia el estado. No aclara si la partida sigue avanzando mientras se espera la confirmación.
-- **Propuesta:** mantener ese destino y explicar que se vuelve a la pantalla inicial, con puntuación cero y opción de iniciar. Mientras se confirma, detener temporalmente la partida; si se cancela, volver al estado anterior sin cambios.
-- **Argumento:** el nombre reiniciar podría entenderse como empezar otra partida directamente, pero aquí hace falta solicitar iniciar después. Además, si el tiempo sigue avanzando durante la confirmación, se podría perder antes de responder. La respuesta debe explicar qué ve el jugador, no solo una limpieza interna.
+### Terminar una partida no es lo mismo que cerrar el juego
 
-### D18. Game Over no explica cómo continuar
+El [diagrama general][estados] permite pasar de Finalizado al estado final y también volver a Inactivo, sin explicar qué provoca cada salida.
 
-- **Decisión:** la última alternativa de [descenderPieza()][descenderPieza] presenta Game Over. El [contexto del jugador][jugador] permite reiniciar desde Finalizado, pero esa opción no se presenta en el detalle.
-- **Propuesta:** mostrar la puntuación y el tablero final, permitir pedir reinicio y aclarar que ya no se puede mover o girar la pieza.
-- **Argumento:** llegar a un estado no explica por sí solo qué información se conserva ni qué puede solicitar el jugador a continuación.
+Dejaría `FINALIZADO` como el estado desde el que se puede pedir reinicio. Quitaría la salida al estado final, salvo que se quiera explicar también cómo se cierra la aplicación. Perder una partida no significa que se cierre el juego, y el diagrama debería dejar clara esa diferencia.
 
-### D19. El prototipo no permite comprobar todos los casos de uso
+### No siempre se sabe qué salida corresponde a cada resultado
 
-- **Decisión:** el [apartado de prototipado][requisitos] dice que una sola imagen es suficiente. La [captura][imagen] muestra tablero, puntuación y controles 4, 6, 7 y 9. No muestra cómo iniciar, reiniciar, confirmar, cancelar o alternar la velocidad.
-- **Propuesta:** añadir bocetos sencillos de inicio, confirmación y fin de partida; explicar los controles que faltan y qué ocurre con un comando no válido. Para la velocidad y el descenso, acompañarlos de una secuencia breve que muestre los cambios.
-- **Argumento:** una captura no muestra movimiento ni permite distinguir dos velocidades. El texto de alternar tampoco explica la vuelta de acelerada a normal. No hace falta una pantalla por caso de uso, pero sí poder seguir las interacciones que se han definido. Las teclas concretas deben quedar aquí, sin mezclarlas con los detalles abstractos.
+En [reiniciar][reiniciarPartida] y [descender][descenderPieza], varias alternativas llegan al mismo final interno y después aparecen salidas hacia estados diferentes. Hay colores y notas, pero faltan condiciones en las salidas. Por ejemplo, al cancelar el reinicio aparecen dos destinos sin indicar de cuál se venía.
 
-## Criterios que he mantenido
+Escribiría la condición en cada salida. En descender, solo se llegaría a `FINALIZADO` si no cabe la nueva pieza. En reiniciar, cancelar desde `EN_CURSO` devolvería a `EN_CURSO`, y cancelar desde `FINALIZADO` devolvería a `FINALIZADO`. En el [contexto del jugador][jugador] también aclararía que solo se llega a `INACTIVO` si se confirma el reinicio. Así no hay que deducirlo por el color, ni queda la duda de si cancelar puede reactivar una partida perdida.
 
-No considero un error usar Tiempo como actor: los [apuntes de encontrar actores y casos de uso](https://github.com/mmasias/idsw1/blob/main/temario/contenidos/00006-CdU.eAyCdU.md) lo permiten. Tampoco veo mal usar diagramas de estados para los detalles, porque es una de las formas trabajadas en [detallar casos de uso](https://github.com/mmasias/idsw1/blob/main/temario/contenidos/00008-Cdu.dCdU.md).
+### Se muestra el descenso antes de comprobar si la pieza puede bajar
 
-He seguido también los apuntes de [modelo del dominio](https://github.com/mmasias/idsw1/blob/main/temario/contenidos/00004-MdD.md) y [prototipado](https://github.com/mmasias/idsw1/blob/main/temario/contenidos/00009-CdU.ICdU.md). El [ejemplo de hdC](https://github.com/mmasias/hdC/blob/main/docs/UMLdocs/mdd.md) me ha servido para ver cómo se complementan las distintas vistas.
+En [descenderPieza()][descenderPieza], primero se presenta la pieza en una nueva posición y después se comprueba si está en el fondo o sobre piezas fijadas.
 
-No propongo añadir multijugador, niveles ni funciones avanzadas. He comparado la documentación del alcance indicado, no la implementación. También he contrastado los contenidos de las fuentes PlantUML con sus SVG publicados y no he encontrado diferencias en los puntos comentados.
+Comprobaría antes si puede bajar una celda. Si no puede, la fijaría donde está. Si puede, mostraría la nueva posición y explicaría cuándo queda fijada al tocar un apoyo. Esto cubre el caso de una pieza que aparece ya apoyada o llega a un apoyo tras moverse de lado. El detalle no debería dejar la duda de si antes se muestra una posición que choca con otra pieza o sale del tablero.
+
+### No se explica del todo cómo se borran las líneas ni cómo se suman los puntos
+
+[descenderPieza()][descenderPieza] presenta el tablero sin líneas completas y la puntuación actualizada, pero no dice cómo se recolocan los bloques ni cuántos puntos se ganan.
+
+Explicaría que se eliminan todas las filas completas tras fijar la pieza y que los bloques de arriba bajan para ocupar los huecos. También añadiría una regla de puntuación para cuando no se borra ninguna fila, se borra una o se borran varias. Sin eso, dos personas podrían interpretar resultados distintos a partir del mismo texto.
+
+### Faltan datos sobre las velocidades y el tiempo de respuesta
+
+[alternarVelocidadCaida()][alternarVelocidadCaida] distingue velocidad normal y acelerada, pero no dice cada cuánto baja la pieza ni con qué modo se empieza. Los [detalles][requisitos] tampoco indican cuánto puede tardar el sistema en mostrar la respuesta a una solicitud.
+
+Definiría los dos intervalos, empezaría en normal y aclararía si la velocidad se mantiene cuando aparece otra pieza. Al alternar, cambiaría solo la velocidad, sin hacer que la pieza baje además una posición. También acordaría un tiempo máximo de respuesta. Decir que cae más rápido no basta para comprobarlo, y un movimiento que tarda varios segundos en verse puede hacer que sea difícil jugar.
+
+### Reiniciar deja dudas sobre la confirmación y lo que ocurre después
+
+[reiniciarPartida()][reiniciarPartida] lleva a `INACTIVO` y dice que el sistema limpia el estado. No explica si la partida sigue avanzando mientras el jugador responde a la confirmación.
+
+Mantendría ese destino, pero diría que se vuelve a la pantalla inicial, con puntuación cero y opción de iniciar. Mientras se espera la respuesta, detendría la partida; si se cancela, se volvería a ella sin cambios. Así no se puede perder mientras se está confirmando. También aclararía que reiniciar no empieza otra partida directamente, porque aquí hay que solicitar iniciar después.
+
+### Game Over no explica cómo continuar
+
+La última alternativa de [descenderPieza()][descenderPieza] presenta Game Over. El [contexto del jugador][jugador] permite reiniciar desde Finalizado, pero el detalle no ofrece esa opción.
+
+Mostraría el tablero y la puntuación final, y permitiría pedir reinicio. También aclararía que ya no se puede mover ni girar la pieza. Saber que se ha llegado a `FINALIZADO` no explica por sí solo qué ve el jugador ni qué puede hacer a continuación.
+
+### Una sola captura no muestra todos los casos de uso
+
+El [apartado de prototipado][requisitos] dice que una imagen es suficiente. Sin embargo, la [captura][imagen] solo muestra el tablero, la puntuación y los controles 4, 6, 7 y 9. No se ve cómo iniciar, reiniciar, confirmar, cancelar o alternar la velocidad.
+
+Añadiría bocetos sencillos de la pantalla inicial, la confirmación y el fin de partida. Explicaría los controles que faltan y qué ocurre si se introduce un comando que no existe. Para el descenso y la velocidad, pondría una secuencia breve de lo que va pasando, incluyendo la vuelta de velocidad acelerada a normal. No hace falta dibujar una pantalla para cada caso de uso, pero una captura quieta no permite comprobar movimiento ni velocidad. Las teclas concretas las dejaría en el prototipo, no en los detalles de los casos de uso.
+
+## Apuntes que he usado
+
+He seguido los apuntes de [modelo del dominio](https://github.com/mmasias/idsw1/blob/main/temario/contenidos/00004-MdD.md), [actores y casos de uso](https://github.com/mmasias/idsw1/blob/main/temario/contenidos/00006-CdU.eAyCdU.md), [detallar casos de uso](https://github.com/mmasias/idsw1/blob/main/temario/contenidos/00008-Cdu.dCdU.md) y [prototipado](https://github.com/mmasias/idsw1/blob/main/temario/contenidos/00009-CdU.ICdU.md), además del [ejemplo de hdC](https://github.com/mmasias/hdC/blob/main/docs/UMLdocs/mdd.md).
+
+No he señalado como errores el actor Tiempo ni el uso de diagramas de estados para detallar los casos de uso, porque ambos se admiten en los apuntes. Tampoco he pedido añadir niveles, multijugador ni otras funciones que se han dejado fuera del ejercicio.
 
 [dominio]: https://github.com/puntoReflex/pyTetris/blob/92c950ad9746dc768be130f75c988c0f712d5509/docs/modeloDelDominio.md
 [requisitos]: https://github.com/puntoReflex/pyTetris/blob/92c950ad9746dc768be130f75c988c0f712d5509/docs/ProcesoRequisitos.md

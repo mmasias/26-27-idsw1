@@ -1,13 +1,11 @@
-# Reto 002: revisión del ejemplo de Tetris
+# Revisión del ejemplo de Tetris
 
 **Marcos González Hidalgo · Ingeniería del Software I**
 
-He revisado los textos, tablas, diagramas y prototipo del ejemplo de Tetris. La entrega distingue entre incoherencias, donde dos partes dicen cosas distintas, y decisiones discutibles, donde propongo un cambio y explico el motivo.
+En esta entrega reviso el modelo del dominio, los requisitos, los diagramas y el prototipo del ejemplo de Tetris. Explico las diferencias que he encontrado y las cosas que cambiaría, con sus motivos.
 
-## Contenido
+- [Análisis del ejemplo](docs/analisis.md): incoherencias y decisiones discutibles.
+- [Cambios que propongo](docs/propuesta.md): cómo dejaría los estados y el caso de uso de reiniciar.
+- [Archivos PlantUML](modelosUML/) e [imágenes SVG](images/).
 
-- [Análisis](docs/analisis.md): 3 incoherencias y 19 decisiones discutibles, con enlaces a los puntos revisados.
-- [Propuesta](docs/propuesta.md): corrección de los estados y del detalle de reiniciar, con ejemplos para comprobar el resultado.
-- [Fuentes PlantUML](modelosUML/) e [imágenes SVG](images/).
-
-No hay carpeta `src` porque el ejercicio no incluye código.
+No hay código porque el ejercicio consiste en revisar la documentación.

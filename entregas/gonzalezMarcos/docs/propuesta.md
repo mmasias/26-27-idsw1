@@ -1,51 +1,45 @@
-# Propuesta de corrección
+# Cómo cambiaría los diagramas
 
 [Volver al README](../README.md) · [Ver el análisis](analisis.md)
 
-Estos dos diagramas desarrollan las correcciones de I02, D12, D13 y D17. Mantengo los tres estados y los casos de uso del ejemplo. Son mi propuesta para aclararlos, no una nueva versión completa de todos los requisitos.
+He preparado estos dos diagramas para explicar mejor los cambios que propongo sobre los estados y el reinicio. Mantengo los tres estados del ejemplo y aclaro qué ocurre al confirmar o cancelar.
 
 ## Estados del sistema
 
 ![Propuesta de estados del sistema](../images/estados.svg)
 
-[Fuente PlantUML](../modelosUML/estados.puml)
+[Ver el archivo PlantUML](../modelosUML/estados.puml)
 
-Añado el paso de `EN_CURSO` a `INACTIVO` por reinicio confirmado y distingo el fin de partida del cierre de la aplicación. El diagrama resume los resultados de los casos de uso; la cancelación se detalla a continuación.
+Añadiría el paso de `EN_CURSO` a `INACTIVO` cuando se confirma el reinicio. También dejaría claro que llegar a `FINALIZADO` significa haber terminado la partida, no cerrar la aplicación. Si se cancela el reinicio, se sigue en el estado en el que se estaba.
 
-## Detalle de reiniciarPartida()
+## Reiniciar una partida
 
 - **Actor:** Jugador.
-- **Antes de empezar:** la partida está en `EN_CURSO` o `FINALIZADO` y no hay otra confirmación abierta.
-- **Inicio:** el jugador solicita reiniciar la partida.
+- **Antes de empezar:** la partida está en curso o ha terminado y no se está esperando otra confirmación.
+- **Cómo empieza:** el jugador solicita reiniciar.
 
-**Flujo principal:**
+El flujo principal quedaría así:
 
 1. El sistema presenta una confirmación y permite confirmar o cancelar.
 2. El jugador solicita confirmar.
-3. El sistema presenta la pantalla inicial, sin pieza activa ni bloques fijados, con puntuación cero y modo de caída normal.
+3. El sistema presenta la pantalla inicial, sin pieza activa ni bloques fijados, con puntuación cero y velocidad normal.
 4. El sistema permite solicitar iniciar una partida. El estado queda en `INACTIVO`.
 
-**Alternativa:** si el jugador solicita cancelar, el sistema presenta la partida o el resultado final sin cambios. Se conserva el estado desde el que se pidió reiniciar.
+Si el jugador cancela, el sistema vuelve a presentar la partida o el resultado final sin cambios. Cancelar desde `FINALIZADO` no permite seguir jugando una partida que ya se ha perdido.
 
-Mientras se espera la respuesta, la partida no avanza ni permite mover, girar o alternar la velocidad. Si se cancela desde `EN_CURSO`, se reanuda la caída con un intervalo completo del modo que estaba activo. No se acumulan descensos durante la espera. Esto evita que la partida termine mientras se está confirmando.
+Mientras se espera la respuesta, la partida no avanza y no se puede mover, girar ni cambiar la velocidad. Si se cancela durante una partida, la caída continúa con la velocidad que tenía antes. Se espera un intervalo completo antes del siguiente descenso, sin recuperar los que no se hicieron durante la confirmación. Lo plantearía así para que no se pueda perder mientras se responde al mensaje.
 
 ![Detalle propuesto de reiniciar partida](../images/reiniciarPartida.svg)
 
-[Fuente PlantUML](../modelosUML/reiniciarPartida.puml)
+[Ver el archivo PlantUML](../modelosUML/reiniciarPartida.puml)
 
 ## Ejemplos para comprobarlo
 
-| Situación | Solicitud | Resultado esperado |
+| Situación | Qué pide el jugador | Qué debería pasar |
 |---|---|---|
-| Partida en curso o finalizada | Reiniciar y confirmar | `INACTIVO`, sin pieza activa ni bloques, puntuación 0, modo normal y opción de iniciar |
-| Partida en curso | Reiniciar y cancelar | Misma pieza, tablero, puntos y velocidad; continúa en `EN_CURSO` |
-| Partida finalizada | Reiniciar y cancelar | Conserva tablero y puntuación; sigue en `FINALIZADO` |
-| Confirmación abierta durante una partida | Esperar sin responder | La pieza no baja ni se modifica la partida |
+| Partida en curso o terminada | Reiniciar y confirmar | Vuelve al inicio, sin pieza ni bloques, con puntuación 0 y velocidad normal. Puede pedir iniciar otra partida. |
+| Partida en curso | Reiniciar y cancelar | Conserva la pieza, el tablero, los puntos y la velocidad, y puede seguir jugando. |
+| Partida terminada | Reiniciar y cancelar | Se siguen mostrando el tablero y la puntuación final. La partida no se reanuda. |
+| Se está esperando la confirmación | No responder todavía | La pieza no baja y la partida no cambia. |
 
-## Generar las imágenes
-
-Las dos imágenes se generan desde sus fuentes PlantUML en formato SVG. Desde la carpeta `gonzalezMarcos`, con PlantUML disponible:
-
-```sh
-java -jar /ruta/plantuml.jar -charset UTF-8 -tsvg -o ../images modelosUML/*.puml
-```
+Los diagramas están guardados en SVG y sus archivos PlantUML están en la carpeta `modelosUML`.
