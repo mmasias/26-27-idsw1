@@ -164,7 +164,7 @@ Según la especificación UML, una parte puede pertenecer como máximo a un úni
 
 Me parece que se está utilizando la composición para representar agrupaciones que no necesariamente implican una propiedad independiente.
 
-Referencia: [OMG - UML 2.5.1](https://www.omg.org/spec/UML/2.5.1/PDF).
+
 
 ---
 
