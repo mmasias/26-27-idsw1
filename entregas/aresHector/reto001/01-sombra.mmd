@@ -1,0 +1,12 @@
+---
+title: Una sombra
+---
+classDiagram
+  direction TB
+  class FuenteDeLuz
+  class CuerpoOpaco
+  class Sombra
+  class Superficie
+  FuenteDeLuz "1" -- "0..*" Sombra : origina
+  CuerpoOpaco "1" -- "0..*" Sombra : proyecta
+  Sombra "0..*" -- "1" Superficie : aparece sobre
