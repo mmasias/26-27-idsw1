@@ -2,35 +2,41 @@
 skinparam backgroundColor white
 skinparam shadowing false
 skinparam defaultFontName SansSerif
+skinparam defaultFontSize 14
+skinparam stateFontSize 16
 skinparam ArrowColor #374151
 skinparam stateBackgroundColor #F3F7FC
 skinparam stateBorderColor #374151
 hide empty description
 
-title Detalle de reiniciarPartida(): propuesta
+title Reiniciar una partida
 
-state EN_CURSO
-state FINALIZADO
-state "Confirmación pendiente" as Confirmacion
+state "EN_CURSO" as EnCursoAntes
+state "FINALIZADO" as FinalizadoAntes
+state "Confirmación" as Confirmacion
 state Respuesta <<choice>>
-state INACTIVO
+state "EN_CURSO" as EnCursoDespues
+state "INACTIVO" as Inactivo
+state "FINALIZADO" as FinalizadoDespues
 
-EN_CURSO --> Confirmacion : Jugador solicita reiniciar partida
-FINALIZADO --> Confirmacion : Jugador solicita reiniciar partida
+EnCursoAntes --> Confirmacion : Jugador solicita\nreiniciar partida
+FinalizadoAntes --> Confirmacion : Jugador solicita\nreiniciar partida
 
-note right of Confirmacion
-  Sistema presenta la confirmación.
-  Sistema permite solicitar confirmar o cancelar.
-  La partida no avanza durante la espera.
-end note
+Confirmacion : Sistema presenta la confirmación.
+Confirmacion : Sistema permite confirmar o cancelar.
+Confirmacion : La partida no avanza durante la espera.
 
-Confirmacion --> Respuesta : Jugador solicita confirmar o cancelar
-Respuesta --> INACTIVO : [confirma]\nSistema presenta la pantalla inicial,\npuntuación 0 y modo normal.\nSistema permite solicitar iniciar partida.
-Respuesta --> EN_CURSO : [cancela y venía de EN_CURSO]\nSistema presenta la partida sin cambios.
-Respuesta --> FINALIZADO : [cancela y venía de FINALIZADO]\nSistema presenta el resultado final sin cambios.
+Confirmacion --> Respuesta : Jugador solicita\nconfirmar o cancelar
+Respuesta --> EnCursoDespues : [cancela y venía\nde EN_CURSO]
+Respuesta --> Inactivo : [confirma]
+Respuesta --> FinalizadoDespues : [cancela y venía\nde FINALIZADO]
 
-note bottom of INACTIVO
-  No hay pieza activa ni bloques fijados.
-  Confirmar no inicia otra partida automáticamente.
-end note
+EnCursoDespues : Sistema presenta la partida
+EnCursoDespues : sin cambios.
+Inactivo : Sistema presenta la pantalla inicial,
+Inactivo : sin pieza activa ni bloques,
+Inactivo : con puntuación 0 y velocidad normal.
+Inactivo : Sistema permite iniciar partida.
+FinalizadoDespues : Sistema presenta el resultado
+FinalizadoDespues : final sin cambios.
 @enduml

@@ -2,12 +2,14 @@
 skinparam backgroundColor white
 skinparam shadowing false
 skinparam defaultFontName SansSerif
+skinparam defaultFontSize 14
+skinparam stateFontSize 16
 skinparam ArrowColor #374151
 skinparam stateBackgroundColor #F3F7FC
 skinparam stateBorderColor #374151
 hide empty description
 
-title Estados del sistema: propuesta
+title Estados del sistema
 
 state INACTIVO
 state EN_CURSO
@@ -15,14 +17,12 @@ state FINALIZADO
 
 [*] -down-> INACTIVO : arrancarSistema()
 INACTIVO -down-> EN_CURSO : iniciarPartida()
-EN_CURSO --> EN_CURSO : moverPieza(), rotarPieza(),\nalternarVelocidadCaida(), descenderPieza()\n[la partida continúa]
+EN_CURSO --> EN_CURSO : moverPieza(), rotarPieza(),\nalternarVelocidadCaida(),\ndescenderPieza()\n[la partida continúa]
 EN_CURSO -down-> FINALIZADO : descenderPieza()\n[no cabe la nueva pieza]
 EN_CURSO -up-> INACTIVO : reiniciarPartida()\n[confirmado]
 FINALIZADO --> INACTIVO : reiniciarPartida()\n[confirmado]
 
 note top of INACTIVO
-  El diagrama resume los resultados
-  de los casos de uso.
   Un movimiento o giro bloqueado
   también conserva EN_CURSO.
 end note
