@@ -2,7 +2,7 @@
 
 [Volver al README](../README.md) · [Ver la propuesta](propuesta.md)
 
-He comparado el [modelo del dominio][dominio] con los [requisitos][requisitos], sus diagramas y el prototipo. Estos son los puntos que cambiaría. Primero están las partes que dicen cosas distintas sobre lo mismo y después las decisiones que creo que se podrían explicar o plantear mejor.
+Revisión del [modelo del dominio][dominio], los [requisitos][requisitos], sus diagramas y el prototipo.
 
 ## Incoherencias
 
@@ -72,7 +72,7 @@ Creo que habría que decidirlo según la información que necesita el ejemplo. C
 
 El [dominio][dominio] menciona siete tipos de piezas, pero no explica sus formas. En [moverPieza()][moverPieza] se indica izquierda o derecha sin decir cuánto se mueve. En [rotarPieza()][rotarPieza] no se pide el sentido del giro, aunque el [prototipo][imagen] ofrece dos comandos distintos.
 
-Describiría las siete piezas, dónde aparece cada una y alrededor de qué punto gira. También indicaría que cada solicitud mueve una celda o gira 90 grados en el sentido elegido. Sin esas reglas, no se puede comprobar qué posición debería mostrar el sistema ni si una rotación es válida. No hacen falta reglas avanzadas, pero sí dejar claras las básicas.
+Describiría las siete piezas, dónde aparece cada una y alrededor de qué punto gira. También indicaría que cada solicitud mueve una celda o gira 90 grados en el sentido elegido. Sin esas reglas, no se puede comprobar qué posición debería mostrar el sistema ni si una rotación es válida.
 
 ### Siguiente pieza y sombra se descartan solo por ser detalles de interfaz
 
@@ -84,13 +84,13 @@ Saber cuál es la siguiente pieza o dónde caería la actual también tiene un s
 
 El [apartado 4 del dominio][dominio] incluye pausar entre las acciones de Juego, pero el [catálogo][requisitos] no tiene un caso de uso para ello.
 
-Indicaría que la pausa se ha descartado o se deja para otra versión. Si se quiere incluir, habría que explicar sus estados y qué ocurre con el tiempo. No considero que sea una contradicción, porque una idea inicial puede descartarse; lo que falta es dejar escrita esa decisión.
+Indicaría que la pausa se ha descartado o se deja para otra versión. Si se quiere incluir, habría que explicar sus estados y qué ocurre con el tiempo. Dejar escrita esa decisión permitiría distinguir un descarte de un olvido.
 
 ### Se dice que el modelo está validado, pero faltan ejemplos de esa revisión
 
 En los [apartados 1 y 9 del dominio][dominio] se mencionan reglas oficiales y validación con expertos. La tabla dice que el modelo cubre la mecánica completa, pero no indica qué reglas se consultaron ni qué situaciones se comprobaron.
 
-Añadiría la versión del juego que se toma como referencia y algunos ejemplos revisados, como borrar varias filas o no poder colocar la siguiente pieza. No digo que no se haya validado, sino que con lo que está escrito no se puede saber en qué se basa esa conclusión.
+Añadiría la versión del juego que se toma como referencia y algunos ejemplos revisados, como borrar varias filas o no poder colocar la siguiente pieza. Así se podría comprobar en qué se basa la conclusión de que el modelo está completo.
 
 ### Terminar una partida no es lo mismo que cerrar el juego
 
@@ -138,13 +138,7 @@ Mostraría el tablero y la puntuación final, y permitiría pedir reinicio. Tamb
 
 El [apartado de prototipado][requisitos] dice que una imagen es suficiente. Sin embargo, la [captura][imagen] solo muestra el tablero, la puntuación y los controles 4, 6, 7 y 9. No se ve cómo iniciar, reiniciar, confirmar, cancelar o alternar la velocidad.
 
-Añadiría bocetos sencillos de la pantalla inicial, la confirmación y el fin de partida. Explicaría los controles que faltan y qué ocurre si se introduce un comando que no existe. Para el descenso y la velocidad, pondría una secuencia breve de lo que va pasando, incluyendo la vuelta de velocidad acelerada a normal. No hace falta dibujar una pantalla para cada caso de uso, pero una captura quieta no permite comprobar movimiento ni velocidad. Las teclas concretas las dejaría en el prototipo, no en los detalles de los casos de uso.
-
-## Apuntes que he usado
-
-He seguido los apuntes de [modelo del dominio](https://github.com/mmasias/idsw1/blob/main/temario/contenidos/00004-MdD.md), [actores y casos de uso](https://github.com/mmasias/idsw1/blob/main/temario/contenidos/00006-CdU.eAyCdU.md), [detallar casos de uso](https://github.com/mmasias/idsw1/blob/main/temario/contenidos/00008-Cdu.dCdU.md) y [prototipado](https://github.com/mmasias/idsw1/blob/main/temario/contenidos/00009-CdU.ICdU.md), además del [ejemplo de hdC](https://github.com/mmasias/hdC/blob/main/docs/UMLdocs/mdd.md).
-
-No he señalado como errores el actor Tiempo ni el uso de diagramas de estados para detallar los casos de uso, porque ambos se admiten en los apuntes. Tampoco he pedido añadir niveles, multijugador ni otras funciones que se han dejado fuera del ejercicio.
+Añadiría bocetos sencillos de la pantalla inicial, la confirmación y el fin de partida. Explicaría los controles que faltan y qué ocurre si se introduce un comando que no existe. Para el descenso y la velocidad, pondría una secuencia breve de lo que va pasando, incluyendo la vuelta de velocidad acelerada a normal. Una captura quieta no permite comprobar movimiento ni velocidad. Las teclas concretas las dejaría en el prototipo, no en los detalles de los casos de uso.
 
 [dominio]: https://github.com/puntoReflex/pyTetris/blob/92c950ad9746dc768be130f75c988c0f712d5509/docs/modeloDelDominio.md
 [requisitos]: https://github.com/puntoReflex/pyTetris/blob/92c950ad9746dc768be130f75c988c0f712d5509/docs/ProcesoRequisitos.md

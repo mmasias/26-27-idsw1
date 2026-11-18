@@ -7,5 +7,3 @@ En esta entrega reviso el modelo del dominio, los requisitos, los diagramas y el
 - [Análisis del ejemplo](docs/analisis.md): incoherencias y decisiones discutibles.
 - [Cambios que propongo](docs/propuesta.md): cómo dejaría los estados y el caso de uso de reiniciar.
 - [Archivos PlantUML](modelosUML/) e [imágenes SVG](images/).
-
-No hay código porque el ejercicio consiste en revisar la documentación.

@@ -2,8 +2,6 @@
 
 [Volver al README](../README.md) · [Ver el análisis](analisis.md)
 
-He preparado estos dos diagramas para explicar mejor los cambios que propongo sobre los estados y el reinicio. Mantengo los tres estados del ejemplo y aclaro qué ocurre al confirmar o cancelar.
-
 ## Estados del sistema
 
 ![Propuesta de estados del sistema](../images/estados.svg)
@@ -41,5 +39,3 @@ Mientras se espera la respuesta, la partida no avanza y no se puede mover, girar
 | Partida en curso | Reiniciar y cancelar | Conserva la pieza, el tablero, los puntos y la velocidad, y puede seguir jugando. |
 | Partida terminada | Reiniciar y cancelar | Se siguen mostrando el tablero y la puntuación final. La partida no se reanuda. |
 | Se está esperando la confirmación | No responder todavía | La pieza no baja y la partida no cambia. |
-
-Los diagramas están guardados en SVG y sus archivos PlantUML están en la carpeta `modelosUML`.
