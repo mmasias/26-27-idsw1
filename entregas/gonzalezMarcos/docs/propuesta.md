@@ -2,13 +2,15 @@
 
 [Volver al README](../README.md) · [Ver el análisis](analisis.md)
 
+[Estados del sistema](#estados-del-sistema) · [Reiniciar una partida](#reiniciar-una-partida)
+
 ## Estados del sistema
 
 ![Propuesta de estados del sistema](../images/estados.svg)
 
-[Ver el archivo PlantUML](../modelosUML/estados.puml)
+[Abrir diagrama](../images/estados.svg) · [Ver PlantUML](../modelosUML/estados.puml)
 
-Añadiría el paso de `EN_CURSO` a `INACTIVO` cuando se confirma el reinicio. También dejaría claro que llegar a `FINALIZADO` significa haber terminado la partida, no cerrar la aplicación. Si se cancela el reinicio, se sigue en el estado en el que se estaba.
+El cambio principal es añadir el paso de `EN_CURSO` a `INACTIVO` cuando se confirma el reinicio. Si se cancela, se conserva el estado anterior. Las etiquetas indican qué caso de uso lleva a cada estado.
 
 ## Reiniciar una partida
 
@@ -25,11 +27,11 @@ El flujo principal quedaría así:
 
 Si el jugador cancela, el sistema vuelve a presentar la partida o el resultado final sin cambios. Cancelar desde `FINALIZADO` no permite seguir jugando una partida que ya se ha perdido.
 
-Mientras se espera la respuesta, la partida no avanza y no se puede mover, girar ni cambiar la velocidad. Si se cancela durante una partida, la caída continúa con la velocidad que tenía antes. Se espera un intervalo completo antes del siguiente descenso, sin recuperar los que no se hicieron durante la confirmación. Lo plantearía así para que no se pueda perder mientras se responde al mensaje.
+Mientras se espera la respuesta, la partida no avanza y no se puede mover, girar ni cambiar la velocidad. Si se cancela desde `EN_CURSO`, la partida continúa con la velocidad que tenía antes y sin descensos acumulados durante la espera. Así el jugador no puede perder mientras responde al mensaje.
 
 ![Detalle propuesto de reiniciar partida](../images/reiniciarPartida.svg)
 
-[Ver el archivo PlantUML](../modelosUML/reiniciarPartida.puml)
+[Abrir diagrama](../images/reiniciarPartida.svg) · [Ver PlantUML](../modelosUML/reiniciarPartida.puml)
 
 ## Ejemplos para comprobarlo
 
