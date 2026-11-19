@@ -4,7 +4,7 @@ Este repositorio recoge la revisión y corrección de los modelos UML del proyec
 
 ## Contenido del repositorio
 
-- **[`Análisis.md`](./Análisis.md):** Resumen global de hallazgos e índice de todas las correcciones.
-- **[`correcciones/`](./correcciones/):** Fichas detalladas con la justificación y comparativa visual de cada artefacto corregido.
+- **[`Analisis.md`](./docs/Analisis.md):** Resumen global de hallazgos e índice de todas las correcciones.
+- **[`correcciones/`](./docs/correcciones/):** Fichas detalladas con la justificación y comparativa visual de cada artefacto corregido.
 - **[`modelosUML/`](./modelosUML/):** Código fuente PlantUML (`.puml`) de los diagramas corregidos.
 - **[`images/`](./images/):** Diagramas renderizados en formato `.svg` a partir de los modelos corregidos.

@@ -24,7 +24,7 @@ En [`docs/modeloDelDominio.md`](https://github.com/puntoReflex/pyTetris/blob/mai
 
 Sin embargo, toda la fase de requisitos contradice esa decisión y utiliza `Partida` de forma sistemática: aparece en [`docs/ProcesoRequisitos.md`](https://github.com/puntoReflex/pyTetris/blob/main/docs/ProcesoRequisitos.md#L32), en [`DiagramaCasosUso.puml`](https://github.com/puntoReflex/pyTetris/blob/main/modelosUML/DiagramaCasosUso.puml#L9-L10), en [`DiagramaDeContexto001-ActorJugador.puml`](https://github.com/puntoReflex/pyTetris/blob/main/modelosUML/DiagramaDeContexto001-ActorJugador.puml#L11) y en los detalles de `iniciarPartida.puml` y `reiniciarPartida.puml`.
 
-En lugar de renombrar toda la fase de requisitos, se opta por **corregir el Modelo del Dominio reincorporando `Partida`**. Ambos conceptos no son sinónimos, sino entidades con responsabilidades distintas que encajan con el ciclo de vida del sistema: `Juego` representa la aplicación en ejecución y `Partida` cada sesión concreta que se inicia, se juega y se reinicia ([ver `ModeloDominio.md`](./ModeloDominio.md)).
+En lugar de renombrar toda la fase de requisitos, se opta por **corregir el Modelo del Dominio reincorporando `Partida`**. Ambos conceptos no son sinónimos, sino entidades con responsabilidades distintas que encajan con el ciclo de vida del sistema: `Juego` representa la aplicación en ejecución y `Partida` cada sesión concreta que se inicia, se juega y se reinicia ([ver `ModeloDominio.md`](./correcciones/ModeloDominio.md)).
 
 ### 2.3. Artefacto sobrante sin código fuente (`acelerarCaida.svg`)
 
@@ -40,25 +40,25 @@ Además, el diagrama presenta dos diferencias claras respecto al resto del bloqu
 
 | Artefacto original | Corrección aplicada | Detalle |
 | :--- | :--- | :--- |
-| `modelosUML/ModeloDominio.puml` | Se añade `Partida` gestionada por `Juego` (`Juego *-- Partida`). | [ModeloDominio.md](./ModeloDominio.md) |
+| `modelosUML/ModeloDominio.puml` | Se añade `Partida` gestionada por `Juego` (`Juego *-- Partida`). | [ModeloDominio.md](./correcciones/ModeloDominio.md) |
 
 ### Diagramas de Contexto y de Estado
 
 | Artefacto original | Corrección aplicada | Detalle |
 | :--- | :--- | :--- |
-| `modelosUML/DiagramaDeContexto000.puml` | Se elimina la terminación automática `Finalizado -> [*]`. | [DiagramaDeContexto000.md](./DiagramaDeContexto000.md) |
-| `modelosUML/DiagramaDeContexto001-ActorJugador.puml` | Se elimina el reinicio desde `EnCurso`. | [DiagramaDeContexto001-ActorJugador.md](./DiagramaDeContexto001-ActorJugador.md) |
-| `modelosUML/DiagramaDeContexto001-ActorTiempo.puml` | Se añaden guardas explícitas en `descenderPieza()` y se corrige su firma. | [DiagramaDeContexto001-ActorTiempo.md](./DiagramaDeContexto001-ActorTiempo.md) |
+| `modelosUML/DiagramaDeContexto000.puml` | Se elimina la terminación automática `Finalizado -> [*]`. | [DiagramaDeContexto000.md](./correcciones/DiagramaDeContexto000.md) |
+| `modelosUML/DiagramaDeContexto001-ActorJugador.puml` | Se elimina el reinicio desde `EnCurso`. | [DiagramaDeContexto001-ActorJugador.md](./correcciones/DiagramaDeContexto001-ActorJugador.md) |
+| `modelosUML/DiagramaDeContexto001-ActorTiempo.puml` | Se añaden guardas explícitas en `descenderPieza()` y se corrige su firma. | [DiagramaDeContexto001-ActorTiempo.md](./correcciones/DiagramaDeContexto001-ActorTiempo.md) |
 
 ### Detalle de Casos de Uso
 
 | Artefacto original | Estado / Corrección aplicada | Detalle |
 | :--- | :--- | :--- |
-| `arrancarSistema.puml` | Se añade el nodo inicial `[*]` y su transición entrante. | [arrancarSistema.md](./detalleCasosUso/arrancarSistema.md) |
-| `iniciarPartida.puml` | Se sustituye `acelerarCaida()` por `alternarVelocidadCaida()` y se elimina `reiniciarPartida()`. | [iniciarPartida.md](./detalleCasosUso/iniciarPartida.md) |
-| `moverPieza.puml` | Se unifica la doble salida redundante hacia `EnCurso`. | [moverPieza.md](./detalleCasosUso/moverPieza.md) |
-| `rotarPieza.puml` | Se unifica la doble salida redundante hacia `EnCurso`. | [rotarPieza.md](./detalleCasosUso/rotarPieza.md) |
-| `descenderPieza.puml` | Se añade comprobación condicional antes de `EliminandoLineas`. | [descenderPieza.md](./detalleCasosUso/descenderPieza.md) |
-| `reiniciarPartida.puml` | Se elimina `EnCurso`, la confirmación y el retorno a `Finalizado`. | [reiniciarPartida.md](./detalleCasosUso/reiniciarPartida.md) |
+| `arrancarSistema.puml` | Se añade el nodo inicial `[*]` y su transición entrante. | [arrancarSistema.md](./correcciones/detalleCasosUso/arrancarSistema.md) |
+| `iniciarPartida.puml` | Se sustituye `acelerarCaida()` por `alternarVelocidadCaida()` y se elimina `reiniciarPartida()`. | [iniciarPartida.md](./correcciones/detalleCasosUso/iniciarPartida.md) |
+| `moverPieza.puml` | Se unifica la doble salida redundante hacia `EnCurso`. | [moverPieza.md](./correcciones/detalleCasosUso/moverPieza.md) |
+| `rotarPieza.puml` | Se unifica la doble salida redundante hacia `EnCurso`. | [rotarPieza.md](./correcciones/detalleCasosUso/rotarPieza.md) |
+| `descenderPieza.puml` | Se añade comprobación condicional antes de `EliminandoLineas`. | [descenderPieza.md](./correcciones/detalleCasosUso/descenderPieza.md) |
+| `reiniciarPartida.puml` | Se elimina `EnCurso`, la confirmación y el retorno a `Finalizado`. | [reiniciarPartida.md](./correcciones/detalleCasosUso/reiniciarPartida.md) |
 | `alternarVelocidadCaida.puml` | **Correcto desde el inicio** (solo le aplica la unificación global de nombres de estado). | — |
 | `acelerarCaida.svg` | **Sobra totalmente** (imagen sin `.puml` ni caso de uso asociado; eliminar). | Sección 2.3 |
