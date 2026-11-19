@@ -1,0 +1,42 @@
+@startuml
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam defaultFontName SansSerif
+skinparam defaultFontSize 14
+skinparam stateFontSize 16
+skinparam ArrowColor #374151
+skinparam stateBackgroundColor #F3F7FC
+skinparam stateBorderColor #374151
+hide empty description
+
+title Reiniciar una partida
+
+state "EN_CURSO" as EnCursoAntes
+state "FINALIZADO" as FinalizadoAntes
+state "Confirmación" as Confirmacion
+state Respuesta <<choice>>
+state "EN_CURSO" as EnCursoDespues
+state "INACTIVO" as Inactivo
+state "FINALIZADO" as FinalizadoDespues
+
+EnCursoAntes --> Confirmacion : Jugador solicita\nreiniciar partida
+FinalizadoAntes --> Confirmacion : Jugador solicita\nreiniciar partida
+
+Confirmacion : Sistema presenta la confirmación.
+Confirmacion : Sistema permite confirmar o cancelar.
+Confirmacion : La partida no avanza durante la espera.
+
+Confirmacion --> Respuesta : Jugador solicita\nconfirmar o cancelar
+Respuesta --> EnCursoDespues : [cancela y venía\nde EN_CURSO]
+Respuesta --> Inactivo : [confirma]
+Respuesta --> FinalizadoDespues : [cancela y venía\nde FINALIZADO]
+
+EnCursoDespues : Sistema presenta la partida
+EnCursoDespues : sin cambios.
+Inactivo : Sistema presenta la pantalla inicial,
+Inactivo : sin pieza activa ni bloques,
+Inactivo : con puntuación 0 y velocidad normal.
+Inactivo : Sistema permite iniciar partida.
+FinalizadoDespues : Sistema presenta el resultado
+FinalizadoDespues : final sin cambios.
+@enduml
