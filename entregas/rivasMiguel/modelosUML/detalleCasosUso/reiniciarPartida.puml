@@ -1,0 +1,30 @@
+@startuml reiniciarPartida
+
+skinparam linetype polyline
+
+state Finalizado
+state Inactivo
+
+Finalizado -[#green]-> reiniciarPartida
+note on link
+reiniciarPartida()
+end note
+
+state reiniciarPartida as "reiniciarPartida()" {
+
+    state " " as SolicitandoReinicio
+
+    [*] -[#green]-> SolicitandoReinicio
+    note on link
+    <b>Jugador</b> solicita reiniciar partida
+    end note
+
+    SolicitandoReinicio -[#green]-> [*]
+    note on link
+    <b>Sistema</b> limpia estado de partida
+    end note
+}
+
+reiniciarPartida --> Inactivo
+
+@enduml

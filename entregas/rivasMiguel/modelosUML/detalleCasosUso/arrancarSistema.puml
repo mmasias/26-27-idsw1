@@ -1,0 +1,34 @@
+@startuml arrancarSistema
+
+skinparam linetype polyline
+
+state Inactivo
+
+[*] -[#green]-> arrancarSistema
+note on link
+arrancarSistema()
+end note
+
+state arrancarSistema as "arrancarSistema()" {
+
+    state " " as PresentandoPantallaInicial
+
+    [*] -[#green]-> PresentandoPantallaInicial
+    note on link
+    <b>Jugador</b> solicita arrancar sistema
+    end note
+
+    PresentandoPantallaInicial -[#green]-> [*]
+    note on link
+    <b>Sistema</b> presenta pantalla inicial
+    <b>Sistema</b> permite solicitar:
+- iniciarPartida()
+    end note
+}
+
+arrancarSistema -[#green]-> Inactivo
+note on link
+sistema disponible
+end note
+
+@enduml
