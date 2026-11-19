@@ -46,7 +46,8 @@ A continuación se presentan los diagramas corregidos y propuestos que dan respu
 
 ## Referencias
 
-* [**Modelo del dominio**](https://github.com/puntoReflex/pyTetris/blob/main/docs/modeloDelDominio.md) (y reflexiones asociadas).
+* [**Modelo del dominio**](https://github.com/puntoReflex/pyTetris/blob/main/docs/modeloDelDominio.md)
+
 * [**Disciplina de requisitos**](https://github.com/puntoReflex/pyTetris/blob/main/docs/ProcesoRequisitos.md) (actores, casos de uso, diagramas de contexto, especificación detallada y prototipo).
 
 ¿Qué se analizará?

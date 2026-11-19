@@ -10,6 +10,7 @@ De acuerdo con las instrucciones de [reto002.md](https://github.com/puntoReflex/
 
 ### 1. Qué se decidió
 En [`docs/modeloDelDominio.md`](https://github.com/puntoReflex/pyTetris/blob/main/docs/modeloDelDominio.md) (Secciones 2, 4, 5 y diagrama de la Sección 8), se introduce `Turno` como una clase conceptual central del modelo del dominio, ligada estructuralmente a `Juego`, `Pieza` y `Movimiento`:
+
 ```plantuml
 Juego *-- Turno : "se desarrolla en turnos"
 Turno --> Pieza : "involucra"
@@ -29,7 +30,7 @@ El Tetris es un videojuego arcade continuo en **tiempo real asíncrono**:
 
 Forzar una entidad `Turno` impone un paradigma que no describe la realidad operativa del juego (violando la directriz de [`00004-MdD.md`](https://github.com/mmasias/IdSw1/blob/main/temario/contenidos/00004-MdD.md) de *"representar la realidad existente tal como se vive"*). En la práctica, dicha clase carece de atributos propios, de responsabilidades claras y de un ciclo de vida definido (¿cuándo empieza el turno?, ¿al spawnear la pieza?, ¿cada segundo de caída?, ¿con cada pulsación de tecla?), introduciendo ruido y acoplamiento artificial en el diagrama.
 
-> En nuestro [Modelo del Dominio propuesto](modelosUML/ModeloDominioPropuesto.puml) ([ver SVG](images/ModeloDominioPropuesto.svg)) se prescinde de `Turno`, reflejando una estructura limpia y orientada a la dinámica real del juego.
+> En mi [Modelo del Dominio propuesto](modelosUML/ModeloDominioPropuesto.puml) ([ver SVG](images/ModeloDominioPropuesto.svg)) se prescinde de `Turno`, reflejando una estructura limpia y orientada a la dinámica real del juego.
 
 ---
 
@@ -43,7 +44,7 @@ Incorporar a la disciplina de requisitos el caso de uso **`Pausar partida`** (co
 
 ### 3. Argumento técnico
 Esta decisión es discutible por dos razones fundamentales:
-1. En [`docs/modeloDelDominio.md`](https://github.com/puntoReflex/pyTetris/blob/main/docs/modeloDelDominio.md) (Sección 4, *"Análisis de responsabilidades: verbos"*), el autor identificó textualmente para la entidad `Juego`:
+1. En [`docs/modeloDelDominio.md`](https://github.com/puntoReflex/pyTetris/blob/main/docs/modeloDelDominio.md#4-análisis-de-responsabilidades-verbos) (Sección 4, *"Análisis de responsabilidades: verbos"*), se identificaron textualmente para la entidad `Juego`:
    > *"Juego: Iniciar, terminar, **pausar**, mantener puntuación"*
    
    Haber reconocido la pausa como una responsabilidad intrínseca del juego en el dominio para luego ignorarla por completo al transformarla en casos de uso representa una ruptura de trazabilidad.
@@ -74,4 +75,4 @@ En el Tetris tradicional:
 
 Modelar `Movimiento` como una entidad del dominio es un antipatrón clásico de modelado orientado a objetos conocido como **cosificación de métodos**: convertir un verbo o una operación en un sustantivo/clase. Esto produce clases anémicas y vacías que complican artificialmente el modelo estático sin añadir riqueza semántica alguna.
 
-> En nuestro [Modelo del Dominio propuesto](modelosUML/ModeloDominioPropuesto.puml) ([ver SVG](images/ModeloDominioPropuesto.svg)) se elimina la clase `Movimiento`, dejando que el movimiento se exprese de forma natural en los diagramas de interacción y casos de uso (`Mover pieza`, `Rotar pieza`).
+> En mi [Modelo del Dominio propuesto](modelosUML/ModeloDominioPropuesto.puml) ([ver SVG](images/ModeloDominioPropuesto.svg)) se elimina la clase `Movimiento`, dejando que el movimiento se exprese de forma natural en los diagramas de interacción y casos de uso (`Mover pieza`, `Rotar pieza`).

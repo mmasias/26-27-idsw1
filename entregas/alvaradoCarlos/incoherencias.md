@@ -52,13 +52,13 @@ La tabla de la Sección 7 es el paso prevío para la construcción del diagrama.
 * En **`ProcesoRequisitos.md`**, la puntuación es un requisito funcional activo en los flujos principales:
   * En `iniciarPartida()`: *"Sistema presenta puntuación inicial (0)"*.
   * En `descenderPieza()`: *"Sistema presenta puntuación actualizada"* (al completarse y eliminarse líneas).
-  * En el prototipo de pantalla (`tetris.png`): Se muestra de manera fija el rótulo `Score: 0` al pie del tablero.
+  * En el prototipo: Se muestra de manera fija el rótulo `Score: 0` al pie del tablero.
 
 ### 3. Corrección
 Corregir el **modelo del dominio** (`modeloDelDominio.md` y `ModeloDominio.puml`) para incluir el atributo `puntuación` dentro de la clase conceptual `Juego`.
 
 ### 4. Por qué
-La literatura de la asignatura sobre corrección semántica ([`mddCorreccionSemantica.md`](https://github.com/mmasias/IdSw1/blob/main/temario/contenidos/ejemplos/mdd/mddCorreccionSemantica.md#L26)) exige contrastar continuamente el modelo del dominio con los documentos de requisitos para verificar que el modelo contenga la información necesaria para soportar los casos de uso. Si los requisitos especifican que el sistema calcula, incrementa y visualiza puntos como recompensa por eliminar líneas, la puntuación es una regla de información del juego y no puede ser omitida del contrato conceptual.
+El temario de la asignatura sobre corrección semántica ([`mddCorreccionSemantica.md`](https://github.com/mmasias/IdSw1/blob/main/temario/contenidos/ejemplos/mdd/mddCorreccionSemantica.md#L26)) exige contrastar continuamente el modelo del dominio con los documentos de requisitos para verificar que el modelo contenga la información necesaria para soportar los casos de uso. Si los requisitos especifican que el sistema calcula, incrementa y visualiza puntos como recompensa por eliminar líneas, la puntuación es una regla de información del juego y no puede ser omitida del contrato conceptual.
 
 > En mi [Modelo del Dominio propuesto](modelosUML/ModeloDominioPropuesto.puml) ([ver SVG](images/ModeloDominioPropuesto.svg)) se modela la puntuación como atributo de `Juego`:
 > ```plantuml
@@ -71,7 +71,7 @@ Aunque pueda que en esta fase aún no se incluyan los atributos pero es importan
 
 ---
 
-## Incoherencia 3: El estado `Inactivo` y la transición inicial (Estados del Sistema vs. Estados de la Partida)
+## Incoherencia 3: El estado `Inactivo` y la transición inicial
 
 ### 1. Dónde están
 * **Artefacto A:** [`modelosUML/DiagramaDeContexto000.puml`](https://github.com/puntoReflex/pyTetris/blob/main/modelosUML/DiagramaDeContexto000.puml) (Diagrama de estados general del sistema).
