@@ -1,3 +1,4 @@
-# Ingeniería del software I - Rama de entregas
+## Reto-002
 
-Rama de origen para la entrega de retos
+[Incoherencias y Decisiones Discutibles: Reto-002](/entregas/zhenChao/src/reto-002/reto-002.md)
+
