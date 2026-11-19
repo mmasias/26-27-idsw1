@@ -184,3 +184,22 @@ Reviso el [modelo del dominio](https://github.com/puntoReflex/pyTetris/blob/92c9
 **Qué propongo:** indicar con quién se validó y qué cambió en el modelo como resultado.
 
 **Argumento:** los propios requisitos desmienten la conclusión: `Turno` y `Movimiento` no se usan en ningún caso de uso (MR-2 y DD-1), y la puntuación, que sí se usa, no está en el diagrama (MD-1).
+
+
+## De los requisitos
+
+### DD-7. Cambiar la velocidad con un interruptor
+
+**Qué se decidió:** `alternarVelocidadCaida()`, que cambia entre velocidad normal y acelerada y deja la velocidad elegida activa hasta que se vuelva a cambiar.
+
+**Qué propongo:** `bajarPieza()`: cada vez que el jugador lo pide, la pieza baja una fila, igual que `moverPieza()` la mueve una celda a los lados.
+
+**Argumento:** en el Tetris, el jugador "baja la pieza" cuando quiere; no activa un modo. El interruptor deja dudas que ningún artefacto resuelve: ¿la siguiente pieza sale acelerada? ¿Con qué velocidad empieza la partida? Con `bajarPieza()` esas dudas no existen.
+
+### DD-8. Reiniciar no reinicia
+
+**Qué se decidió:** `reiniciarPartida()` pide confirmación desde `EnCurso` y desde `Finalizado`, y si se confirma lleva a `Inactivo`.
+
+**Qué propongo:** llamarlo `abandonarPartida()` cuando se pide desde `EnCurso`, con confirmación. Desde `Finalizado`, permitir `iniciarPartida()` directamente, sin confirmación.
+
+**Argumento:** "reiniciar" promete empezar de nuevo, pero el jugador acaba en la pantalla inicial y tiene que pedir otra vez `iniciarPartida()`. Además, después de perder no hay nada que perder: preguntar *"¿seguro que quieres reiniciar?"* no protege de nada.
