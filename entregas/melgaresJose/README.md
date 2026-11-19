@@ -33,5 +33,26 @@ Basandonos en lo existente dentro del repositorio de [pyTetris](https://github.c
 
 ## Decisiones discutibles
 
-### 1. La separación de pizas con tipo de Piezas:
+### 1. Descartar "Bloque" y fusionarlo con "Celda ocupada"
+
+**Qué se decidió:** Eliminar `Bloque` como concepto independiente bajo el argumento de que es una abstracción innecesaria y equivale a una "celda ocupada".
+**Qué se propone:** Mantener **Bloque** como concepto componente de `Pieza` (cada pieza está compuesta por 4 bloques).
+**Argumento:** En Tetris, una pieza posee identidad y forma propia *antes* de ingresar al tablero, y cuando se completa una línea, los bloques superiores de una misma pieza fragmentada caen de manera independiente. Un bloque es parte estructural de una pieza; una celda es un espacio fijo de la grilla. Confundir el contenido con el contenedor dificulta explicar la rotación y la fragmentación posterior.
+
+### 2. Excluir al "Jugador" del dominio
+**Qué se decidió:** Descartar `Jugador` por considerarlo implícito en una versión de un solo jugador (*single-player*).
+**Qué se propone:** Incluir **Jugador** como entidad externa o actor del dominio.
+**Argumento:** Incluso en un modo *single-player*, el dominio requiere distinguir entre **acciones iniciadas por el jugador** (rotar, desplazar, acelerar caída) y **eventos propios del sistema/juego** (caída automática por tiempo, fijación de pieza, eliminación de líneas). Modelar al `Jugador` clarifica el origen de los comandos y la titularidad de la `Puntuación`.
+
+
+### 3. Modelar "TipoPieza" como entidad independiente (Asociación `*:1`)
+**Qué se decidió:** Crear la entidad `TipoPieza` separada de `Pieza` debido a que "hay exactamente 7 tipos bien definidos".
+**Qué se propone:** Modelarlo como un **enumerado (`enum`)** o atributo de valor dentro de `Pieza`.
+**Argumento:** Los 7 tetróminos estándar carecen de ciclo de vida propio, no cambian de estado durante la partida ni poseen comportamiento independiente; representan simplemente la definición estática de la geometría inicial de una `Pieza`. Convertir un conjunto cerrado de constantes en una entidad añade complejidad innecesaria al diagrama de dominio.
+
+### 4. Reificar "Movimiento" como entidad del dominio
+**Qué se decidió:** Convertir `Movimiento`  en una entidad con responsabilidades propias
+**Qué se propone:** Modelar los movimientos como **comportamientos u operaciones** de `Pieza` validados en el contexto del `Tablero`).
+**Argumento:** Los verbos *mover*, *rotar*, *caer* representan responsabilidades de las entidades y no entidades en sí mismas. Elevar cada acción a clase responde a una decisión técnica de diseño y no a un concepto natural del juego.
+
 
