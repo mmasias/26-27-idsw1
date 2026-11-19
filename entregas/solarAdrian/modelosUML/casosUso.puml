@@ -1,0 +1,47 @@
+@startuml casosUso
+
+title Casos de uso corregidos
+
+left to right direction
+
+actor Jugador
+actor Tiempo
+
+rectangle "pyTetris" {
+  usecase "arrancarSistema()" as arrancar
+  usecase "iniciarPartida()" as iniciar
+  usecase "moverPieza()" as mover
+  usecase "rotarPieza()" as rotar
+  usecase "bajarPieza()" as bajar
+  usecase "abandonarPartida()" as abandonar
+  usecase "salirDelSistema()" as salir
+  usecase "descenderPieza()" as descender
+}
+
+Jugador -- arrancar
+Jugador -- iniciar
+Jugador -- mover
+Jugador -- rotar
+Jugador -- bajar
+Jugador -- abandonar
+Jugador -- salir
+
+descender -- Tiempo
+
+note right of bajar
+  Sustituye a alternarVelocidadCaida() (DD-7).
+end note
+
+note right of abandonar
+  Sustituye a reiniciarPartida() (DD-8).
+end note
+
+note right of salir
+  Nuevo: cierra el sistema (RQ-3).
+end note
+
+note right of rotar
+  Indica el sentido: horario o antihorario (RQ-4).
+end note
+
+@enduml

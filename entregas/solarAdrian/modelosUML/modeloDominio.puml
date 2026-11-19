@@ -1,0 +1,52 @@
+@startuml modeloDominio
+
+title Modelo del dominio corregido
+
+hide methods
+hide circle
+
+class Partida {
+  puntuación
+  velocidad
+}
+
+class Tablero
+class Linea
+class Celda {
+  ocupada
+}
+
+class Pieza {
+  posición
+  orientación
+}
+
+class TipoPieza {
+  nombre
+  forma
+}
+
+Partida "1" *-- "1" Tablero : se juega en
+Tablero "1" *-- "20" Linea : se organiza en
+Linea "1" *-- "10" Celda : contiene
+
+Partida "1" -- "0..1" Pieza : pieza activa
+Pieza "*" -- "1" TipoPieza : es de tipo
+Pieza "0..1" -- "4" Celda : ocupa
+
+note right of Partida
+  Antes "Juego" (MR-1).
+  Atributos que el texto ya decidía (MD-1).
+end note
+
+note bottom of Linea
+  Completa cuando sus 10 celdas
+  están ocupadas (MD-4).
+end note
+
+note right of Pieza
+  Una sola pieza activa (MD-5, DD-3).
+  Sin Turno (MR-2) ni Movimiento (DD-1).
+end note
+
+@enduml
