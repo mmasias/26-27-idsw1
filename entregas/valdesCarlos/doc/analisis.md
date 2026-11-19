@@ -164,8 +164,6 @@ Según la especificación UML, una parte puede pertenecer como máximo a un úni
 
 Me parece que se está utilizando la composición para representar agrupaciones que no necesariamente implican una propiedad independiente.
 
-
-
 ---
 
 ### DECISION DISCUTIBLE-02. Incluir Turno como concepto del dominio
@@ -238,7 +236,7 @@ Creo que una única captura puede servir para representar la pantalla principal,
 
 ---
 
-### DECESION DISCUTIBLE-05. Realizar una validación con expertos sin aportar información sobre ella
+### DECISION DISCUTIBLE-05. Realizar una validación con expertos sin aportar información sobre ella
 
 **Artefacto afectado:**
 - [modeloDelDominio.md](https://github.com/puntoReflex/pyTetris/blob/main/docs/modeloDelDominio.md)

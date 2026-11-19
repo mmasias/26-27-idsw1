@@ -14,6 +14,12 @@ Mantendría este último nombre en todos los documentos, ya que es el que aparec
 
 De esta manera, todos los artefactos hacen referencia a la misma operación y queda claro que el jugador puede tanto acelerar la caída como volver a la velocidad normal.
 
+**Diagrama de la propuesta:**
+
+![Alternar velocidad de caída](../images/alternarVelocidadCaida.svg)
+
+[Ver código PlantUML](../plantillaUML/alternarVelocidadCaida.puml)
+
 ---
 
 ### INCOHERENCIA-02. Número de piezas activas en el juego
@@ -31,6 +37,12 @@ También diferenciaría las piezas activas de las piezas que ya están fijadas e
 En Tetris solamente se controla una pieza a la vez. Cuando una pieza termina de descender, queda fijada y aparece una nueva.
 
 Por eso, considero que el modelo del dominio debería representar este comportamiento y no dar a entender que pueden existir varias piezas activas simultáneamente.
+
+**Diagrama de la propuesta:**
+
+![Modelo del dominio propuesto](../images/modeloDominioPropuesta.svg)
+
+[Ver código PlantUML](../plantillaUML/modeloDominioPropuesta.puml)
 
 ---
 
@@ -75,6 +87,12 @@ El objetivo es que el texto y el diagrama representen exactamente el mismo model
 
 No basta con que aparezcan las relaciones, sino que también debe quedar claro cómo se relacionan los conceptos y cuántos elementos pueden participar en cada relación.
 
+**Diagrama de la propuesta:**
+
+![Modelo del dominio propuesto](../images/modeloDominioPropuesta.svg)
+
+[Ver código PlantUML](../plantillaUML/modeloDominioPropuesta.puml)
+
 ---
 
 ### INCOHERENCIA-05. Falta de un control para cambiar la velocidad en el prototipo
@@ -92,6 +110,12 @@ También actualizaría el caso de uso para que quede claro qué acción realiza 
 De esta forma, el prototipo representaría una funcionalidad que ya está definida en los requisitos.
 
 Además, cualquier persona que consulte la interfaz podría entender cómo utilizar todas las operaciones disponibles.
+
+**Diagrama de la propuesta:**
+
+![Alternar velocidad de caída](../images/alternarVelocidadCaida.svg)
+
+[Ver código PlantUML](../plantillaUML/alternarVelocidadCaida.puml)
 
 ---
 
@@ -119,7 +143,7 @@ También conseguiríamos que los diagramas mantuvieran un nivel de detalle más 
 
 ## 2. Propuestas para las decisiones discutibles
 
-### DECISIONES DISCUTIBLES-01. Utilizar composición entre Tablero-Celda y Línea-Celda
+### DECISIÓN DISCUTIBLE-01. Utilizar composición entre Tablero-Celda y Línea-Celda
 
 **Propuesta:**
 
@@ -141,9 +165,15 @@ Las celdas pertenecen al tablero, mientras que las líneas representan agrupacio
 
 Así evitamos duplicar la propiedad de una misma celda y mantenemos una estructura más clara.
 
+**Diagrama de la propuesta:**
+
+![Modelo del dominio propuesto](../images/modeloDominioPropuesta.svg)
+
+[Ver código PlantUML](../plantillaUML/modeloDominioPropuesta.puml)
+
 ---
 
-### DECISIONES DISCUTIBLES-02. Incluir Turno como concepto del dominio
+### DECISIÓN DISCUTIBLE-02. Incluir Turno como concepto del dominio
 
 **Propuesta:**
 
@@ -161,9 +191,15 @@ Considero que no tiene sentido mantener una entidad si no tenemos claro qué rep
 
 Definiendo su función podríamos decidir si realmente aporta algo al modelo o si simplemente estamos añadiendo un concepto innecesario.
 
+**Diagrama de la propuesta:**
+
+![Modelo del dominio propuesto](../images/modeloDominioPropuesta.svg)
+
+[Ver código PlantUML](../plantillaUML/modeloDominioPropuesta.puml)
+
 ---
 
-### DECISIONES DISCUTIBLES-03. Considerar Tiempo como un actor externo
+### DECISIÓN DISCUTIBLE-03. Considerar Tiempo como un actor externo
 
 **Propuesta:**
 
@@ -179,9 +215,15 @@ Los actores deben representar elementos externos que interactúan con el sistema
 
 Por eso, considero importante diferenciar entre un temporizador externo y un mecanismo interno que simplemente controla cuándo debe descender una pieza.
 
+**Diagrama de la propuesta:**
+
+![Alternar velocidad de caída](../images/alternarVelocidadCaida.svg)
+
+[Ver código PlantUML](../plantillaUML/alternarVelocidadCaida.puml)
+
 ---
 
-### DECISIONES DISCUTIBLES-04. Utilizar una única imagen como prototipo para todos los casos de uso
+### DECISIÓN DISCUTIBLE-04. Utilizar una única imagen como prototipo para todos los casos de uso
 
 **Propuesta:**
 
@@ -204,7 +246,7 @@ Una única imagen puede explicar perfectamente la pantalla principal, pero no pe
 
 ---
 
-### DECISIONES DISCUTIBLES-05. Realizar una validación con expertos sin aportar información sobre ella
+### DECISIÓN DISCUTIBLE-05. Realizar una validación con expertos sin aportar información sobre ella
 
 **Propuesta:**
 
@@ -227,7 +269,7 @@ De esta forma, el documento sería más claro y permitiría comprobar cómo se h
 
 ---
 
-### DECISIONES DICUTIBLES-06. Unificar los conceptos Juego y Partida
+### DECISIÓN DISCUTIBLE-06. Unificar los conceptos Juego y Partida
 
 **Propuesta:**
 
