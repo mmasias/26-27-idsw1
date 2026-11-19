@@ -33,4 +33,4 @@ Se retira el descarte de `Partida` y se incorpora al diagrama del modelo del dom
 
 **Diagrama corregido**
 
-![Corregido ModeloDominio](../../../images/ModeloDominio.svg)
+![Corregido ModeloDominio](../../images/ModeloDominio.svg)
