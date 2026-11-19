@@ -1,0 +1,20 @@
+@startuml
+
+class Juego
+class Tablero
+class Pieza
+class Celda
+class Linea
+class TipoPieza
+
+Juego "1" *-- "1" Tablero
+Juego "1" -- "0..1" Pieza : pieza activa
+
+Tablero "1" *-- "*" Celda
+Tablero "1" *-- "*" Linea
+
+Linea "1" -- "1..*" Celda
+
+Pieza "*" -- "1" TipoPieza
+
+@enduml

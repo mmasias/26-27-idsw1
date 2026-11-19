@@ -1,0 +1,20 @@
+@startuml
+
+actor Jugador
+participant Interfaz
+participant Juego
+participant Temporizador
+
+Jugador -> Interfaz : Pulsar control
+Interfaz -> Juego : alternarVelocidadCaida()
+
+alt Velocidad normal
+    Juego -> Temporizador : Activar velocidad rapida
+else Velocidad acelerada
+    Juego -> Temporizador : Activar velocidad normal
+end
+
+Juego --> Interfaz : Velocidad actualizada
+Interfaz --> Jugador : Mostrar velocidad
+
+@enduml
