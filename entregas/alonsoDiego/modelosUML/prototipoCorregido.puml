@@ -1,0 +1,46 @@
+@startsalt prototipoCorregido
+{
+  {+
+    <b>1. Estado: INACTIVO</b>
+    ---
+    "=== pyTetris ==="
+    .
+    Controles disponibles:
+    [I] Iniciar juego
+    .
+    [ Iniciar juego (I) ]
+  } | {+
+    <b>2. Estado: EN_CURSO</b>
+    ---
+    Puntuación: 1200 | Siguiente: [T]
+    {#
+      . | . | . | . | . | . | . | . | . | .
+      . | . | . | . | O | O | . | . | . | .
+      . | . | . | . | O | O | . | . | . | .
+      . | . | . | . | . | . | . | . | . | .
+      . | . | . | . | . | . | . | . | . | .
+      I | I | I | I | . | . | T | . | . | .
+      L | L | L | Z | Z | T | T | T | J | .
+      L | S | S | . | Z | Z | O | O | J | .
+      S | S | I | I | I | I | O | O | J | J
+    }
+    4:Izq | 6:Der | 7:RotarIzq | 9:RotarDer
+    2:Acelerar | R:Reiniciar
+  }
+  {+
+    <b>3. Estado: PAUSADO</b>
+    ---
+    JUEGO PAUSADO
+    ¿Confirmar reinicio?
+    .
+    [ S: Confirmar ] | [ N: Cancelar ]
+  } | {+
+    <b>4. Estado: FINALIZADO</b>
+    ---
+    GAME OVER
+    Puntuación final: 1200
+    .
+    [ R: Reiniciar juego ]
+  }
+}
+@endsalt

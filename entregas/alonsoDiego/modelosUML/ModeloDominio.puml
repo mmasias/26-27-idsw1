@@ -1,0 +1,30 @@
+@startuml
+hide circle
+hide empty methods
+
+class Juego {
+  puntuacion
+  velocidad
+}
+
+class Jugador
+class Tablero
+class Pieza
+class TipoPieza
+class Celda
+class Linea
+class Movimiento
+
+Jugador "1" -- "*" Juego : "juega"
+Juego "1" *-- "1" Tablero : "se juega en"
+Juego "1" *-- "0..1" Pieza : "tiene activa"
+Juego "1" *-- "0..1" Pieza : "tiene siguiente"
+
+Tablero "1" *-- "1..*" Celda : "está formado por"
+Tablero "1" *-- "1..*" Linea : "se organiza en"
+Linea "1" o-- "1..*" Celda : "agrupa"
+
+Pieza "*" --> "1" TipoPieza : "es de tipo"
+Pieza "1" --> "4" Celda : "ocupa"
+Pieza "1" o-- "*" Movimiento : "realiza"
+@enduml

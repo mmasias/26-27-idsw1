@@ -1,0 +1,23 @@
+@startuml
+left to right direction
+
+actor Jugador
+actor Tiempo
+
+usecase arrancarSistema as "arrancarSistema()"
+usecase iniciarJuego as "iniciarJuego()"
+usecase reiniciarJuego as "reiniciarJuego()"
+usecase descenderPieza as "descenderPieza()"
+usecase moverPieza as "moverPieza()"
+usecase rotarPieza as "rotarPieza()"
+usecase acelerarCaida as "acelerarCaida()"
+
+Tiempo -- descenderPieza
+
+Jugador -- arrancarSistema
+Jugador -- iniciarJuego
+Jugador -- reiniciarJuego
+Jugador -- moverPieza
+Jugador -- rotarPieza
+Jugador -- acelerarCaida
+@enduml 

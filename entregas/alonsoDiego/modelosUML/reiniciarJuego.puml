@@ -1,0 +1,60 @@
+@startuml reiniciarJuego
+skinparam linetype polyline
+
+state INACTIVO
+state EN_CURSO
+state FINALIZADO
+state EN_CURSO_2 as "EN_CURSO"
+
+FINALIZADO -[#green]-> INACTIVO
+note on link
+reiniciarJuego()
+(reinicio directo sin confirmación)
+end note
+
+EN_CURSO -[#blue]-> reiniciarJuego
+note on link
+reiniciarJuego()
+end note
+
+state reiniciarJuego as "reiniciarJuego()" {
+  state "PAUSADO" as ConfirmandoReinicio
+  state c1 <<choice>>
+
+  [*] -[#blue]-> ConfirmandoReinicio
+  note on link
+  <b>Jugador</b> solicita reiniciar juego
+  <b>Sistema</b> suspende el avance del tiempo
+  <b>Sistema</b> presenta confirmación:
+  • confirmar reinicio
+  • cancelar reinicio
+  end note
+
+  ConfirmandoReinicio -[#blue]-> c1
+  note on link
+  <b>Jugador</b> responde a confirmación
+  end note
+
+  c1 -[#green]-> [*]
+  note on link
+  confirmación aceptada
+  <b>Sistema</b> limpia tablero y puntuación
+  end note
+
+  c1 -[#blue]-> [*]
+  note on link
+  confirmación cancelada
+  <b>Sistema</b> reanuda el tiempo
+  end note
+}
+
+reiniciarJuego -[#green]-> INACTIVO
+note on link
+juego reiniciado
+end note
+
+reiniciarJuego -[#blue]-> EN_CURSO_2
+note on link
+reinicio cancelado
+end note
+@enduml
