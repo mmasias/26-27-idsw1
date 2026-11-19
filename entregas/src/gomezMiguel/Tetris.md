@@ -4,7 +4,7 @@
 
 ### 1.1. Cambio de nombre en la velocidad de caída
 - **Dónde:** En la [tabla de casos de uso](https://github.com/puntoReflex/pyTetris/blob/main/docs/ProcesoRequisitos.md#casos-de-uso) y en el [detalle de inicio de partida](https://github.com/puntoReflex/pyTetris/blob/main/modelosUML/detalleCasosUso/iniciarPartida.puml).
-- **Qué dice cada uno:** En la tabla general la acción se llama `alternarVelocidadCaida()`, mientras que al detallar qué ocurre al empezar a jugar aparece como `acelerarCaida()`. No significan lo mismo: acelerar solo sube el ritmo, mientras que alternar permite ir y volver entre dos velocidades.
+- **Qué dice cada uno:** En la tabla general la acción se llama `alternarVelocidadCaida()`, mientras que al detallar qué ocurre al empezar a jugar aparece como `acelerarCaida()`. No son lo mismo una aumenta y la otra cambia de vlocidad de una
 - **Qué corregiría y por qué:** Usaría `alternarVelocidadCaida()` en los dos sitios para mantener un único nombre y dejar claro que se puede volver a la velocidad normal.
 
 ### 1.2. Confusión entre «Juego» y «Partida»
@@ -15,7 +15,7 @@
 ### 1.3. Contradicción sobre los niveles de dificultad
 - **Dónde:** En el [documento del modelo del dominio](https://github.com/puntoReflex/pyTetris/blob/main/docs/modeloDelDominio.md) (identificación de conceptos frente a simplificaciones).
 - **Qué dice cada uno:** Al principio se excluye el nivel como entidad diciendo que es una propiedad de Juego, pero más abajo, en las simplificaciones conscientes, se afirma directamente «Sin niveles de dificultad».
-- **Qué corregiría y por qué:** Eliminaría la referencia al nivel como propiedad si queda fuera del alcance, o aclararía si se refiere al aumento progresivo de velocidad. Tal como está, parece existir y no existir a la vez.
+- **Qué corregiría y por qué:** Eliminaría la referencia al nivel como propiedad si queda fuera del alcance, o aclararía si se refiere al aumento progresivo de velocidad. Esta y como que no esta 
 
 ### 1.4. La caída de la pieza se muestra antes de comprobar si es válida
 - **Dónde:** En el [detalle de descenso de pieza](https://github.com/puntoReflex/pyTetris/blob/main/modelosUML/detalleCasosUso/descenderPieza.puml) comparado con el [detalle de movimiento lateral](https://github.com/puntoReflex/pyTetris/blob/main/modelosUML/detalleCasosUso/moverPieza.puml).
@@ -25,12 +25,12 @@
 ### 1.5. El reinicio puede cancelarse, pero los diagramas de contexto no lo reflejan
 - **Dónde:** En el [diagrama general de estados](https://github.com/puntoReflex/pyTetris/blob/main/modelosUML/DiagramaDeContexto000.puml), el [contexto del Jugador](https://github.com/puntoReflex/pyTetris/blob/main/modelosUML/DiagramaDeContexto001-ActorJugador.puml) y el [detalle del reinicio](https://github.com/puntoReflex/pyTetris/blob/main/modelosUML/detalleCasosUso/reiniciarPartida.puml).
 - **Qué dice cada uno:** El diagrama general omite el paso directo desde partida en curso a inactivo, y el del Jugador pinta el reinicio como un salto automático a inactivo. Por el contrario, el detalle del caso de uso permite cancelar el reinicio y conservar el estado en el que estaba.
-- **Qué corregiría y por qué:** Añadiría la transición al diagrama general e indicaría en ambos contextos que volver a inactivo ocurre únicamente si el usuario confirma la acción.
+- **Qué corregiría y por qué:** Yo Añadiría la transición al diagrama general e indicaría en ambos contextos que volver a inactivo ocurre únicamente si el usuario confirma la acción.
 
 ### 1.6. Transición de reinicio atribuida al Tiempo
 - **Dónde:** En el [contexto del actor Tiempo](https://github.com/puntoReflex/pyTetris/blob/main/modelosUML/DiagramaDeContexto001-ActorTiempo.puml) y en el [contexto del Jugador](https://github.com/puntoReflex/pyTetris/blob/main/modelosUML/DiagramaDeContexto001-ActorJugador.puml).
 - **Qué dice cada uno:** En el diagrama del Tiempo aparece una flecha sin explicación desde finalizado hacia inactivo, cuando en el diagrama del Jugador ese mismo cambio depende de que el usuario reinicie la partida.
-- **Qué corregiría y por qué:** Quitaría esa transición del contexto del Tiempo. El reloj hace bajar las piezas y provoca el fin de partida por bloqueo, pero nunca decide reiniciar el juego.
+- **Qué corregiría y por qué:** Quitaría esa transición del contexto del Tiempo. El rejo pues bja las piezas pero al final nunca deja reiniciar.
 
 ### 1.7. Desfase entre el texto del dominio, los atributos y el diagrama final
 - **Dónde:** En el [refinamiento del dominio](https://github.com/puntoReflex/pyTetris/blob/main/docs/modeloDelDominio.md#7-refinamiento-de-relaciones) y en el [diagrama UML final](https://github.com/puntoReflex/pyTetris/blob/main/images/modelosUML/ModeloDominio.svg).
@@ -69,11 +69,11 @@
 ### 2.5. Usar nombres de métodos de código y acciones internas en requisitos
 - **Dónde:** En el [diagrama de casos de uso](https://github.com/puntoReflex/pyTetris/blob/main/modelosUML/DiagramaCasosUso.puml) y en el [detalle de reinicio](https://github.com/puntoReflex/pyTetris/blob/main/modelosUML/detalleCasosUso/reiniciarPartida.puml).
 - **Qué se decidió:** Nombrar los casos de uso con paréntesis (como `moverPieza()` o `iniciarPartida()`) y describir pasos internos como «Sistema limpia estado de partida».
-- **Qué propongo y por qué:** Los nombraría en lenguaje natural («Mover pieza», «Iniciar partida») y sustituiría las acciones internas por resultados observables por el usuario, como mostrar el tablero vacío y la puntuación a cero.
+- **Qué propongo y por qué:** Los nombraría en lenguaje mas natural («Mover pieza», «Iniciar partida») y sustituiría las acciones que ocurren las puede ver el usuario, como mostrar el tablero vacío y la puntuación a cero.
 
 ### 2.6. Omitir el sentido de rotación y las reglas de puntuación
 - **Dónde:** En los detalles de [rotación](https://github.com/puntoReflex/pyTetris/blob/main/modelosUML/detalleCasosUso/rotarPieza.puml) y [descenso](https://github.com/puntoReflex/pyTetris/blob/main/modelosUML/detalleCasosUso/descenderPieza.puml), junto con el [prototipo](https://github.com/puntoReflex/pyTetris/blob/main/images/tetris.png).
-- **Qué se decidió:** Indicar simplemente que la pieza rota (aunque el prototipo muestra dos teclas distintas de giro) y mencionar que se actualiza la puntuación sin concretar cómo se calcula.
+- **Qué se decidió:** Indicar simplemente que la pieza rota (aunque el prototipo muestra dos teclas distintas de giro) y mencionar que se actualiza la puntuación sin definir cómo se calcula.
 - **Qué propongo y por qué:** Especificaría el sentido de giro (horario o antihorario) como dato de entrada y definiría una regla básica de puntos por líneas completadas para evitar implementaciones ambiguas.
 
 ### 2.7. Volver a estado inactivo tras confirmar un reinicio y mezclar el arranque del programa
