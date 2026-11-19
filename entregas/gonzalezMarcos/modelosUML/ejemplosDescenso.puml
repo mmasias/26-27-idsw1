@@ -1,0 +1,31 @@
+@startuml ejemplosDescenso
+
+left to right direction
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam defaultFontName SansSerif
+skinparam defaultFontSize 14
+skinparam rectangleFontName Monospaced
+skinparam rectangleFontSize 16
+skinparam rectangleBackgroundColor #F5F7FA
+skinparam rectangleBorderColor #64748B
+skinparam ArrowColor #374151
+skinparam nodesep 45
+skinparam ranksep 35
+
+rectangle "Antes del descenso\n\n···OO·····\n···OO·····\n···XX·····\n···XX·····" as Apoyada
+rectangle "Después de fijar\n\n···XX·····\n···XX·····\n···XX·····\n···XX·····" as Fijada
+rectangle "Después de fijar\n\nX·········\n···X······\nXXXXXXXXXX\nXXXXXXXXXX" as Completas
+rectangle "Después de borrar\n\n··········\n··········\nX·········\n···X······" as Borradas
+
+Apoyada -right-> Fijada : Fijar sin bajar
+Completas -right-> Borradas : Borrar dos filas
+Apoyada -[hidden]down-> Completas
+Fijada -[hidden]down-> Borradas
+
+legend bottom
+  O: pieza activa   X: bloque fijado   ·: celda vacía
+  Últimas cuatro filas del tablero (10 columnas)
+endlegend
+
+@enduml

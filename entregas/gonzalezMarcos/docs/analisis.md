@@ -52,11 +52,21 @@ En [descenderPieza()][descenderPieza], primero se presenta la pieza en una nueva
 
 Añadiría esa alternativa: si no puede bajar una celda, se queda donde está y se fija. Después se continúa con la eliminación de líneas y la siguiente pieza. Así se puede seguir el detalle también cuando la pieza aparece ya apoyada o llega a un apoyo tras moverse de lado.
 
+El [ejemplo de una pieza apoyada](propuesta.md#ejemplos-del-descenso) muestra el resultado que esperaría.
+
 ### No se explica del todo cómo se borran las líneas ni cómo se suman los puntos
 
 [descenderPieza()][descenderPieza] presenta el tablero sin líneas completas y la puntuación actualizada, pero no dice cómo se recolocan los bloques ni cuántos puntos se ganan.
 
 Explicaría que se eliminan las filas completas tras fijar la pieza y que los bloques de arriba bajan para ocupar los huecos. También añadiría una regla de puntuación para cuando no se borra ninguna fila, se borra una o se borran varias. Sin eso, dos personas podrían interpretar resultados distintos a partir del mismo texto.
+
+En la propuesta se muestra [cómo quedaría el tablero al borrar dos filas](propuesta.md#ejemplos-del-descenso).
+
+### No se indica cómo se elige la siguiente pieza
+
+En [descenderPieza()][descenderPieza] se genera una nueva pieza, y el [modelo del dominio][dominio] recoge los siete tipos. Sin embargo, no se dice cómo se elige el tipo que aparece. Esta observación también está en la [revisión de Silvia Montes](https://github.com/Silviamontes43/26-27-idsw1/blob/781e88abe0a879e90eb80aed588f272427857b5a/entregas/montesSilvia/tetris.md#212-no-se-explica-cómo-se-generan-las-nuevas-piezas).
+
+Para este ejemplo propondría elegir al azar entre los siete tipos, con la misma probabilidad y permitiendo repeticiones. Aplicaría esa regla también a la primera pieza. Así queda claro que pueden salir dos iguales seguidas y que no se sigue un orden fijo, sin añadir más reglas al juego.
 
 ### No se indica con qué velocidad empieza la partida
 

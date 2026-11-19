@@ -1,8 +1,8 @@
-# Cómo cambiaría los diagramas
+# Propuestas y ejemplos
 
 [Volver al README](../README.md) · [Ver el análisis](analisis.md)
 
-[Estados del sistema](#estados-del-sistema) · [Reiniciar una partida](#reiniciar-una-partida)
+[Estados del sistema](#estados-del-sistema) · [Reiniciar una partida](#reiniciar-una-partida) · [Ejemplos del descenso](#ejemplos-del-descenso)
 
 ## Estados del sistema
 
@@ -33,7 +33,7 @@ Mientras se espera la respuesta, la partida no avanza y no se puede mover, girar
 
 [Abrir diagrama](../images/reiniciarPartida.svg) · [Ver PlantUML](../modelosUML/reiniciarPartida.puml)
 
-## Ejemplos para comprobarlo
+### Ejemplos para comprobar el reinicio
 
 | Situación | Qué pide el jugador | Qué debería pasar |
 |---|---|---|
@@ -41,3 +41,16 @@ Mientras se espera la respuesta, la partida no avanza y no se puede mover, girar
 | Partida en curso | Reiniciar y cancelar | Conserva la pieza, el tablero, los puntos y la velocidad, y puede seguir jugando. |
 | Partida terminada | Reiniciar y cancelar | Se siguen mostrando el tablero y la puntuación final. La partida no se reanuda. |
 | Se está esperando la confirmación | No responder todavía | La pieza no baja y la partida no cambia. |
+
+## Ejemplos del descenso
+
+Estos dos ejemplos concretan las aclaraciones del [análisis](analisis.md). Se muestran solo las cuatro filas inferiores de un tablero de 10 × 20; el resto está vacío.
+
+![Dos ejemplos del descenso](../images/ejemplosDescenso.svg)
+
+[Abrir imagen](../images/ejemplosDescenso.svg) · [Ver PlantUML](../modelosUML/ejemplosDescenso.puml)
+
+- **Pieza ya apoyada:** al recibir la solicitud de descenso, la pieza cuadrada no puede bajar. Se fija en las mismas celdas. Como no se completa ninguna fila, la puntuación no cambia.
+- **Dos filas completas:** después de fijar una pieza, las dos filas inferiores están llenas. Se eliminan ambas y los bloques de arriba bajan dos filas. Los puntos se calculan según la regla acordada para borrar dos filas en un mismo descenso.
+
+Las imágenes terminan antes de que aparezca la siguiente pieza. En ambos ejemplos hay espacio para presentarla en la parte superior del tablero.
