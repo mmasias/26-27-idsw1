@@ -1,4 +1,4 @@
-# Auditoría del Modelo de Dominio y Requisitos — Tetris Clásico
+# Entrega 002 - Tetris: Incoherencias y Decisiones Discutibles
 
 ## Análisis de Problemas
 
