@@ -1,0 +1,38 @@
+@startuml estadosSistema
+
+title Estados del sistema corregido
+
+hide empty description
+
+state Inactivo
+state EnCurso
+state Finalizado
+
+[*] --> Inactivo : arrancarSistema()
+
+Inactivo --> EnCurso : iniciarPartida()
+Inactivo --> [*] : salirDelSistema()
+
+EnCurso --> EnCurso : moverPieza()\nrotarPieza()\nbajarPieza()\ndescenderPieza() [cabe la pieza]
+EnCurso --> Finalizado : descenderPieza() [no cabe la nueva pieza]
+EnCurso --> Inactivo : abandonarPartida() [confirmado]
+
+Finalizado --> EnCurso : iniciarPartida()
+Finalizado --> [*] : salirDelSistema()
+
+note right of Inactivo
+  salirDelSistema() cierra el sistema (RQ-3).
+end note
+
+note left of EnCurso
+  bajarPieza() sustituye a alternarVelocidadCaida() (DD-7).
+  abandonarPartida() sustituye a reiniciarPartida()
+  y ahora aparece en este diagrama (RQ-2, DD-8).
+end note
+
+note right of Finalizado
+  Tras perder se puede empezar otra partida
+  directamente, sin confirmación (DD-8).
+end note
+
+@enduml
