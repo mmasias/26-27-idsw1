@@ -1,0 +1,44 @@
+@startuml iniciarPartida
+
+skinparam linetype polyline
+
+state Inactivo
+state EnCurso
+
+Inactivo -[#green]-> iniciarPartida
+note on link
+iniciarPartida()
+end note
+
+state iniciarPartida as "iniciarPartida()" {
+
+    state " " as InicializandoJuego
+    state " " as PresentandoTablero
+
+    [*] -[#green]-> InicializandoJuego
+    note on link
+    <b>Jugador</b> solicita iniciar partida
+    end note
+
+    InicializandoJuego -[#green]-> PresentandoTablero
+    note on link
+    <b>Sistema</b> presenta tablero vacío
+    <b>Sistema</b> presenta puntuación inicial (0)
+    end note
+
+    PresentandoTablero -[#green]-> [*]
+    note on link
+    <b>Sistema</b> presenta primera pieza activa
+    <b>Sistema</b> permite solicitar:
+- moverPieza()
+- rotarPieza()
+- alternarVelocidadCaida()
+    end note
+}
+
+iniciarPartida -[#green]-> EnCurso
+note on link
+partida iniciada
+end note
+
+@enduml

@@ -1,0 +1,94 @@
+@startuml descenderPieza
+
+skinparam linetype polyline
+
+state EnCurso
+state EnCurso_2 as "EnCurso"
+state Finalizado
+
+EnCurso -[#green]-> descenderPieza
+note on link
+descenderPieza()
+end note
+
+state descenderPieza as "descenderPieza()" {
+
+    state " " as DescendiendoPieza
+    state " " as FijandoPieza
+    state " " as EliminandoLineas
+    state " " as GenerandoNuevaPieza
+    state c1 <<choice>>
+    state c2 <<choice>>
+    state c3 <<choice>>
+
+    [*] -[#green]-> DescendiendoPieza
+    note on link
+    <b>Tiempo</b> solicita descenso automático
+    end note
+
+    DescendiendoPieza -[#green]-> c1
+    note on link
+    <b>Sistema</b> presenta pieza activa en nueva posición
+    end note
+
+    c1 -[#green]-> FijandoPieza
+    note on link
+    pieza en posición
+    de fondo o sobre
+    piezas fijadas
+    end note
+
+    c1 -[#green]-> [*]
+    note on link
+    pieza en posición
+    intermedia
+    end note
+
+    FijandoPieza -[#green]-> c2
+    note on link
+    <b>Sistema</b> presenta tablero actualizado
+    con pieza fijada
+    end note
+
+    c2 -[#green]-> EliminandoLineas
+    note on link
+    hay líneas completas
+    end note
+
+    c2 -[#green]-> GenerandoNuevaPieza
+    note on link
+    no hay líneas completas
+    end note
+
+    EliminandoLineas -[#green]-> GenerandoNuevaPieza
+    note on link
+    <b>Sistema</b> presenta tablero sin líneas completas
+    <b>Sistema</b> presenta puntuación actualizada
+    end note
+
+    GenerandoNuevaPieza -[#green]-> c3
+
+    c3 -[#green]-> [*]
+    note on link
+    hay espacio disponible
+    <b>Sistema</b> presenta nueva pieza activa
+    end note
+
+    c3 -[#red]-> [*]
+    note on link
+    no hay espacio disponible
+    <b>Sistema</b> presenta mensaje de Game Over
+    end note
+}
+
+descenderPieza -[#green]-> EnCurso_2
+note on link
+continuar partida
+end note
+
+descenderPieza -[#red]-> Finalizado
+note on link
+Game Over
+end note
+
+@enduml

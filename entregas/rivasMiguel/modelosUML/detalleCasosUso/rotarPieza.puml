@@ -1,0 +1,39 @@
+@startuml rotarPieza
+
+skinparam linetype polyline
+
+state EnCurso
+state EnCurso_2 as "EnCurso"
+
+EnCurso -[#green]-> rotarPieza
+note on link
+rotarPieza()
+end note
+
+state rotarPieza as "rotarPieza()" {
+
+    state c1 <<choice>>
+
+    [*] -[#green]-> c1
+    note on link
+    <b>Jugador</b> solicita rotar pieza
+    end note
+
+    c1 -[#green]-> [*]
+    note on link
+    rotación válida
+    <b>Sistema</b> presenta pieza activa rotada
+    end note
+
+    c1 -[#red]-> [*]
+    note on link
+    rotación inválida
+    (colisión o límite)
+    <b>Sistema</b> presenta pieza activa
+    sin rotación
+    end note
+}
+
+rotarPieza --> EnCurso_2
+
+@enduml

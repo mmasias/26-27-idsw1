@@ -1,0 +1,41 @@
+@startuml moverPieza
+
+skinparam linetype polyline
+
+state EnCurso
+state EnCurso_2 as "EnCurso"
+
+EnCurso -[#green]-> moverPieza
+note on link
+moverPieza()
+end note
+
+state moverPieza as "moverPieza()" {
+
+    state c1 <<choice>>
+
+    [*] -[#green]-> c1
+    note on link
+    <b>Jugador</b> solicita mover pieza
+    (izquierda o derecha)
+    end note
+
+    c1 -[#green]-> [*]
+    note on link
+    posición válida
+    <b>Sistema</b> presenta pieza activa
+    en nueva posición
+    end note
+
+    c1 -[#red]-> [*]
+    note on link
+    posición inválida
+    (colisión o límite)
+    <b>Sistema</b> presenta pieza activa
+    en posición sin cambios
+    end note
+}
+
+moverPieza --> EnCurso_2
+
+@enduml
