@@ -93,13 +93,6 @@
 | **Qué propondría** | Pediría confirmación solo si la partida sigue en curso. Si ya ha terminado, reiniciaría directamente. |
 | **Por qué** | La confirmación sirve para evitar perder una partida activa por error. Después de un Game Over ya no hay progreso que se pueda perder, por lo que ese paso añade una acción innecesaria. |
 
-### 4. Utilizar una sola imagen para representar todos los casos de uso
 
-| | |
-|---|---|
-| **Dónde** | [`docs/ProcesoRequisitos.md`](https://github.com/puntoReflex/pyTetris/blob/main/docs/ProcesoRequisitos.md) e [`images/tetris.png`](https://github.com/puntoReflex/pyTetris/blob/main/images/tetris.png). |
-| **Qué se decidió** | Considero suficiente una única imagen del juego en marcha. |
-| **Qué propondría** | Añadiría, como mínimo, una imagen de la pantalla inicial y otra del final de partida o de la confirmación del reinicio. |
-| **Por qué** | La imagen actual permite ver el tablero, pero no muestra cómo se inicia o se reinicia una partida ni qué aparece cuando se pierde. Esos comportamientos también forman parte de la interacción con el sistema. |
 
 
