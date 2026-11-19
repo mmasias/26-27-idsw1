@@ -1,0 +1,71 @@
+@startuml pausarPartida
+
+skinparam linetype polyline
+
+EN_CURSO -[#green]-> pausarPartida
+note on link
+pausarPartida()
+end note
+
+state pausarPartida as "pausarPartida()" {
+
+    state " " as MostrandoPausa
+    state " " as EsperandoOpcion
+    state c1 <<choice>>
+
+    [*] -[#green]-> MostrandoPausa
+    note on link
+    <b>Jugador</b> solicita pausar partida
+    end note
+
+    MostrandoPausa -[#green]-> EsperandoOpcion
+    note on link
+    <b>Sistema</b> presenta pantalla de pausa
+    <b>Sistema</b> permite solicitar:
+    • reanudar partida
+    • finalizar partida
+    • reiniciar partida
+    end note
+
+    EsperandoOpcion -[#green]-> c1
+    note on link
+    <b>Jugador</b> solicita opción
+    end note
+
+    c1 -[#green]-> [*]
+    note on link
+    reanudar solicitada
+    <b>Sistema</b> presenta tablero y pieza activa
+    end note
+
+    c1 -[#red]-> [*]
+    note on link
+    finalizar solicitada
+    <b>Sistema</b> presenta mensaje de Game Over
+    end note
+
+    c1 -[#blue]-> [*]
+    note on link
+    reiniciar solicitada
+    <b>Sistema</b> presenta pantalla inicial
+    end note
+}
+
+state EN_CURSO_2 as "EN_CURSO"
+
+pausarPartida -[#green]-> EN_CURSO_2
+note on link
+partida reanudada
+end note
+
+pausarPartida -[#red]-> FINALIZADO
+note on link
+partida finalizada
+end note
+
+pausarPartida -[#blue]-> INACTIVO
+note on link
+partida reiniciada
+end note
+
+@enduml

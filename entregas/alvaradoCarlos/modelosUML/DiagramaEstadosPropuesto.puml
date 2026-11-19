@@ -1,0 +1,22 @@
+@startuml
+left to right direction
+
+state EnCurso
+state Pausado
+state Finalizado
+
+[*] --> EnCurso : iniciarPartida()
+
+EnCurso --> Pausado : pausarPartida()
+Pausado --> EnCurso : reanudarPartida()
+Pausado --> Finalizado : finalizarPartida()
+Pausado --> [*] : reiniciarPartida()
+
+EnCurso --> EnCurso : moverPieza()\nrotarPieza()\nalternarVelocidadCaida()\ndescenderPieza()
+
+EnCurso --> Finalizado : descenderPieza\n[sin espacio para nueva pieza]
+EnCurso --> [*] : reiniciarPartida()
+
+Finalizado --> [*] : reiniciarPartida()
+
+@enduml
