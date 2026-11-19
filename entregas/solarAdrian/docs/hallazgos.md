@@ -131,3 +131,56 @@ Reviso el [modelo del dominio](https://github.com/puntoReflex/pyTetris/blob/92c9
 - **ME-1.** La Versión 2 del MdD dice que *"se agregan TipoPieza y Turno"*, pero Turno ya estaba en la Versión 0 y en el §2. Corrijo la Versión 2, porque la historia del modelo tiene que ser fiel.
 - **ME-2.** El §2 del MdD escribe *"Tetrimino"* y el §3 *"Tetrómino"*. Corrijo el §3, porque el vocabulario no puede tener dos grafías.
 - **ME-3.** Los diagramas de estados usan `EnCurso` y los detalles `EN_CURSO` (igual con los otros estados). Corrijo los detalles para que coincidan con los diagramas, que son los que definen los estados.
+
+
+# Decisiones discutibles
+
+## Del modelo del dominio
+
+### DD-1. Movimiento como clase
+
+**Qué se decidió:** juntar rotación, caída y desplazamiento en la clase `Movimiento`, unida a `Turno`.
+
+**Qué propongo:** quitarla del modelo. Lo que hay que guardar es la posición y la orientación de la pieza activa.
+
+**Argumento:** un movimiento es una acción, no algo que se recuerde: nadie consulta "los movimientos de la partida". Las acciones son casos de uso, y de hecho los requisitos las convierten en `moverPieza()`, `rotarPieza()` y `descenderPieza()`.
+
+### DD-2. Celda con dos dueños por composición
+
+**Qué se decidió:** `Tablero *-- Celda` y `Linea *-- Celda`, las dos como composición.
+
+**Qué propongo:** `Tablero ◆ Linea ◆ Celda`, sin la composición directa entre Tablero y Celda.
+
+**Argumento:** en una composición, la parte pertenece a un solo todo y desaparece con él. Aquí cada celda tendría dos dueños. Además, al borrar una línea las celdas no se destruyen: se vacían y las de arriba bajan.
+
+### DD-3. Juego–Pieza como agregación
+
+**Qué se decidió:** agregación, porque las piezas *"pueden existir conceptualmente sin un juego"*.
+
+**Qué propongo:** una asociación normal, `Juego 1 — 0..1 Pieza`, con el rol "pieza activa".
+
+**Argumento:** una pieza que cae no existe fuera de una partida. Además, el propio MdD descarta *Bloque* porque *"no existe independientemente"*: con ese mismo criterio, la pieza tampoco existe sin la partida.
+
+### DD-4. Flechas en el modelo del dominio
+
+**Qué se decidió:** relaciones con flecha, como `Pieza --> TipoPieza`, `Pieza --> Celda` y `Turno --> Pieza`.
+
+**Qué propongo:** líneas sin flecha.
+
+**Argumento:** la flecha indica qué objeto conoce a cuál, y eso es una decisión de diseño. El MdD dice estar *"sin contaminación tecnológica"*, pero esa decisión la adelanta.
+
+### DD-5. Excluir al Jugador porque "el sistema no lo necesita"
+
+**Qué se decidió:** quitar `Jugador` porque *"el sistema no necesita modelar múltiples jugadores"*.
+
+**Qué propongo:** mantener la exclusión, pero con un argumento del dominio: no hay ningún dato del jugador que guardar (ni nombre, ni récords).
+
+**Argumento:** "el sistema no lo necesita" es un razonamiento de requisitos, y el MdD habla del mundo real. Además, que haya un solo jugador no lo hace desaparecer: es el actor principal de los requisitos.
+
+### DD-6. Una validación que nadie ha hecho
+
+**Qué se decidió:** responder las preguntas de validación del §9 con *"Sí"* y *"No"*, sin decir a quién se consultó, y concluir que *"no sobra"* ningún concepto.
+
+**Qué propongo:** indicar con quién se validó y qué cambió en el modelo como resultado.
+
+**Argumento:** los propios requisitos desmienten la conclusión: `Turno` y `Movimiento` no se usan en ningún caso de uso (MR-2 y DD-1), y la puntuación, que sí se usa, no está en el diagrama (MD-1).
