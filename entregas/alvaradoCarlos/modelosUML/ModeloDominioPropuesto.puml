@@ -1,0 +1,26 @@
+@startuml
+hide circle
+hide empty members
+
+class Juego {
+  - puntuación
+}
+
+class Tablero
+class Celda
+class Linea
+class Pieza
+class TipoPieza
+
+Juego *-- Tablero : "se juega en"
+Juego o-- Pieza : "contiene piezas activa"
+
+Tablero *-- Celda : "está formado por"
+Tablero *-- Linea : "se organiza en"
+
+Linea *-- Celda : "contiene"
+
+Pieza --> TipoPieza : "es de tipo"
+Pieza --> Celda : "ocupa"
+
+@enduml

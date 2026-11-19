@@ -1,0 +1,26 @@
+@startuml
+left to right direction
+
+actor Jugador
+actor Tiempo
+
+usecase "Iniciar partida" as UC_Iniciar
+usecase "Reiniciar partida" as UC_Reiniciar
+usecase "Pausar partida" as UC_Pausar
+usecase "Finalizar partida" as UC_Finalizar
+usecase "Mover pieza" as UC_Mover
+usecase "Rotar pieza" as UC_Rotar
+usecase "Alternar velocidad de caída" as UC_AlternarVelocidad
+usecase "Descender pieza" as UC_Descender
+
+Jugador -- UC_Iniciar
+Jugador -- UC_Reiniciar
+Jugador -- UC_Pausar
+Jugador -- UC_Finalizar
+Jugador -- UC_Mover
+Jugador -- UC_Rotar
+Jugador -- UC_AlternarVelocidad
+
+Tiempo -- UC_Descender
+
+@enduml
