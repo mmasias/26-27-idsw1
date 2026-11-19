@@ -109,4 +109,3 @@ Revisión crítica del repositorio [pyTetris](https://github.com/puntoReflex/pyT
 * **Qué se decidió:** Dejar sin etiquetas las ramas alternativas en [moverPieza.puml](https://github.com/puntoReflex/pyTetris/blob/main/modelosUML/detalleCasosUso/moverPieza.puml), [rotarPieza.puml](https://github.com/puntoReflex/pyTetris/blob/main/modelosUML/detalleCasosUso/rotarPieza.puml) y [reiniciarPartida.puml](https://github.com/puntoReflex/pyTetris/blob/main/modelosUML/detalleCasosUso/reiniciarPartida.puml).
 * **Qué se propone:** Añadir condiciones de guarda explícitas entre corchetes (`[posición válida]`, `[colisión]`, `[confirmado]`) en cada transición saliente de los nodos de decisión.
 * **Argumento:** Los nodos de decisión sin guardas producen diagramas ambiguos donde no es posible verificar formalmente qué flujo corresponde a cada condición de negocio.
-
