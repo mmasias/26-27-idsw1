@@ -30,7 +30,7 @@ Dejaría el ejemplo sin niveles y corregiría el apartado 6 para indicar que Niv
 
 ### Las celdas pertenecen por composición a dos elementos
 
-La [tabla del apartado 7][dominio] y el [modelo final][modelo] ponen composición de Tablero a Celda y de Línea a Celda. Las celdas de una línea son las mismas que las del tablero, pero una celda no puede tener dos propietarios por composición al mismo tiempo, según la [definición de composición en UML](https://www.omg.org/spec/UML/2.5.1/PDF).
+La [tabla del apartado 7][dominio] y el [modelo final][modelo] ponen composición de Tablero a Celda y de Línea a Celda. Las celdas de una línea son las mismas que las del tablero, pero una celda no puede tener dos propietarios por composición al mismo tiempo.
 
 Dejaría la composición entre Tablero y Celda, y pondría una asociación entre Línea y Celda. Así se indica qué celdas forman cada línea sin darles dos propietarios.
 
@@ -64,7 +64,7 @@ En la propuesta se muestra [cómo quedaría el tablero al borrar dos filas](prop
 
 ### No se indica cómo se elige la siguiente pieza
 
-En [descenderPieza()][descenderPieza] se genera una nueva pieza, y el [modelo del dominio][dominio] recoge los siete tipos. Sin embargo, no se dice cómo se elige el tipo que aparece. Esta observación también está en la [revisión de Silvia Montes](https://github.com/Silviamontes43/26-27-idsw1/blob/781e88abe0a879e90eb80aed588f272427857b5a/entregas/montesSilvia/tetris.md#212-no-se-explica-cómo-se-generan-las-nuevas-piezas).
+En [descenderPieza()][descenderPieza] se genera una nueva pieza, y el [modelo del dominio][dominio] recoge los siete tipos. Sin embargo, no se dice cómo se elige el tipo que aparece. Una secuencia fija y una elección al azar cumplirían ese texto, pero darían lugar a partidas distintas.
 
 Para este ejemplo propondría elegir al azar entre los siete tipos, con la misma probabilidad y permitiendo repeticiones. Aplicaría esa regla también a la primera pieza. Así queda claro que pueden salir dos iguales seguidas y que no se sigue un orden fijo, sin añadir más reglas al juego.
 

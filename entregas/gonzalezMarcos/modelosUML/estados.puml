@@ -22,7 +22,7 @@ EN_CURSO -down-> FINALIZADO : descenderPieza()\n[no cabe la nueva pieza]
 EN_CURSO -up-> INACTIVO : reiniciarPartida()\n[confirmado]
 FINALIZADO --> INACTIVO : reiniciarPartida()\n[confirmado]
 
-note top of INACTIVO
+note left of EN_CURSO
   Un movimiento o giro bloqueado
   también conserva EN_CURSO.
 end note
