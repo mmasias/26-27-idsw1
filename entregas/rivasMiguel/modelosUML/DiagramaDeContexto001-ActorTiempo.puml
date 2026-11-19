@@ -1,0 +1,19 @@
+@startuml
+
+left to right direction
+
+state Inactivo
+state EnCurso
+state Finalizado
+
+[*] -> Inactivo
+
+Inactivo --> EnCurso
+
+EnCurso -> EnCurso : descenderPieza() [hay espacio para nueva pieza]
+
+EnCurso --> Finalizado : descenderPieza() [no hay espacio para nueva pieza]
+
+Finalizado --> Inactivo
+
+@enduml

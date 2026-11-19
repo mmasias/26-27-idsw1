@@ -1,0 +1,21 @@
+@startuml
+
+left to right direction
+
+state Inactivo
+state EnCurso
+state Finalizado
+
+[*] -> Inactivo : arrancarSistema()
+
+Inactivo --> EnCurso : iniciarPartida()
+
+EnCurso -> EnCurso : moverPieza()
+EnCurso -> EnCurso : rotarPieza()
+EnCurso -> EnCurso : alternarVelocidadCaida()
+
+EnCurso --> Finalizado
+
+Finalizado --> Inactivo : reiniciarPartida()
+
+@enduml
