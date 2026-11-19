@@ -1,0 +1,19 @@
+@startuml
+left to right direction
+hide empty description
+
+state INACTIVO
+state EN_CURSO
+state PAUSADO
+state FINALIZADO
+
+[*] --> INACTIVO : arrancarSistema()
+INACTIVO --> EN_CURSO : iniciarJuego()
+EN_CURSO --> EN_CURSO : moverPieza() / rotarPieza() /\nacelerarCaida() / descenderPieza()
+EN_CURSO --> PAUSADO : reiniciarJuego()
+PAUSADO --> EN_CURSO : cancelarReinicio
+PAUSADO --> INACTIVO : confirmarReinicio
+EN_CURSO --> FINALIZADO : descenderPieza() [sin espacio]
+FINALIZADO --> INACTIVO : reiniciarJuego()
+FINALIZADO --> [*]
+@enduml

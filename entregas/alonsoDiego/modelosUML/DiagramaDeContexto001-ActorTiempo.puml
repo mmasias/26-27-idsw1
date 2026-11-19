@@ -1,0 +1,12 @@
+@startuml
+left to right direction
+hide empty description
+
+state INACTIVO
+state EN_CURSO
+state PAUSADO
+state FINALIZADO
+
+EN_CURSO --> EN_CURSO : descenderPieza() [hay espacio]
+EN_CURSO --> FINALIZADO : descenderPieza() [sin espacio]
+@enduml
